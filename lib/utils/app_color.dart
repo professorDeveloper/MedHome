@@ -8,7 +8,7 @@ class AppColor {
   static const red3 = Color(0xffeb364a);
   static const red4 = Color(0xffd93f54);
   static const red5 = Color(0xffFDF2F2);
-  static const textColor = Color(0xff333333);
+  static const textColor = Color(0xff1f1f1f);
 
   static const orange1 = Color(0xff593A28);
   static const orange2 = Color(0xff7A5436);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/utils/app_color.dart';
+import 'package:medhome/utils/utils.dart';
 
 class AppStyle {
   AppStyle._();
@@ -55,7 +56,11 @@ class AppStyle {
     fontWeight: FontWeight.w600,
     color: AppColor.textColor,
   );
-
+  static TextStyle styleMainSp29W600Rub = GoogleFonts.rubik(
+    fontSize:25,
+    fontWeight: FontWeight.w600,
+    color: AppColor.textColor,
+  );
   static TextStyle styleMainSp24W600Rub = GoogleFonts.rubik(
     fontSize: 24,
     fontWeight: FontWeight.w600,

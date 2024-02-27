@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-double pxToDp(double pixels) {
-  double logicalPixelRatio = MediaQueryData.fromWindow(WidgetsBinding.instance!.window).devicePixelRatio;
-  return pixels / logicalPixelRatio;
-}
+//
+// int pxToDp(int pixels) {
+//   int logicalPixelRatio = MediaQueryData.fromWindow(WidgetsBinding.instance!.window).devicePixelRatio.toInt();
+//    var a= pixels / logicalPixelRatio;
+//    return int.parse(a);
+// }
