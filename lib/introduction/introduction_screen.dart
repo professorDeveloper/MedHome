@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medhome/pages/home_page.dart';
 
 import 'data/model_contents.dart';
@@ -92,11 +93,16 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                               )
                             ],
                           ),
-                        Image.asset(
+                        SvgPicture.asset(
                           contents[i].image,
                           height: 314,
                           width: 430,
                         ),
+                        // Image.asset(
+                        //   contents[i].image,
+                        //   height: 314,
+                        //   width: 430,
+                        // ),
                         Container(
                           margin: const EdgeInsets.only(left: 8, right: 8),
                           width: 375,
