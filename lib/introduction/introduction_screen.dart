@@ -94,7 +94,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                             ],
                           ),
                         SvgPicture.asset(
-                          contents[i].image,
+                          contents[i].image, // svg
                           height: 314,
                           width: 430,
                         ),
