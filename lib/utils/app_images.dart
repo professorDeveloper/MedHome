@@ -2,10 +2,10 @@ class AppImages {
   AppImages._();
 
   //OnBoard Banner Images
-  static const onBoard1 = "assets/images/onboard_one.svg";
-  static const onBoard2 = "assets/images/onboard_two.svg";
-  static const onBoard3 = "assets/images/onboard_third.svg";
-  static const onBoard4 = "assets/images/onboard_four.svg";
+  static const onBoard1 = "assets/images/onboard_one.png";
+  static const onBoard2 = "assets/images/onboard_two.png";
+  static const onBoard3 = "assets/images/onboard_third.png";
+  static const onBoard4 = "assets/images/onboard_four.png";
 
   //Icons
   static const icCall = "assets/images/ic_call.svg";
@@ -15,26 +15,25 @@ class AppImages {
   static const icFemale = "assets/images/ic_female.svg";
   static const icNavigation = "assets/images/ic_navigation.svg";
 
-
-  // Comming soon ...
-  // static const icHome = "assets/images/ic_home.svg";
-  // static const icHomeResult = "assets/images/ic_home_result.svg";
-  // static const icInfo = "assets/images/ic_info.svg";
-  // static const icSend = "assets/images/ic_send.svg";
-  // static const icForward = "assets/images/ic_forward.svg";
-  // static const icStar = "assets/images/ic_star.svg";
-  // static const icPlay = "assets/images/ic_play.svg";
-  // static const icPlayAudio = "assets/images/ic_play_audio.svg";
-  // static const icLock = "assets/images/ic_lock.svg";
-  // static const icRecycle = "assets/images/ic_recycle.svg";
-  // static const icBookmark = "assets/images/ic_bookmark.svg";
-  // static const icMenuDots = "assets/images/ic_menu_dots.svg";
-  // static const icMessage = "assets/images/ic_message.svg";
-  // static const icNoInternet = "assets/images/ic_no_internet.svg";
-  // static const imgMosque = "assets/images/img_mosque.svg";
-  // static const imgQuran = "assets/images/img_quran.svg";
-  // static const imgQuestionTitleBg = "assets/images/img_question_title_bg.png";
-  // static const icUzFlag = "assets/images/uz_flag.png";
-  // static const icRuFlag = "assets/images/ru_flag.png";
-  // static const icEnFlag = "assets/images/en_flag.png";
+// Comming soon ...
+// static const icHome = "assets/images/ic_home.svg";
+// static const icHomeResult = "assets/images/ic_home_result.svg";
+// static const icInfo = "assets/images/ic_info.svg";
+// static const icSend = "assets/images/ic_send.svg";
+// static const icForward = "assets/images/ic_forward.svg";
+// static const icStar = "assets/images/ic_star.svg";
+// static const icPlay = "assets/images/ic_play.svg";
+// static const icPlayAudio = "assets/images/ic_play_audio.svg";
+// static const icLock = "assets/images/ic_lock.svg";
+// static const icRecycle = "assets/images/ic_recycle.svg";
+// static const icBookmark = "assets/images/ic_bookmark.svg";
+// static const icMenuDots = "assets/images/ic_menu_dots.svg";
+// static const icMessage = "assets/images/ic_message.svg";
+// static const icNoInternet = "assets/images/ic_no_internet.svg";
+// static const imgMosque = "assets/images/img_mosque.svg";
+// static const imgQuran = "assets/images/img_quran.svg";
+// static const imgQuestionTitleBg = "assets/images/img_question_title_bg.png";
+// static const icUzFlag = "assets/images/uz_flag.png";
+// static const icRuFlag = "assets/images/ru_flag.png";
+// static const icEnFlag = "assets/images/en_flag.png";
 }

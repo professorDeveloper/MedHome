@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medhome/resources/onboarding/model_contents.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medhome/utils/app_color.dart';
+import 'package:medhome/utils/app_style.dart';
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
 
@@ -91,7 +92,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                               )
                             ],
                           ),
-                        SvgPicture.asset(
+                        Image.asset(
                           contents[i].image,
                           height: 314,
                           width: 430,
@@ -102,10 +103,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                           child: Text(
                             contents[i].title,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: AppStyle.styleMainSp16W600Rub,
                           ),
                         ),
                         const SizedBox(

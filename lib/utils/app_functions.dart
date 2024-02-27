@@ -6,7 +6,6 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:new_version/new_version.dart';
-import 'package:platform_device_id/platform_device_id.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'app_text.dart';
@@ -22,18 +21,7 @@ class AppFunctions {
     version.showAlertIfNecessary(context: context);
   }
 
-  static initPlatformState() async {
-    String? deviceId;
-    try {
-      deviceId = await PlatformDeviceId.getDeviceId;
-      if (deviceId != null) {
-        Prefs.setString(AppText.deviceId, deviceId);
-      }
-    } on PlatformException {
-      deviceId = 'Failed to get deviceId.';
-    }
-    print("deviceId->$deviceId");
-  }
+
 
   static Future<void> launchInBrowser(Uri url) async {
     if (!await launchUrl(
