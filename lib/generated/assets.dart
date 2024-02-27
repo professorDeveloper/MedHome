@@ -3,22 +3,29 @@ class Assets {
   Assets._();
 
   static const String imagesAppLogo = 'assets/images/app_logo.png';
+  static const String imagesAppbarLogo = 'assets/images/appbar_logo.png';
   static const String imagesBottom2 = 'assets/images/bottom_2.svg';
   static const String imagesBottom3 = 'assets/images/bottom_3.svg';
   static const String imagesBottom4 = 'assets/images/bottom_4.svg';
   static const String imagesBottomHome = 'assets/images/bottom_home.svg';
+  static const String imagesDoctorImage = 'assets/images/doctor_image.png';
   static const String imagesIcCall = 'assets/images/ic_call.svg';
   static const String imagesIcEye = 'assets/images/ic_eye.svg';
-  static const String imagesIcFemale = 'assets/images/ic_female.svg';
   static const String imagesIcLock = 'assets/images/ic_lock.svg';
-  static const String imagesIcMale = 'assets/images/ic_male.svg';
   static const String imagesIcNavigation = 'assets/images/ic_navigation.svg';
   static const String imagesIcNotification = 'assets/images/ic_notification.svg';
   static const String imagesIcUser = 'assets/images/ic_user.svg';
-  static const String imagesOnboardFour = 'assets/images/onboard_four.svg';
-  static const String imagesOnboardOne = 'assets/images/onboard_one.svg';
-  static const String imagesOnboardThird = 'assets/images/onboard_third.svg';
-  static const String imagesOnboardTwo = 'assets/images/onboard_two.svg';
+  static const String imagesImg1 = 'assets/images/img_1.png';
+  static const String imagesImg2 = 'assets/images/img_2.png';
+  static const String imagesImg3 = 'assets/images/img_3.png';
+  static const String imagesImg4 = 'assets/images/img_4.png';
+  static const String imagesIntro1 = 'assets/images/intro_1.svg';
+  static const String imagesIntro2 = 'assets/images/intro_2.svg';
+  static const String imagesIntro3 = 'assets/images/intro_3.svg';
+  static const String imagesIntro4 = 'assets/images/intro_4.svg';
+  static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesNotificationIcon = 'assets/images/notification_icon.png';
+  static const String imagesProfileIcon = 'assets/images/profile_icon.png';
   static const String imagesSetting = 'assets/images/setting.svg';
 
 }
