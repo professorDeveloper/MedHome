@@ -21,7 +21,8 @@ List<IntroductionContent> contents = [
       title: 'Onlayn Ariza topshirish',
       description:
           AppText.onboardText2,
-      image: AppImages.onBoard2),
+      image: AppImages.onBoard2
+  ),
   IntroductionContent(
       title: "Retsept tashkilotchisi",
       description:
