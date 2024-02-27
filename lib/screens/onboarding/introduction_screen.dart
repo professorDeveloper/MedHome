@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medhome/resources/onboarding/model_contents.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medhome/utils/app_color.dart';
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
 
@@ -90,7 +91,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                               )
                             ],
                           ),
-                        Image.asset(
+                        SvgPicture.asset(
                           contents[i].image,
                           height: 314,
                           width: 430,
@@ -158,7 +159,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                     curve: Curves.bounceIn,
                   );
                 },
-                color: const Color.fromARGB(255, 231, 52, 73),
+                color: AppColor.red1,
                 textColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),

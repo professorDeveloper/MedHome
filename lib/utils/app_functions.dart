@@ -17,7 +17,7 @@ class AppFunctions {
 
   static void checkVersion(BuildContext context) {
     final version = NewVersion(
-      androidId: "com.quran.quran_test",
+      androidId: "com.nurofficial.medhome",
     );
     version.showAlertIfNecessary(context: context);
   }

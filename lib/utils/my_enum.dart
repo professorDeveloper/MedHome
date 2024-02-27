@@ -1,12 +1,9 @@
 enum Screens {
-  infoScreen,
-  titleScreen,
+  introScreen,
+  registerScreen,
   levelScreen,
   savedScreen,
   typeScreen,
   settingsScreen,
   languageScreen,
-  juzBoyicha,
-  suraBoyicha,
-  
 }

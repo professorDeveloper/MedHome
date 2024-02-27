@@ -1,3 +1,7 @@
+import 'package:medhome/utils/app_text.dart';
+
+import '../../utils/app_images.dart';
+
 class IntroductionContent {
   String image;
   String title;
@@ -11,21 +15,20 @@ List<IntroductionContent> contents = [
   IntroductionContent(
       title: "O’zbekistonda birinchi bor",
       description:
-          "Biz sizga uydan chiqmagan holda davolanishingizga yordam beramiz",
-      image: 'assets/images/img_1.png'),
+          AppText.onboardText1,
+      image: AppImages.onBoard1),
   IntroductionContent(
       title: 'Onlayn Ariza topshirish',
       description:
-          "Shifokoringizni, qulay vaqtni tanlang va ariza qoldiring. Ariza haqida foydali bildirishnomalarni qabul qiling",
-      image: 'assets/images/img_2.png'),
+          AppText.onboardText2,
+      image: AppImages.onBoard2),
   IntroductionContent(
       title: "Retsept tashkilotchisi",
       description:
-          "Dori-darmonlarni boshqarishni nazorat qiling. Bizga barcha retseptlarni, jumladan, dori nomlari, dozalari va toʻldirish sanalarini kuzatishda yordam beramiz.",
-      image: 'assets/images/img_3.png'),
+          AppText.onboardText3,
+      image: AppImages.onBoard3),
   IntroductionContent(
       title: "24/7 Xizmat ko’rsatish",
-      description:
-          "Dori-darmonlarni boshqarishni nazorat qiling. Bizga barcha retseptlarni, jumladan, dori nomlari, dozalari va toʻldirish sanalarini kuzatishda yordam beramiz.",
-      image: 'assets/images/img_4.png'),
+      description:AppText.onboardText4,
+      image: AppImages.onBoard4),
 ];

@@ -2,6 +2,13 @@ import 'package:flutter/cupertino.dart';
 
 class AppColor {
   AppColor._();
+//Best power Efficiency
+  static const red1 = Color(0xffE7344A);
+  static const red2 = Color(0xffb22236);
+  static const red3 = Color(0xffeb364a);
+  static const red4 = Color(0xffd93f54);
+  static const red5 = Color(0xffFDF2F2);
+  static const textColor = Color(0xff333333);
 
   static const orange1 = Color(0xff593A28);
   static const orange2 = Color(0xff7A5436);
@@ -26,23 +33,23 @@ class AppColor {
   static const blackLight = Color(0xff1B1616);
   static const white = Color(0xffF2F7F3);
   static const whiteLight = Color(0xffF7F0E9);
-  static const greyLight = Color(0xffD4CBC3);
+  static const greyLight = Color(0xffe2e2e2);
   static const redLight = Color(0xffF16868);
-
-  static LinearGradient greenGradient = LinearGradient(
-    colors: [
-      AppColor.green2,
-      AppColor.green1,
-      AppColor.green1,
-      AppColor.green1,
-      AppColor.green1,
-    ],
-  );
-
-  static LinearGradient orangeGradient = LinearGradient(
-    colors: [
-      AppColor.orange3,
-      AppColor.orange4,
-    ],
-  );
+//
+// static LinearGradient greenGradient = LinearGradient(
+//   colors: [
+//     AppColor.green2,
+//     AppColor.green1,
+//     AppColor.green1,
+//     AppColor.green1,
+//     AppColor.green1,
+//   ],
+// );
+//
+// static LinearGradient orangeGradient = LinearGradient(
+//   colors: [
+//     AppColor.orange3,
+//     AppColor.orange4,
+//   ],
+// );
 }
