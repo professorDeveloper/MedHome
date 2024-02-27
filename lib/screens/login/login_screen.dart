@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Stack(
 
               children: [
-                Container(child: Image.asset(AppImages.appLogo)),
+                // Container(child: Image.asset(AppImages.appLogo)),
                 Positioned(bottom: 10,child: Center(child: Text("Kirish",style: AppStyle.styleMainSp29W600Rub,)))
               ],
             )

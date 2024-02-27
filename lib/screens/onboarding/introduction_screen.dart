@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/resources/onboarding/model_contents.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medhome/screens/login/login_screen.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_style.dart';
+
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
 
@@ -47,51 +49,64 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          height: 50,
+                        Stack(
+                          children: [
+                            const SizedBox(
+                              height: 100,
+                            ),    if (i == 0)
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Container(
+
+                                    margin: const EdgeInsets.only(right: 10,top: 14),
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.4),
+                                          spreadRadius: 1,
+                                          blurRadius: 7,
+                                          offset: const Offset(0, 2),
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: const Row(
+                                        children: [
+                                          Text(
+                                            "O’zbekcha",
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black),
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          // icon
+                                          Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: Colors.black,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                          ],
                         ),
-                        if (i == 0)
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(right: 10),
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.4),
-                                      spreadRadius: 1,
-                                      blurRadius: 7,
-                                      offset: const Offset(0, 2),
-                                    ),
-                                  ],
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Row(
-                                  children: [
-                                    Text(
-                                      "O’zbekcha",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    // icon
-                                    Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: Colors.black,
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
+
+
+
+
                         Image.asset(
                           contents[i].image,
                           height: 314,
@@ -145,12 +160,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             child: MaterialButton(
                 onPressed: () {
                   if (currentIndex == contents.length - 1) {
-                 // 1   Navigator.pushReplacement(
-                 //      context,
-                 //      MaterialPageRoute(
-                 //        builder: (context) => const HomePage(),
-                 //      ),
-                 //    );
+                    openScreen(context, LoginScreen());
                   }
                   _controller.nextPage(
                     duration: const Duration(milliseconds: 100),
@@ -162,7 +172,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: const Text("Keyingi")),
+                child: currentIndex == contents.length - 1
+                    ? const Text("Boshlash")
+                    : const Text("Keyingisi")),
           )
         ],
       ),
@@ -174,10 +186,15 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
       height: 10,
       width: currentIndex == index ? 25 : 10,
       margin: const EdgeInsets.only(right: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: const Color.fromARGB(255, 231, 52, 73),
-      ),
+      decoration: currentIndex == index
+          ? BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: const Color.fromARGB(255, 231, 52, 73),
+            )
+          : BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: AppColor.red5,
+            ),
     );
   }
 }
