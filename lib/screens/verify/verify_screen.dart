@@ -39,13 +39,14 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       style: AppStyle.styleMainSp29W600Rub),
                   bottom: 50, // Matn pastdagi masofani o'zgartirish
                 ),
-                SizedBox(
-                  height: 50,
-                ),
-                buildPinPut()
+
               ],
             ),
           ),
+          SizedBox(
+            height: 50,
+          ),
+          buildPinPut()
         ],
       ),
     );
