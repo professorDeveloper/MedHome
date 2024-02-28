@@ -35,7 +35,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
+  otp_pin_field: ^1.2.2
+  pinput: ^4.0.0
+  smart_auth: ^2.0.0
   flutter_svg: ^1.0.3
   flutter_bloc: ^8.0.1
   http: ^0.13.4
@@ -51,6 +53,7 @@ dependencies:
   sentry_flutter: ^6.19.0
   connectivity_plus: ^2.3.9
   fluttertoast: ^8.1.2
+  pin_input_text_field: ^4.0.2
 
 
 dev_dependencies:
@@ -75,7 +78,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-    # To add assets to your application, add an assets section, like this:a
+  # To add assets to your application, add an assets section, like this:a
   assets:
     - assets/images/
 

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/navigator/navigator.dart';
+import 'package:medhome/screens/verify/verify_screen.dart';
 import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/app_style.dart';
 import 'package:medhome/widgets/widget_text_field.dart';
@@ -203,6 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 elevation: 0,
                   focusElevation: 0,
                   onPressed: () {
+                  openScreen(context, VerifyScreen());
                   },
                   color: AppColor.red1,
                   textColor: Colors.white,

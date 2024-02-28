@@ -15,7 +15,7 @@ List<IntroductionContent> contents = [
   IntroductionContent(
       title: "O’zbekistonda birinchi bor",
       description:
-          AppText.onboardText1,
+          AppText.onboardText4,
       image: AppImages.onBoard1),
   IntroductionContent(
       title: 'Onlayn Ariza topshirish',
