@@ -3,6 +3,9 @@ import 'package:medhome/resources/onboarding/model_contents.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_style.dart';
+
+import '../../widgets/navigator/navigator.dart';
+import '../login/login_screen.dart';
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
 
@@ -143,14 +146,13 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             margin: const EdgeInsets.all(40),
             width: double.infinity,
             child: MaterialButton(
+                elevation: 0,
+                focusElevation: 0,
+
                 onPressed: () {
                   if (currentIndex == contents.length - 1) {
-                 // 1   Navigator.pushReplacement(
-                 //      context,
-                 //      MaterialPageRoute(
-                 //        builder: (context) => const HomePage(),
-                 //      ),
-                 //    );
+                    openScreen(context, LoginScreen());
+
                   }
                   _controller.nextPage(
                     duration: const Duration(milliseconds: 100),

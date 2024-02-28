@@ -23,8 +23,11 @@ class Assets {
   static const String imagesIntro2 = 'assets/images/intro_2.svg';
   static const String imagesIntro3 = 'assets/images/intro_3.svg';
   static const String imagesIntro4 = 'assets/images/intro_4.svg';
-  static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesNotificationIcon = 'assets/images/notification_icon.png';
+  static const String imagesOnboardFour = 'assets/images/onboard_four.png';
+  static const String imagesOnboardOne = 'assets/images/onboard_one.png';
+  static const String imagesOnboardThird = 'assets/images/onboard_third.png';
+  static const String imagesOnboardTwo = 'assets/images/onboard_two.png';
   static const String imagesProfileIcon = 'assets/images/profile_icon.png';
   static const String imagesSetting = 'assets/images/setting.svg';
 
