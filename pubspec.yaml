@@ -53,7 +53,6 @@ dependencies:
   sentry_flutter: ^6.19.0
   connectivity_plus: ^2.3.9
   fluttertoast: ^8.1.2
-  pin_input_text_field: ^4.0.2
 
 
 dev_dependencies:
