@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medhome/navigator/navigator.dart';
-import 'package:medhome/screens/verify/custom_verification.dart';
-import 'package:medhome/screens/verify/verify_screen.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/app_style.dart';
 import 'package:medhome/widgets/widget_text_field.dart';
+
+import '../verify/VerifyBottomSheet.dart';
 
 class PhoneInputScreen extends StatefulWidget {
   const PhoneInputScreen({super.key});
@@ -17,7 +16,8 @@ class PhoneInputScreen extends StatefulWidget {
 }
 
 class _PhoneInputScreenState extends State<PhoneInputScreen> {
-  bool isSavable=false;
+  bool isSavable = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +39,8 @@ class _PhoneInputScreenState extends State<PhoneInputScreen> {
                     ),
                   ),
                   Positioned(
-                    child: Text("Ro’yxatdan o’tish", style: AppStyle.styleMainSp29W600Rub),
+                    child: Text("Ro’yxatdan o’tish",
+                        style: AppStyle.styleMainSp29W600Rub),
                     bottom: 60,
                   ),
                 ],
@@ -61,7 +62,9 @@ class _PhoneInputScreenState extends State<PhoneInputScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Checkbox(
                     value: isSavable,
                     onChanged: (it) {
@@ -85,7 +88,9 @@ class _PhoneInputScreenState extends State<PhoneInputScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 60,
               margin: const EdgeInsets.all(15),
@@ -94,7 +99,7 @@ class _PhoneInputScreenState extends State<PhoneInputScreen> {
                 elevation: 0,
                 focusElevation: 0,
                 onPressed: () {
-                  openScreen(context, MyOTPView());
+                  verifyBottomSheet(context);
                 },
                 color: AppColor.red1,
                 textColor: Colors.white,
