@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_style.dart';
 
@@ -59,30 +60,39 @@ class _VerifyScreenState extends State<VerifyScreen> {
       textStyle: TextStyle(
           fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFFFF5840)),
+        color: AppColor.red6,
+        border: Border.all(color: AppColor.red1),
         borderRadius: BorderRadius.circular(15),
       ),
     );
     final focusedPinTheme = defaultPinTheme.copyDecorationWith();
+    final defaultUnBorder = defaultPinTheme.copyWith(
+
+      decoration: defaultPinTheme.decoration!.copyWith(
+        color: Color(0xd5979e)
+
+      )
+    );
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration!.copyWith(
-        color: Color(0xFFFF5840),
+        color: AppColor.red1,
       ),
     );
 
     return Pinput(
       keyboardType: TextInputType.number,
-      defaultPinTheme: defaultPinTheme,
+
+      defaultPinTheme: defaultUnBorder,
       focusedPinTheme: focusedPinTheme,
       submittedPinTheme: submittedPinTheme,
-      validator: (s) {
-        return "";
-      },
+      androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsRetrieverApi,
       pinAnimationType: PinAnimationType.rotation,
       length: 6,
-      pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
       showCursor: true,
-      onCompleted: (pin) => print(pin),
+      onCompleted: (pin) => {
+
+
+      },
     );
   }
 }
