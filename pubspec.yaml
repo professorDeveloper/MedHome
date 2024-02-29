@@ -53,6 +53,7 @@ dependencies:
   sentry_flutter: ^6.19.0
   connectivity_plus: ^2.3.9
   fluttertoast: ^8.1.2
+  animate_do: ^3.3.3
 
 
 dev_dependencies:

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/resources/onboarding/model_contents.dart';
@@ -56,13 +57,14 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                           children: [
                             const SizedBox(
                               height: 100,
-                            ),    if (i == 0)
+                            ),
+                            if (i == 0)
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Container(
-
-                                    margin: const EdgeInsets.only(right: 10,top: 14),
+                                    margin: const EdgeInsets.only(
+                                        right: 10, top: 14),
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
@@ -103,22 +105,23 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                               ),
                           ],
                         ),
-
-
-
-
-                        Image.asset(
-                          contents[i].image,
-                          height: 314,
-                          width: 430,
+                        FadeInDown(
+                          duration: const Duration(milliseconds: 500),
+                          child: Image.asset(
+                            contents[i].image,
+                            height: 314,
+                            width: 430,
+                          ),
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 8, right: 8),
                           width: 375,
-                          child: Text(
-                            contents[i].title,
-                            textAlign: TextAlign.center,
-                            style: AppStyle.styleMainSp16W600Rub,
+                          child: FadeInDown(
+                            child: Text(
+                              contents[i].title,
+                              textAlign: TextAlign.center,
+                              style: AppStyle.styleMainSp16W600Rub,
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -127,12 +130,14 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                         Container(
                           margin: const EdgeInsets.only(left: 10, right: 10),
                           width: 328,
-                          child: Text(
-                            contents[i].description,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                          child: FadeInDown(
+                            child: Text(
+                              contents[i].description,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
@@ -157,24 +162,26 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             height: 60,
             margin: const EdgeInsets.all(40),
             width: double.infinity,
-            child: MaterialButton(
-                onPressed: () {
-                  if (currentIndex == contents.length - 1) {
-                    openScreen(context, LoginScreen());
-                  }
-                  _controller.nextPage(
-                    duration: const Duration(milliseconds: 100),
-                    curve: Curves.bounceIn,
-                  );
-                },
-                color: AppColor.red1,
-                textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: currentIndex == contents.length - 1
-                    ? const Text("Boshlash")
-                    : const Text("Keyingisi")),
+            child: FadeInUp(
+              child: MaterialButton(
+                  onPressed: () {
+                    if (currentIndex == contents.length - 1) {
+                      openScreen(context, LoginScreen());
+                    }
+                    _controller.nextPage(
+                      duration: const Duration(milliseconds: 100),
+                      curve: Curves.bounceIn,
+                    );
+                  },
+                  color: AppColor.red1,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: currentIndex == contents.length - 1
+                      ? const Text("Boshlash")
+                      : const Text("Keyingisi")),
+            ),
           )
         ],
       ),
@@ -189,7 +196,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
       decoration: currentIndex == index
           ? BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: currentIndex ==index ?const Color.fromARGB(255, 231, 52, 73) :Color(0xff9f626a),
+              color: currentIndex == index
+                  ? const Color.fromARGB(255, 231, 52, 73)
+                  : Color(0xff9f626a),
             )
           : BoxDecoration(
               borderRadius: BorderRadius.circular(20),

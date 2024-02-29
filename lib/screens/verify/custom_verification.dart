@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyOTPView extends StatefulWidget {
@@ -33,7 +32,7 @@ class _MyOTPViewState extends State<MyOTPView> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(
         6,
-            (index) => buildOtpBox(otp[index]),
+        (index) => buildOtpBox(otp[index]),
       ),
     );
   }
@@ -73,10 +72,8 @@ class _MyOTPViewState extends State<MyOTPView> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: keys
           .map(
-            (key) => key.isEmpty
-            ? buildEmptyKey()
-            : buildNumberKey(key),
-      )
+            (key) => key.isEmpty ? buildEmptyKey() : buildNumberKey(key),
+          )
           .toList(),
     );
   }
@@ -138,7 +135,7 @@ class KeyButton extends StatelessWidget {
         style: TextStyle(fontSize: 20),
       ),
       style: ElevatedButton.styleFrom(
-        primary: color, // Background color
+        backgroundColor: color, // Background color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12), // Rounded corners
         ),

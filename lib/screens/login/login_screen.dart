@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/screens/register/phone_input_screen.dart';
@@ -113,7 +112,8 @@ class _LoginScreenState extends State<LoginScreen>
                         ),
                       ),
                       Positioned(
-                        child: Text("Kirish", style: AppStyle.styleMainSp29W600Rub),
+                        child: Text("Kirish",
+                            style: AppStyle.styleMainSp29W600Rub),
                         bottom: 50,
                       ),
                     ],
@@ -148,7 +148,8 @@ class _LoginScreenState extends State<LoginScreen>
                           Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 5.0, right: 3),
+                                padding:
+                                    const EdgeInsets.only(left: 5.0, right: 3),
                                 child: Text(
                                   "Parolingiz :",
                                   style: GoogleFonts.poppins(
@@ -170,7 +171,8 @@ class _LoginScreenState extends State<LoginScreen>
                             decoration: InputDecoration(
                               prefixIcon: Container(
                                 margin: EdgeInsets.symmetric(horizontal: 15),
-                                child: Icon(CupertinoIcons.lock!, color: AppColor.red3),
+                                child: Icon(CupertinoIcons.lock,
+                                    color: AppColor.red3),
                               ),
                               suffixIcon: Container(
                                 margin: EdgeInsets.symmetric(horizontal: 16),
@@ -261,7 +263,7 @@ class _LoginScreenState extends State<LoginScreen>
                             Spacer(),
                             GestureDetector(
                               onTap: () {
-                                // Add your logic for "Forgot Password" action here
+                                forgotBottomSheet(context);
                               },
                               child: Text(
                                 'Parolni unutdingizmi ?',
@@ -336,6 +338,64 @@ class _LoginScreenState extends State<LoginScreen>
         ),
       ),
     );
+  }
+
+  Future<dynamic> forgotBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+              color: AppColor.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+            height: 450,
+            width: double.infinity,
+            child: Column(
+              children: [
+                SizedBox(height: 40),
+                Text(
+                  "Parolni unutdingizmi ?",
+                  style: GoogleFonts.rubik(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 29,
+                    color: AppColor.textColor,
+                  ),
+                ),
+                SizedBox(height: 50),
+                RedTextField(
+                  topText: "Telefon raqam :",
+                  hintText: "+998 (97) 977-97-97",
+                  prefixIcon: CupertinoIcons.phone,
+                  inputType: TextInputType.phone,
+                ),
+                SizedBox(height: 20),
+                Container(
+                  height: 60,
+                  margin: const EdgeInsets.all(15),
+                  width: double.infinity,
+                  child: MaterialButton(
+                    elevation: 0,
+                    focusElevation: 0,
+                    onPressed: () {
+                      // New Forgot Logic
+                    },
+                    color: AppColor.red1,
+                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Text("Akkauntga kirish"),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 
   @override

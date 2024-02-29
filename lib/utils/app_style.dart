@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/utils/app_color.dart';
-import 'package:medhome/utils/utils.dart';
 
 class AppStyle {
   AppStyle._();
@@ -57,7 +56,7 @@ class AppStyle {
     color: AppColor.textColor,
   );
   static TextStyle styleMainSp29W600Rub = GoogleFonts.rubik(
-    fontSize:25,
+    fontSize: 25,
     fontWeight: FontWeight.w600,
     color: AppColor.textColor,
   );
@@ -80,7 +79,7 @@ class AppStyle {
   );
 
   static TextStyle styleMainSp16W600Rub = GoogleFonts.rubik(
-    fontSize: 16,
+    fontSize: 26,
     fontWeight: FontWeight.w600,
     color: AppColor.textColor,
   );
@@ -106,5 +105,4 @@ class AppStyle {
 
   static TextStyle styleWhite4Sp16W700Zen = GoogleFonts.zenMaruGothic(
       fontSize: 16, fontWeight: FontWeight.w700, color: AppColor.white);
-
 }
