@@ -334,7 +334,24 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
               ),
             ),
+            SizedBox(height: 10,),
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 16,
+                color: Colors.green, // Set the color for Container 1
+              ),
+            ),
+            Expanded(
+              child: Container(
+                height: 16,
+                color: Colors.red, // Set the color for Container 2
+              ),
+            ),
           ],
+        )
+        ],
         ),
       ),
     );
