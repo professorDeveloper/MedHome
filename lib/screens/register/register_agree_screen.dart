@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:medhome/utils/app_color.dart';
-import 'package:simple_item_selector/simple_item_selector.dart';
 
 import '../../utils/app_images.dart';
 import '../../utils/app_style.dart';
@@ -57,29 +55,29 @@ class _RegisterAgreeScreenState extends State<RegisterAgreeScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                ItemSelector(
-                  direction: Direction.horizontal,
-                  activeBackgroundColor: AppColor.red1,
-                  inactiveBackgroundColor: Colors.grey[300],
-                  itemMargin: const EdgeInsets.all(10.0),
-                  itemPadding: const EdgeInsets.all(4.0),
-                  itemBorderRadius:
-                      const BorderRadius.all(Radius.circular(5.0)),
-                  itemsCount: 2,
-                  // should be <= items.length
-                  items: const [
-                    Row(
-                      children: [
-                        Container("")
-                      ],
-                    )
-                  ],
-                  // any arbitrary widget list
-                  onSelected: (index) {
-                    // you can access selected item index here!
-                    print(index);
-                  },
-                )
+                // ItemSelector(
+                //   direction: Direction.horizontal,
+                //   activeBackgroundColor: AppColor.red1,
+                //   inactiveBackgroundColor: Colors.grey[300],
+                //   itemMargin: const EdgeInsets.all(10.0),
+                //   itemPadding: const EdgeInsets.all(4.0),
+                //   itemBorderRadius:
+                //       const BorderRadius.all(Radius.circular(5.0)),
+                //   itemsCount: 2,
+                //   // should be <= items.length
+                //   items: const [
+                //     Row(
+                //       children: [
+                //         Container("")
+                //       ],
+                //     )
+                //   ],
+                //   // any arbitrary widget list
+                //   onSelected: (index) {
+                //     // you can access selected item index here!
+                //     print(index);
+                //   },
+                // )
               ],
             ),
           ),
