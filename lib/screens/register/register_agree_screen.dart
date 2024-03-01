@@ -26,7 +26,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHalfWidth = MediaQuery.of(context).size.width / 2;
 
     return Scaffold(
       body: SingleChildScrollView(
