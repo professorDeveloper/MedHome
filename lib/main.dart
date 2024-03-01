@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medhome/screens/onboarding/introduction_screen.dart';
 import 'package:medhome/widgets/profile.dart';
 
 void main() {
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const MyProfile());
+        home: const IntroductionScreen());
   }
 }
