@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:simple_item_selector/simple_item_selector.dart';
 
@@ -7,83 +8,105 @@ import '../../utils/app_images.dart';
 import '../../utils/app_style.dart';
 import '../../widgets/widget_text_field.dart';
 
-class RegisterAgreeScreen extends StatefulWidget {
-  const RegisterAgreeScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<RegisterAgreeScreen> createState() => _RegisterAgreeScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterAgreeScreenState extends State<RegisterAgreeScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  late int selectedItemIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedItemIndex = -1;
+  }
+
   @override
   Widget build(BuildContext context) {
+    double screenHalfWidth = MediaQuery.of(context).size.width / 2;
+
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            alignment: Alignment.center,
-            child: Stack(
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Container(
               alignment: Alignment.center,
-              children: [
-                Positioned(
-                  child: Container(
-                    child: Image.asset(
-                      AppImages.appLogo,
-                      height: 300,
-                      width: 300,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                    child: Container(
+                      child: Image.asset(
+                        AppImages.appLogo,
+                        height: 300,
+                        width: 300,
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  child: Text("Ro’yxatdan o’tish",
-                      style: AppStyle.styleMainSp29W600Rub),
-                  bottom: 60,
-                ),
-                RedTextField(
-                  topText: "To`liq ism :",
-                  hintText: "Ism Va Familya",
-                  prefixIcon: CupertinoIcons.person,
-                  inputType: TextInputType.phone,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                RedTextField(
-                  topText: "To`liq ism :",
-                  hintText: "Ism Va Familya",
-                  prefixIcon: CupertinoIcons.person,
-                  inputType: TextInputType.phone,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                ItemSelector(
-                  direction: Direction.horizontal,
-                  activeBackgroundColor: AppColor.red1,
-                  inactiveBackgroundColor: Colors.grey[300],
-                  itemMargin: const EdgeInsets.all(10.0),
-                  itemPadding: const EdgeInsets.all(4.0),
-                  itemBorderRadius:
-                      const BorderRadius.all(Radius.circular(5.0)),
-                  itemsCount: 2,
-                  // should be <= items.length
-                  items: const [
-                    Row(
-                      children: [
-                        Container("")
-                      ],
-                    )
-                  ],
-                  // any arbitrary widget list
-                  onSelected: (index) {
-                    // you can access selected item index here!
-                    print(index);
-                  },
-                )
-              ],
+                  Positioned(
+                    child: Text("Ro’yxatdan o’tish",
+                        style: AppStyle.styleMainSp29W600Rub),
+                    bottom: 65,
+                  ),
+
+                ],
+              ),
             ),
-          ),
-        ],
+            RedTextField(
+              topText: "To`liq ism :",
+              hintText: "Ism Va Familya",
+              prefixIcon: CupertinoIcons.person,
+              inputType: TextInputType.phone,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              width:double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              height: 80, // Adjust the height as needed
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedItemIndex = index;
+                      });
+
+                      // Notify the parent widget about the selected item
+                    },
+                    child: Expanded(
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                                height: 30,
+                                child: index==0?SvgPicture.asset(AppImages.man):SvgPicture.asset(AppImages.woman)),
+                      
+                            Text(
+                              index==0?"Erkak":"Ayol",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

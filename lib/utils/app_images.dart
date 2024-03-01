@@ -10,6 +10,8 @@ class AppImages {
 
   //Icons
   static const icCall = "assets/images/ic_call.svg";
+  static const man = "assets/images/man.svg";
+  static const woman = "assets/images/woman.svg";
   static const icEye = "assets/images/ic_eye.svg";
   static const icUser = "assets/images/ic_user.svg";
   static const icMale = "assets/images/ic_male.svg";

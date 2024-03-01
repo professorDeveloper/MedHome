@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/screens/register/phone_input_screen.dart';
+import 'package:medhome/screens/register/register_agree_screen.dart';
 import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/app_style.dart';
 import 'package:medhome/widgets/widget_text_field.dart';
@@ -261,7 +262,8 @@ class _LoginScreenState extends State<LoginScreen>
                               ),
                             ),
                             Spacer(),
-                            GestureDetector(
+                            InkWell(
+                              hoverColor:AppColor.red3,
                               onTap: () {
                                 forgotBottomSheet(context);
                               },
@@ -293,6 +295,9 @@ class _LoginScreenState extends State<LoginScreen>
                           ),
                           SizedBox(width: 5),
                           InkWell(
+                            onTap: (){
+                              openScreen(context, RegisterScreen());
+                            },
                             child: Text(
                               'Ro’yxatdan o’tish ',
                               style: GoogleFonts.zenMaruGothic(
