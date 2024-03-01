@@ -334,24 +334,26 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
               ),
             ),
-            SizedBox(height: 10,),
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                height: 16,
-                color: Colors.green, // Set the color for Container 1
-              ),
+            SizedBox(
+              height: 10,
             ),
-            Expanded(
-              child: Container(
-                height: 16,
-                color: Colors.red, // Set the color for Container 2
-              ),
-            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 16,
+                    color: Colors.green, // Set the color for Container 1
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    height: 16,
+                    color: Colors.red, // Set the color for Container 2
+                  ),
+                ),
+              ],
+            )
           ],
-        )
-        ],
         ),
       ),
     );
@@ -359,57 +361,61 @@ class _LoginScreenState extends State<LoginScreen>
 
   Future<dynamic> forgotBottomSheet(BuildContext context) {
     return showModalBottomSheet(
+        isScrollControlled: true,
         context: context,
         builder: (context) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            decoration: BoxDecoration(
-              color: AppColor.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+          return Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                color: AppColor.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
               ),
-            ),
-            height: 450,
-            width: double.infinity,
-            child: Column(
-              children: [
-                SizedBox(height: 40),
-                Text(
-                  "Parolni unutdingizmi ?",
-                  style: GoogleFonts.rubik(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 29,
-                    color: AppColor.textColor,
-                  ),
-                ),
-                SizedBox(height: 50),
-                RedTextField(
-                  topText: "Telefon raqam :",
-                  hintText: "+998 (97) 977-97-97",
-                  prefixIcon: CupertinoIcons.phone,
-                  inputType: TextInputType.phone,
-                ),
-                SizedBox(height: 20),
-                Container(
-                  height: 60,
-                  margin: const EdgeInsets.all(15),
-                  width: double.infinity,
-                  child: MaterialButton(
-                    elevation: 0,
-                    focusElevation: 0,
-                    onPressed: () {
-                      // New Forgot Logic
-                    },
-                    color: AppColor.red1,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+              height: 450,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  SizedBox(height: 40),
+                  Text(
+                    "Parolni unutdingizmi ?",
+                    style: GoogleFonts.rubik(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 29,
+                      color: AppColor.textColor,
                     ),
-                    child: const Text("Akkauntga kirish"),
                   ),
-                ),
-              ],
+                  SizedBox(height: 50),
+                  RedTextField(
+                    topText: "Telefon raqam :",
+                    hintText: "+998 (97) 977-97-97",
+                    prefixIcon: CupertinoIcons.phone,
+                    inputType: TextInputType.phone,
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    height: 60,
+                    margin: const EdgeInsets.all(15),
+                    width: double.infinity,
+                    child: MaterialButton(
+                      elevation: 0,
+                      focusElevation: 0,
+                      onPressed: () {
+                        // New Forgot Logic
+                      },
+                      color: AppColor.red1,
+                      textColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: const Text("Akkauntga kirish"),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });
