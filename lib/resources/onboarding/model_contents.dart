@@ -14,22 +14,18 @@ class IntroductionContent {
 List<IntroductionContent> contents = [
   IntroductionContent(
       title: "O’zbekistonda birinchi bor",
-      description:
-          AppText.onboardText4,
+      description: AppText.onboardText1,
       image: AppImages.onBoard1),
   IntroductionContent(
       title: 'Onlayn Ariza topshirish',
-      description:
-          AppText.onboardText2,
-      image: AppImages.onBoard2
-  ),
+      description: AppText.onboardText2,
+      image: AppImages.onBoard2),
   IntroductionContent(
       title: "Retsept tashkilotchisi",
-      description:
-          AppText.onboardText3,
+      description: AppText.onboardText3,
       image: AppImages.onBoard3),
   IntroductionContent(
       title: "24/7 Xizmat ko’rsatish",
-      description:AppText.onboardText4,
+      description: AppText.onboardText4,
       image: AppImages.onBoard4),
 ];

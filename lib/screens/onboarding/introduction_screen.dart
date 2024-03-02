@@ -46,6 +46,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 });
               },
               itemBuilder: (context, i) {
+                // double deviceWidth = ResponsiveHelper.getDeviceWidth(context);
+                // double deviceHeight = ResponsiveHelper.getDeviceHeight(context);
+
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(10),
@@ -55,8 +58,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                       children: [
                         Stack(
                           children: [
-                            const SizedBox(
-                              height: 100,
+                            SizedBox(
+                              height: 60,
                             ),
                             if (i == 0)
                               Row(
