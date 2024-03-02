@@ -15,14 +15,7 @@ class Assets {
   static const String imagesIcNavigation = 'assets/images/ic_navigation.svg';
   static const String imagesIcNotification = 'assets/images/ic_notification.svg';
   static const String imagesIcUser = 'assets/images/ic_user.svg';
-  static const String imagesImg1 = 'assets/images/img_1.png';
-  static const String imagesImg2 = 'assets/images/img_2.png';
-  static const String imagesImg3 = 'assets/images/img_3.png';
-  static const String imagesImg4 = 'assets/images/img_4.png';
-  static const String imagesIntro1 = 'assets/images/intro_1.svg';
-  static const String imagesIntro2 = 'assets/images/intro_2.svg';
-  static const String imagesIntro3 = 'assets/images/intro_3.svg';
-  static const String imagesIntro4 = 'assets/images/intro_4.svg';
+  static const String imagesMan = 'assets/images/man.svg';
   static const String imagesNotificationIcon = 'assets/images/notification_icon.png';
   static const String imagesOnboardFour = 'assets/images/onboard_four.png';
   static const String imagesOnboardOne = 'assets/images/onboard_one.png';
@@ -30,5 +23,6 @@ class Assets {
   static const String imagesOnboardTwo = 'assets/images/onboard_two.png';
   static const String imagesProfileIcon = 'assets/images/profile_icon.png';
   static const String imagesSetting = 'assets/images/setting.svg';
+  static const String imagesWoman = 'assets/images/woman.svg';
 
 }

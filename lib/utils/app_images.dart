@@ -10,10 +10,12 @@ class AppImages {
 
   //Icons
   static const icCall = "assets/images/ic_call.svg";
+  static const man = "assets/images/man.svg";
+  static const woman = "assets/images/woman.svg";
   static const icEye = "assets/images/ic_eye.svg";
   static const icUser = "assets/images/ic_user.svg";
-  static const icMale = "assets/images/ic_male.svg";
-  static const icFemale = "assets/images/ic_female.svg";
+  static const icMale = "assets/images/man.svg";
+  static const icFemale = "assets/images/woman.svg";
   static const icNavigation = "assets/images/ic_navigation.svg";
 
 // Comming soon ...
