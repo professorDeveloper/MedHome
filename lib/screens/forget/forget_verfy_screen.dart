@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medhome/navigator/navigator.dart';
-import 'package:medhome/screens/home/home_screen.dart';
-import 'package:medhome/screens/register/register_screen.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 
 import '../../utils/app_color.dart';
+import 'forget_new_password_screen.dart';
 
-Future<dynamic> verifyBottomSheet(BuildContext context) {
+Future<dynamic> forgetVerfySheet(BuildContext context) {
   final _otpPinFiledController = GlobalKey<OtpPinFieldState>();
   return showModalBottomSheet(
       context: context,
@@ -44,15 +42,15 @@ Future<dynamic> verifyBottomSheet(BuildContext context) {
 
                   otpPinFieldStyle: OtpPinFieldStyle(
 
-                    filledFieldBackgroundColor: AppColor.red1,
-                    filledFieldBorderColor: AppColor.red1,
+                      filledFieldBackgroundColor: AppColor.red1,
+                      filledFieldBorderColor: AppColor.red1,
 
-                    defaultFieldBackgroundColor: AppColor.red6,
-                    activeFieldBorderColor:AppColor.red1,
+                      defaultFieldBackgroundColor: AppColor.red6,
+                      activeFieldBorderColor:AppColor.red1,
                       textStyle: TextStyle(
-                    fontSize: 16,
-                    color: AppColor.white,
-                  )),
+                        fontSize: 16,
+                        color: AppColor.white,
+                      )),
                   maxLength: 6,
 
                   fieldWidth: 50,
@@ -61,7 +59,7 @@ Future<dynamic> verifyBottomSheet(BuildContext context) {
                   showDefaultKeyboard: true,
                   mainAxisAlignment: MainAxisAlignment.center,
                   otpPinFieldDecoration:
-                      OtpPinFieldDecoration.defaultPinBoxDecoration),
+                  OtpPinFieldDecoration.defaultPinBoxDecoration),
               SizedBox(
                 height: 40,
               ),
@@ -73,7 +71,7 @@ Future<dynamic> verifyBottomSheet(BuildContext context) {
                   elevation: 0,
                   focusElevation: 0,
                   onPressed: () {
-                    openScreen(context, RegisterScreen());
+                    forgetnewPassword(context);
                   },
                   color: AppColor.red1,
                   textColor: Colors.white,

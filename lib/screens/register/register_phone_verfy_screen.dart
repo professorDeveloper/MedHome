@@ -8,14 +8,14 @@ import 'package:medhome/widgets/widget_text_field.dart';
 
 import '../verify/VerifyBottomSheet.dart';
 
-class PhoneInputScreen extends StatefulWidget {
-  const PhoneInputScreen({super.key});
+class RegisterPhoneVerfyScreen extends StatefulWidget {
+  const RegisterPhoneVerfyScreen({super.key});
 
   @override
-  State<PhoneInputScreen> createState() => _PhoneInputScreenState();
+  State<RegisterPhoneVerfyScreen> createState() => _RegisterPhoneVerfyScreenState();
 }
 
-class _PhoneInputScreenState extends State<PhoneInputScreen> {
+class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
   bool isSavable = false;
 
   @override
@@ -31,19 +31,24 @@ class _PhoneInputScreenState extends State<PhoneInputScreen> {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  Positioned(
-                    child: Container(
+                  Container(
+                    child: Center(
                       child: Image.asset(
                         AppImages.appLogo,
-                        height: 300,
-                        width: 300,
+                        fit: BoxFit.fill,
+                        height: 270,
+                        width: 270,
                       ),
                     ),
                   ),
                   Positioned(
-                    child: Text("Ro’yxatdan o’tish",
-                        style: AppStyle.styleMainSp29W600Rub),
-                    bottom: 60,
+                    bottom: 35, // Adjust this value to control the distance from the bottom
+                    left: 0,
+                    right: 0,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text("Ro’yxatdan o’tish", style: AppStyle.styleMainSp29W600Rub),
+                    ),
                   ),
                 ],
               ),

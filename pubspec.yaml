@@ -38,7 +38,9 @@ dependencies:
   otp_pin_field: ^1.2.2
   toggle_switch: ^2.1.0
   pinput: ^4.0.0
+  mask_text_input_formatter: ^2.9.0
   fk_toggle: ^0.1.4
+  dio: ^5.4.1
   smart_auth: ^2.0.0
   flutter_svg: ^1.0.3
   flutter_bloc: ^8.0.1
@@ -56,6 +58,8 @@ dependencies:
   connectivity_plus: ^2.3.9
   fluttertoast: ^8.1.2
   animate_do: ^3.3.3
+  shake: ^2.2.0
+  json_annotation: ^4.8.1
 
 
 dev_dependencies:
@@ -68,6 +72,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

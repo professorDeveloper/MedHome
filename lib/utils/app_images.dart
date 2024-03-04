@@ -7,6 +7,7 @@ class AppImages {
   static const onBoard3 = "assets/images/onboard_third.png";
   static const onBoard4 = "assets/images/onboard_four.png";
   static const appLogo = "assets/images/app_logo.png";
+  static const app = "assets/images/app.png";
 
   //Icons
   static const icCall = "assets/images/ic_call.svg";

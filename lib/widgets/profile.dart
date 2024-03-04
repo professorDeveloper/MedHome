@@ -40,7 +40,7 @@ class MyProfile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image(
-                  image: AssetImage("assets/images/appbar_logo.png"),
+                  image: AssetImage("assets/images/app.png"),
                   height: 60,
                   width: 60,
                 ),
