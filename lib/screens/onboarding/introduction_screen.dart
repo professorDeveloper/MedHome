@@ -50,90 +50,36 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 // double deviceHeight = ResponsiveHelper.getDeviceHeight(context);
 
                 return SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Stack(
-                          children: [
+                  child: Stack(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (i == 0)
                             SizedBox(
-                              height: 60,
+                              height: 50,
+                            )
+                          else
+                            SizedBox(
+                              height: 50,
                             ),
-                            if (i == 0)
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                        right: 10, top: 14),
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.4),
-                                          spreadRadius: 1,
-                                          blurRadius: 7,
-                                          offset: const Offset(0, 2),
-                                        ),
-                                      ],
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: const Row(
-                                        children: [
-                                          Text(
-                                            "O’zbekcha",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.black),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          // icon
-                                          Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: Colors.black,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                          ],
-                        ),
-                        FadeInDown(
-                          duration: const Duration(milliseconds: 500),
-                          child: Image.asset(
+                          Image.asset(
                             contents[i].image,
                             height: 314,
                             width: 430,
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8, right: 8),
-                          width: 375,
-                          child: FadeInDown(
-                            child: Text(
-                              contents[i].title,
-                              textAlign: TextAlign.center,
-                              style: AppStyle.styleMainSp16W600Rub,
-                            ),
+                          Text(
+                            contents[i].title,
+                            textAlign: TextAlign.center,
+                            style: AppStyle.styleMainSp16W600Rub,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 10, right: 10),
-                          width: 328,
-                          child: FadeInDown(
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Padding(
+                            padding: i == 0
+                                ? EdgeInsets.only(left: 14, right: 14)
+                                : EdgeInsets.only(left: 14, right: 14),
                             child: Text(
                               contents[i].description,
                               textAlign: TextAlign.center,
@@ -143,16 +89,60 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                               ),
                             ),
                           ),
+                        ],
+                      ),
+                      if (i == 0)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(right: 10, top: 35),
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.4),
+                                    spreadRadius: 1,
+                                    blurRadius: 7,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: const Row(
+                                  children: [
+                                    Text(
+                                      "O’zbekcha",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    // icon
+                                    Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: Colors.black,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                    ],
                   ),
                 );
               },
             ),
           ),
           const SizedBox(
-            height: 18,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -161,9 +151,12 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               (index) => buildDot(index, context),
             ),
           ),
+          const SizedBox(
+            height: 30,
+          ),
           Container(
             height: 60,
-            margin: const EdgeInsets.all(40),
+            margin: const EdgeInsets.only(bottom:40,right: 20,left: 20 ),
             width: double.infinity,
             child: FadeInUp(
               child: MaterialButton(
@@ -199,13 +192,12 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
       decoration: currentIndex == index
           ? BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: currentIndex == index
-                  ? const Color.fromARGB(255, 231, 52, 73)
-                  : Color(0xff9f626a),
+              color: const Color.fromARGB(255, 231, 52, 73)
+
             )
           : BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: AppColor.red5,
+              color: Color(0xfff5d2d2),
             ),
     );
   }

@@ -23,7 +23,7 @@ class AppText {
   //     "Hurmat bilan,\n"
   //     "Ayat Quiz Jamoasi!\n";
 
- static const onboardText1 ="Biz sizga uydan chiqmagan holda davolanishingizga yordam beramiz";
+ static const onboardText1 ="Shifokoringizni, qulay vaqtni tanlang va ariza qoldiring. Ariza haqida foydali bildirishnomalarni qabul qiling";
 
  static const onboardText2 = "Shifokoringizni, qulay vaqtni tanlang va ariza qoldiring. Ariza haqida foydali bildirishnomalarni qabul qiling";
 

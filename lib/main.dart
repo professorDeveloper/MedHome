@@ -1,17 +1,13 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medhome/blocs/login/login_bloc.dart';
 import 'package:medhome/bottomNavigation/bottom_navigation.dart';
-import 'package:medhome/core/api/auth_api.dart';
-import 'package:medhome/core/api/auth_api_impl.dart';
 import 'package:medhome/screens/onboarding/introduction_screen.dart';
-import 'package:medhome/utils/app_functions.dart';
+
+import 'blocs/login/login_bloc.dart';
+import 'core/api/auth_api_impl.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
   runApp(const MyApp());
 }
 
