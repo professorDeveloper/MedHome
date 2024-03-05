@@ -13,7 +13,7 @@ class IntroductionContent {
 
 List<IntroductionContent> contents = [
   IntroductionContent(
-      title: "O’zbekistonda birinchi bor",
+      title: "O’zbekistonda birinchi bor ",
       description: AppText.onboardText1,
       image: AppImages.onBoard1),
   IntroductionContent(
