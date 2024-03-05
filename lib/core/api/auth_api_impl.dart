@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 import 'package:medhome/core/api/auth_api.dart';
 import 'package:medhome/core/models/request/auth/login_request.dart';
 import 'package:medhome/core/models/request/auth/register_request.dart';
@@ -7,33 +9,35 @@ import 'package:medhome/core/models/response/auth/register_response.dart';
 
 import '../dio/dio_service.dart';
 
-class AuthApiImpl implements AuthApi{
+class AuthApiImpl implements AuthApi {
   final Dio _dio = DioService().getDio();
+
   @override
-  Future<LoginResponse> login({required LoginRequest loginRequest}) async{
+  Future<LoginResponse> login({required LoginRequest loginRequest}) async {
     try {
-      // Perform login API call using Dio
-      final response = await _dio.post('/accounts/token', data: loginRequest.toJson(),
-        options: Options(
-          followRedirects: false,
-          // will not throw errors
-          validateStatus: (status) => true,
-        ));
-      print(response.requestOptions.uri);
-      print(response.requestOptions.data);
-      print(response.statusCode );
-      // Check for successful response (status code 2xx)
-      print(response.data.toString());
-      print(response.data.toString());
-      if (response.statusCode == 200) {
-        return LoginResponse.fromJson(response.data);
+      final response1 = await http.post(
+        Uri.parse("${ConstantsAPI.baseUrl}/accounts/token/"),
+        body:{
+          "phone":"+998992803809",
+          "password":"string123"
+        }
+      );
+      if (kDebugMode) {
+        print(response1.body);
+        print(response1.statusCode);
+      }
+      if (response1.statusCode == 200) {
+        print('Sucess');
+      }
+
+      if (response1.statusCode == 200) {
+        return LoginResponse();
       } else {
         // If the response is not successful, handle the error
-        final errorData = response.data;
-        final errorMessage = errorData['detail'] ?? 'Unknown error';
+        final errorData = response1.body;
 
         // Throw an exception with the error message
-        throw Exception('Login failed: $errorMessage');
+        throw Exception('Login failed: ');
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors
@@ -41,12 +45,16 @@ class AuthApiImpl implements AuthApi{
     }
   }
 
+  getQuestionAll() async {}
+
   @override
   @override
-  Future<RegisterResponse> register({required RegisterRequest loginRequest}) async {
+  Future<RegisterResponse> register(
+      {required RegisterRequest loginRequest}) async {
     try {
       // Perform register API call using Dio
-      final response = await _dio.post('/register', data: loginRequest.toJson());
+      final response =
+          await _dio.post('/register', data: loginRequest.toJson());
 
       // Check for successful response (status code 2xx)
       if (response.statusCode == 200) {
@@ -69,4 +77,5 @@ class AuthApiImpl implements AuthApi{
       // Handle other types of exceptions, e.g., network errors
       throw Exception('Registration failed: $e');
     }
-  }}
+  }
+}

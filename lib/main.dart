@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         },
         builder: (context, state) {
           return MaterialApp(
-            title: 'Ayat Quiz',
+            title: 'Med Home',
             debugShowCheckedModeBanner: false,
             // supportedLocales: L10n.all,
             // locale: locale,
