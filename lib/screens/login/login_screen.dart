@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/blocs/login/login_bloc.dart';
 import 'package:medhome/navigator/navigator.dart';
+import 'package:medhome/screens/home/home_screen.dart';
 import 'package:medhome/screens/register/register_phone_verfy_screen.dart';
 import 'package:medhome/utils/utils.dart';
 import 'package:shake/shake.dart';
@@ -120,6 +121,8 @@ class _LoginScreenState extends State<LoginScreen>
         {
           if (state is LoginSuccess){
             print(state.sucsess.toString());
+            openScreen(context, HomeScreen());
+
           }
           if(state is LoginFailure){
             print('Errror ${state.error.toString()}');
@@ -429,7 +432,6 @@ class _LoginScreenState extends State<LoginScreen>
                           }
                           else {
                             bloc.add(LoginButtonPressed(phone: convertPhoneNumber(phoneNumberController.text), password: passwordController.text));
-
                           }
                         },
                         color: AppColor.red1,

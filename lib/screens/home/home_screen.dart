@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.gray1,
+
       appBar: _appBar(contxt: context, function: () {}),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -152,58 +153,73 @@ class _HomeScreenState extends State<HomeScreen> {
   AppBar _appBar(
           {required BuildContext contxt, required Function()? function}) =>
       AppBar(
+        elevation: 1,
         scrolledUnderElevation: 0,
         backgroundColor: AppColor.gray1,
+        titleSpacing: 0,
+
         automaticallyImplyLeading: false,
-        title: Material(
-          color: AppColor.gray1,
-          elevation: 0,
-          child: Row(children: [
-            IconButton(
-                onPressed: (() => {}),
-                icon: Icon(
-                  Icons.menu,
-                  size: 30,
-                  color: AppColor.textColor,
-                )),
-            Spacer(),
-            SizedBox(
-              width: 10,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                    width: 49,
-                    height: 49,
-                    child: Image.asset(
-                      AppImages.app,
+        title: Container(
+          width: double.infinity,
+          child: Material(
+            color: AppColor.gray1,
+            elevation: 0,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(width: 5,),
+              IconButton(
+                  onPressed: (() => {}),
+                  icon: Icon(
+                    Icons.menu,
+                    size: 30,
+                    color: AppColor.textColor,
+                  )),
+              Spacer(),
+              SizedBox(
+                width: 10,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                      width: 49,
+                      height: 49,
+                      child: Image.asset(
+                        AppImages.app,
+                      )),
+                  Text(
+                    "Med Home".toString(),
+                    style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
+              Spacer(),
+              Container(
+                margin: EdgeInsets.only(top: 3),
+                child: IconButton(
+                    onPressed: (() => {}),
+                    icon: Icon(
+                      CupertinoIcons.bell_fill,
+                      size: 23,
+                      color: AppColor.red4,
                     )),
-                Text(
-                  "Med Home".toString(),
-                  style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ],
-            ),
-            Spacer(),
-            IconButton(
-                onPressed: (() => {}),
-                icon: Icon(
-                  CupertinoIcons.bell_fill,
-                  size: 27,
-                  color: AppColor.red4,
-                )),
-            IconButton(
-                onPressed: (() => {}),
-                icon: Icon(
-                  CupertinoIcons.person_alt_circle,
-                  size: 30,
-                  color: AppColor.red4,
-                )),
-          ]),
+              ),
+              IconButton(
+                  onPressed: (() => {}),
+                  icon: Icon(
+                    CupertinoIcons.person_alt_circle,
+                    size: 27,
+                    color: AppColor.red4,
+                  )),
+                  SizedBox(width: 5,),
+
+            ]),
+          ),
         ),
       );
 }

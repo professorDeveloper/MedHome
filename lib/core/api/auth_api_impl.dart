@@ -15,13 +15,13 @@ class AuthApiImpl implements AuthApi{
       // Perform login API call using Dio
       final response = await _dio.post('/accounts/token', data: loginRequest.toJson(),
         options: Options(
-
           followRedirects: false,
           // will not throw errors
           validateStatus: (status) => true,
-        ),);
+        ));
       print(response.requestOptions.uri);
       print(response.requestOptions.data);
+      print(response.statusCode );
       // Check for successful response (status code 2xx)
       print(response.data.toString());
       print(response.data.toString());
