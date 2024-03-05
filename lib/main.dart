@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medhome/widgets/profile.dart';
+import 'package:medhome/bottomNavigation/bottom_navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +18,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const MyProfile());
+        home: const BottomNavbar());
   }
 }

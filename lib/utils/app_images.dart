@@ -19,6 +19,11 @@ class AppImages {
   static const icFemale = "assets/images/woman.svg";
   static const icNavigation = "assets/images/ic_navigation.svg";
 
+  // home Grid
+  static const Grid1 = "assets/images/1_grid.png";
+  static const Grid2 = "assets/images/2_grid.png";
+  static const Grid3 = "assets/images/4_grid.png";
+
 // Comming soon ...
 // static const icHome = "assets/images/ic_home.svg";
 // static const icHomeResult = "assets/images/ic_home_result.svg";
