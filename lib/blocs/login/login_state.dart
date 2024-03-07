@@ -8,7 +8,7 @@ class LoginInitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
-  final String sucsess;
+  final LoginResponse sucsess;
 
   LoginSuccess({required this.sucsess});
 }

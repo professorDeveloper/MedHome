@@ -1,81 +1,81 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:medhome/core/api/auth_api.dart';
 import 'package:medhome/core/models/request/auth/login_request.dart';
 import 'package:medhome/core/models/request/auth/register_request.dart';
+import 'package:medhome/core/models/request/auth/send_sms_code_request.dart';
 import 'package:medhome/core/models/response/auth/login_response.dart';
 import 'package:medhome/core/models/response/auth/register_response.dart';
+import 'package:medhome/core/models/response/auth/send_sms_code_response.dart';
 
-import '../dio/dio_service.dart';
+import '../../utils/response.dart';
 
 class AuthApiImpl implements AuthApi {
-  final Dio _dio = DioService().getDio();
 
   @override
-  Future<LoginResponse> login({required LoginRequest loginRequest}) async {
+  Future<Result> login({required LoginRequest loginRequest}) async {
     try {
       final response1 = await http.post(
         Uri.parse("${ConstantsAPI.baseUrl}/accounts/token/"),
-        body:{
-          "phone":"+998992803809",
-          "password":"string123"
-        }
+        body: loginRequest.toJson()
       );
-      if (kDebugMode) {
-        print(response1.body);
-        print(response1.statusCode);
-      }
-      if (response1.statusCode == 200) {
-        print('Sucess');
-      }
+      print(response1.body);
 
       if (response1.statusCode == 200) {
-        return LoginResponse();
+        Map<String, dynamic> jsonMap = json.decode(response1.body);
+        var loginResponse = LoginResponse.fromJson(jsonMap);
+
+        // Return a Success result with the login response data
+        return Success(loginResponse);
       } else {
         // If the response is not successful, handle the error
-        final errorData = response1.body;
+        var errorData = json.decode(response1.body);
 
-        // Throw an exception with the error message
-        throw Exception('Login failed: ');
+        return Error(errorData);
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors
-      throw Exception('Login faileds: $e');
+      throw Exception(e);
     }
   }
 
-  getQuestionAll() async {}
+  @override
+  Future<Result> register({required RegisterRequest registerRequest}) {
+    // TODO: implement register
+    throw UnimplementedError();
+  }
 
   @override
-  @override
-  Future<RegisterResponse> register(
-      {required RegisterRequest loginRequest}) async {
+  Future<Result> sendSmsCodeForRegister({required SendSmsCodeRequest sendSmsCodeRequest}) async{
     try {
-      // Perform register API call using Dio
-      final response =
-          await _dio.post('/register', data: loginRequest.toJson());
+      final response1 = await http.post(
+          Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-phone/"),
+          body: sendSmsCodeRequest.toJson()
+      );
+      print(response1.body);
 
-      // Check for successful response (status code 2xx)
-      if (response.statusCode == 200) {
-        // Parse the response and return a RegisterResponse
-        return RegisterResponse.fromJson(response.data);
+      if (response1.statusCode == 200) {
+        Map<String, dynamic> jsonMap = json.decode(response1.body);
+        var sendSmsResponse = SendSmsCodeResponse.fromJson(jsonMap);
+
+        // Return a Success result with the login response data
+        return Success(sendSmsResponse);
       } else {
-        final errorData = response.data;
+        // If the response is not successful, handle the error
+        var errorResponse = SendSmsCodeResponse.fromJson(json.decode(response1.body));
 
-        // Check if the error response contains specific fields like "phone" and "password"
-        if (errorData.containsKey('phone')) {
-          throw Exception('Registration failed: ${errorData['phone'][0]}');
-        } else if (errorData.containsKey('password')) {
-          throw Exception('Registration failed: ${errorData['password'][0]}');
-        } else {
-          // Handle other validation errors
-          throw Exception('Registration failed: ${errorData.toString()}');
-        }
+        return Error(errorResponse.detail.toString());
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors
-      throw Exception('Registration failed: $e');
+      throw Exception(e);
     }
+
   }
+
+
+
 }

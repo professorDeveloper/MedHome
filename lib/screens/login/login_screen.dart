@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,9 +8,11 @@ import 'package:medhome/blocs/login/login_bloc.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/screens/home/home_screen.dart';
 import 'package:medhome/screens/register/register_phone_verfy_screen.dart';
+import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/utils/utils.dart';
 import 'package:shake/shake.dart';
 
+import '../../core/models/response/auth/login_response.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_style.dart';
 import '../../widgets/widget_text_field.dart';
@@ -27,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
   late AnimationController _textField1Controller;
+  var progress=false;
   late Animation<Offset> _textField1SlideAnimation;
   late AnimationController _textField2Controller;
   late Animation<Offset> _textField2SlideAnimation;
@@ -117,15 +122,29 @@ class _LoginScreenState extends State<LoginScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state)
-        {
-          if (state is LoginSuccess){
-            print(state.sucsess.toString());
+        listener: (context, state)  async{
+          if (state is LoginSuccess) {
+            progress=false;
+            setState(() {
+
+            });
+            await Prefs.setAccessToken(state.sucsess.access);
+            await Prefs.setRefreshToken(state.sucsess.refresh);
             openScreen(context, HomeScreen());
 
           }
+          if(state is LoginLoading){
+            progress=true;
+            setState(() {
+
+            });
+          }
           if(state is LoginFailure){
-            print('Errror ${state.error.toString()}');
+            progress=false;
+            setState(() {
+
+            });
+            print(state.error);
           }
         },
         builder: (context, state) {
@@ -439,7 +458,7 @@ class _LoginScreenState extends State<LoginScreen>
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
                         ),
-                        child: const Text("Akkauntga kirish"),
+                        child: progress? CircularProgressIndicator(color: Colors.white,):const Text("Akkauntga kirish"),
                       ),
                     ),
                   ),

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/bottomNavigation/bottom_navigation.dart';
+import 'package:medhome/core/di/get_it.dart';
 import 'package:medhome/screens/onboarding/introduction_screen.dart';
+import 'package:medhome/utils/my_pref.dart';
 
 import 'blocs/login/login_bloc.dart';
 import 'core/api/auth_api_impl.dart';
 
 void main() {
+  Prefs.init();
+  setupLocator();
   runApp(const MyApp());
 }
 
@@ -20,7 +25,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => LoginBloc( authApi: AuthApiImpl()),
+          create: (context) => serviceLocator<LoginBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => serviceLocator<SendSmsCodeBloc>(),
         ),
       ],
       child: BlocConsumer<LoginBloc, LoginState>(

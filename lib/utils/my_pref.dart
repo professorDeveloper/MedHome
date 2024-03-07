@@ -16,7 +16,8 @@ class Prefs {
 
   static Future<bool?> setInt(String key, int value) async => await _prefs?.setInt(key, value);
 
-  static Future<bool?> setString(String key, String value) async => await _prefs?.setString(key, value);
+  static Future<bool?> setAccessToken( String value) async => await _prefs?.setString("refreshToken", value);
+  static Future<bool?> setRefreshToken( String value) async => await _prefs?.setString("accessToken", value);
 
   static Future<bool?> setStringList(String key, List<String> value) async => await _prefs?.setStringList(key, value);
 
@@ -27,7 +28,8 @@ class Prefs {
 
   static int? getInt(String key) => _prefs?.getInt(key);
 
-  static String? getString(String key) => _prefs?.getString(key);
+  static String? getAccessToken() => _prefs?.getString("accessToken");
+  static String? getRefreshToken() => _prefs?.getString("refreshToken");
 
   static List<String>? getStringList(String key) => _prefs?.getStringList(key);
 
