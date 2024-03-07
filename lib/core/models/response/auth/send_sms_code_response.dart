@@ -11,7 +11,7 @@ class SendSmsCodeResponse {
   });
   factory SendSmsCodeResponse.fromJson(Map<String, dynamic> json) =>
       SendSmsCodeResponse(
-        detail: json['detail']  ?? "",
+        detail: json['detail']  ?? json['phone'][0] ?? "",
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

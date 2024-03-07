@@ -156,7 +156,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                         setState(() {
                           phoneEmpty = true;
                         });
-                        await Future.delayed(Duration(seconds: 2));
+                        await Future.delayed(Duration(seconds: 3));
                         setState(() {
                           phoneEmpty = false;
                         });
