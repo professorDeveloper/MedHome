@@ -123,7 +123,6 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                     )
                   ],
                   onCloseTap: () {
-                    toastification.dismissAll();
                      // Do something when the toast is closed
                   },
                   showProgressBar: true,
