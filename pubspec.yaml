@@ -62,7 +62,7 @@ dependencies:
   animate_do: ^3.3.3
   shake: ^2.2.0
   json_annotation: ^4.8.1
-
+  toastification: ^1.0.0
 
 dev_dependencies:
   flutter_test:

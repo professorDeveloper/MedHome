@@ -9,6 +9,7 @@ import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/app_style.dart';
 import 'package:medhome/utils/utils.dart';
 import 'package:medhome/widgets/widget_text_field.dart';
+import 'package:toastification/toastification.dart';
 
 import '../verify/VerifyBottomSheet.dart';
 
@@ -36,26 +37,100 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-
-      body: BlocConsumer<SendSmsCodeBloc, SendSmsCodeState>(
-        listener: (context, state)  async{
-          if (state is SendSmsCodeSuccess) {
-            progress=false;
-            setState(() {
-
-            });
-            print("${state.response.detail}");
+        resizeToAvoidBottomInset: false,
+        body: BlocConsumer<SendSmsCodeBloc, SendSmsCodeState>(
+          listener: (context, state) async {
+            if (state is SendSmsCodeSuccess) {
+              progress = false;
+              setState(() {
+                toastification.show(
+                  context: context,
+                  type: ToastificationType.success,
+                  style: ToastificationStyle.flat,
+                  autoCloseDuration: const Duration(seconds: 3),
+                  title: 'Success',
+                  description: 'Muvaffaqiaytli Kiritildi.',
+                  alignment: Alignment.topRight,
+                  direction: TextDirection.ltr,
+                  animationDuration: const Duration(milliseconds: 300),
+                  animationBuilder: (context, animation, alignment, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                  icon: const Icon(Icons.check),
+                  primaryColor: Colors.green,
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x07000000),
+                      blurRadius: 16,
+                      offset: Offset(0, 16),
+                      spreadRadius: 0,
+                    )
+                  ],
+                  onCloseTap: () {
+                    // Do something when the toast is closed
+                  },
+                  showProgressBar: true,
+                  closeButtonShowType: CloseButtonShowType.onHover,
+                  closeOnClick: false,
+                  pauseOnHover: true,
+                  dragToClose: true,
+                );
+              });
+              print("${state.response.detail}");
             }
-          if(state is SendSmsCodeLoading){
-            progress=true;
-            setState(() {
+            if (state is SendSmsCodeLoading) {
+              progress = true;
+              setState(() {});
+            }
+            if (state is SendSmsCodeFailure) {
+              progress = false;
+              setState(() {
+                toastification.show(
+                  context: context,
+                  type: ToastificationType.success,
+                  style: ToastificationStyle.flat,
 
-            });
-          }
-          if(state is SendSmsCodeFailure){
-            progress=false;
-            setState(() {
+                  autoCloseDuration: const Duration(seconds: 3),
+                  title: 'Xatolik yuz berdi',
+                  description: state.error,
+                  alignment: Alignment.topRight,
+
+                  direction: TextDirection.ltr,
+                  icon: const Icon(Icons.error),
+                  primaryColor: Colors.redAccent,
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x07000000),
+                      blurRadius: 16,
+                      offset: Offset(0, 16),
+                      spreadRadius: 0,
+                    )
+                  ],
+                  onCloseTap: () {
+                    toastification.dismissAll();
+                     // Do something when the toast is closed
+                  },
+                  showProgressBar: true,
+                  closeOnClick: false,
+                  pauseOnHover: true,
+                  dragToClose: true,
+                );
 
             });
             print(state.error);
@@ -156,7 +231,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                         setState(() {
                           phoneEmpty = true;
                         });
-                        await Future.delayed(Duration(seconds: 3));
+                        await Future.delayed(Duration(seconds: 2));
                         setState(() {
                           phoneEmpty = false;
                         });

@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'send_sms_code_response.g.dart';
 
 @JsonSerializable()
 class SendSmsCodeResponse {
