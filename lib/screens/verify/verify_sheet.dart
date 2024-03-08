@@ -96,7 +96,7 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
               children: [
                 SizedBox(height: 50),
                 Text(
-                  "Kodni tasdiqlash",
+                  "Kodni tasdiqlashdi",
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 25,
