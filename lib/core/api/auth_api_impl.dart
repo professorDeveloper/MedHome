@@ -47,6 +47,7 @@ class AuthApiImpl implements AuthApi {
   @override
   Future<Result> verify({required VerifyRequest request}) async {
     try {
+      print(request.toJson());
       final response = await http.post(
           Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-code/"),
           body: request.toJson());
@@ -57,6 +58,7 @@ class AuthApiImpl implements AuthApi {
       } else {
         var errorResponse =
             SendSmsCodeResponse.fromJson(json.decode(response.body));
+        print("Fail ::::"+response.body);
         return Error(errorResponse.detail.toString());
 
       }

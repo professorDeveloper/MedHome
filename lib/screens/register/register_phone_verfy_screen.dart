@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
+import 'package:medhome/screens/verify/VerifyBottomSheet.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/app_style.dart';
@@ -66,11 +67,14 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                   ),
                   duration: const Duration(seconds: 3),
                 ).show(context);
+                verifyBottomSheet(
+                    context, convertPhoneNumber(phoneNumberController.text));
               });
               print("${state.response.detail}");
             }
             if (state is SendSmsCodeLoading) {
               progress = true;
+
               setState(() {});
             }
             if (state is SendSmsCodeFailure) {
@@ -140,6 +144,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                     topText: "Telefon raqam :",
                     controller: phoneNumberController,
                     isMaskphone: true,
+
+                    isFocused: !progress,
                     hintText: "+998 (97) 977-97-97",
                     prefixIcon: CupertinoIcons.phone,
                     inputType: TextInputType.phone,

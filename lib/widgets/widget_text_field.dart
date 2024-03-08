@@ -1,15 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medhome/utils/app_color.dart';
-import 'package:medhome/utils/app_images.dart';
+
 var maskFormatter = new MaskTextInputFormatter(
     mask: '+998 (##) ###-##-##',
-    filter: { "#": RegExp(r'[0-9]') },
-    type: MaskAutoCompletionType.eager
-);
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.eager);
+
 class RedTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
@@ -18,6 +16,7 @@ class RedTextField extends StatelessWidget {
   final IconData? prefixIcon;
   final TextInputType? inputType;
   final String? errorText;
+  final bool? isFocused;
 
   const RedTextField({
     Key? key,
@@ -28,6 +27,7 @@ class RedTextField extends StatelessWidget {
     this.prefixIcon,
     this.inputType,
     this.errorText,
+    this.isFocused,
   }) : super(key: key);
 
   @override
@@ -54,8 +54,7 @@ class RedTextField extends StatelessWidget {
           ),
           SizedBox(height: 5.5),
           TextField(
-
-            inputFormatters: isMaskphone!?[maskFormatter]:[],
+            inputFormatters: isMaskphone! ? [maskFormatter] : [],
             controller: controller,
             keyboardType: inputType,
             cursorColor: Colors.black,
@@ -64,7 +63,6 @@ class RedTextField extends StatelessWidget {
               prefixIcon: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 child: Icon(prefixIcon!, color: AppColor.red3),
-
               ),
               hintText: hintText,
               hintStyle: GoogleFonts.poppins(
@@ -94,7 +92,7 @@ class RedTextField extends StatelessWidget {
                   width: 2.0,
                 ),
               ),
-              border:   OutlineInputBorder(
+              border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(13),
                 borderSide: BorderSide(
                   color: Color(0x62e7344a),
@@ -108,9 +106,8 @@ class RedTextField extends StatelessWidget {
                   width: 2.0,
                 ),
               ),
-
               contentPadding:
-              const EdgeInsets.symmetric(horizontal: 15, vertical: 18.5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 18.5),
             ),
           ),
         ],
