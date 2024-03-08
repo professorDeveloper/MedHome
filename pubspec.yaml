@@ -63,6 +63,7 @@ dependencies:
   shake: ^2.2.0
   json_annotation: ^4.8.1
   toastification: ^1.0.0
+  another_flushbar: ^1.12.30
 
 dev_dependencies:
   flutter_test:

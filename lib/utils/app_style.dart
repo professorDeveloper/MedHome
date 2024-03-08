@@ -32,6 +32,13 @@ class AppStyle {
     height: 1.2,
     letterSpacing: 0.3,
   );
+  static TextStyle styleGreen4Sp16W900Zen = GoogleFonts.zenMaruGothic(
+    fontSize: 16,
+    fontWeight: FontWeight.w900,
+    color: Colors.green,
+    height: 1.2,
+    letterSpacing: 0.3,
+  );
 
   static TextStyle styleRed4Sp14W700Zen = GoogleFonts.zenMaruGothic(
     fontSize: 14,
