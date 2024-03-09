@@ -105,10 +105,10 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
                 ),
                 SizedBox(height: 50),
                 OtpPinField(
+                    smsRegex: r'^\d{6}$',
                     onSubmit: (text) {
                       int otpValue = int.parse(text.toString());
                       print(otpValue);
-                      print('phone:${widget.phone}');
                       bloc.add(VerifyButtonPressed(code: otpValue, phone: widget.phone));
                     },
                     onChange: (text) {},
@@ -124,6 +124,7 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
                           color: AppColor.white,
                         )),
                     maxLength: 6,
+
                     fieldWidth: 50,
                     fieldHeight: 60,
                     showDefaultKeyboard: true,

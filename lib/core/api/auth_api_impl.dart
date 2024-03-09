@@ -21,13 +21,14 @@ class AuthApiImpl implements AuthApi {
       print(response1.body);
 
       if (response1.statusCode == 200) {
+        print('SUCCESS');
         Map<String, dynamic> jsonMap = json.decode(response1.body);
         var loginResponse = LoginResponse.fromJson(jsonMap);
 
         // Return a Success result with the login response data
         return Success(loginResponse);
       } else {
-        // If the response is not successful, handle the error
+        print('ERROR');
         var errorData = json.decode(response1.body);
 
         return Error(errorData);
@@ -48,20 +49,26 @@ class AuthApiImpl implements AuthApi {
   Future<Result> verify({required VerifyRequest request}) async {
     try {
       print(request.toJson());
+      String bodyData= jsonEncode({
+        "code":request.code,
+        "phone":request.phone
+      });
       final response = await http.post(
           Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-code/"),
-          body: request.toJson());
+          headers: {"Content-Type": "application/json"},
+          body: bodyData);
+      print(response.body);
       if (response.statusCode == 200) {
+        print("Tushdii");
         Map<String, dynamic> jsonMap = json.decode(response.body);
         print(jsonMap.toString());
         var verifyResponse = SendSmsCodeResponse.fromJson(jsonMap);
         return Success(verifyResponse);
       } else {
+        print("Fail ::::" + response.body);
         var errorResponse =
-            SendSmsCodeResponse.fromJson(json.decode(response.body));
-        print("Fail ::::"+response.body);
+        SendSmsCodeResponse.fromJson(json.decode(response.body));
         return Error(errorResponse.detail.toString());
-
       }
     } catch (e) {
       throw Exception(e);
@@ -74,10 +81,10 @@ class AuthApiImpl implements AuthApi {
   Future<Result> sendSmsCodeForRegister(
       {required SendSmsCodeRequest sendSmsCodeRequest}) async {
     try {
+      print(sendSmsCodeRequest.toJson());
       final response1 = await http.post(
           Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-phone/"),
           body: sendSmsCodeRequest.toJson());
-      print(response1.body);
 
       if (response1.statusCode == 200) {
         Map<String, dynamic> jsonMap = json.decode(response1.body);
