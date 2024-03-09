@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,9 +46,6 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
               progress = false;
               setState(() async{
                 await Prefs.setAgreePrivacyPolicy(isSavable);
-                showSuccessFlushBar("Telefon raqam Tasdiqlandi").show(context);
-                verifyBottomSheet(
-                    context, convertPhoneNumber(phoneNumberController.text));
               });
               print("${state.response.detail}");
             }

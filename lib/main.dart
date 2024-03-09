@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medhome/blocs/forget/forget_verfy_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/core/di/get_it.dart';
 import 'package:medhome/screens/login/login_screen.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => serviceLocator<RegisterBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => serviceLocator<ForgetVerfyBloc>(),
         ),
       ],
       child: BlocConsumer<LoginBloc, LoginState>(

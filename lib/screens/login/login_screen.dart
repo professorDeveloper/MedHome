@@ -40,9 +40,9 @@ class _LoginScreenState extends State<LoginScreen>
   bool isPasswordVisible = true;
   bool isSavable = true;
   var errorTextPhone = "";
-  var errorTextPassword = "";
-
   bool phoneEmpty = false;
+
+  var errorTextPassword = "";
   bool passwordEmpty = false;
 
   late ShakeDetector shakeDetector;

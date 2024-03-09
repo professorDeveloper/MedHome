@@ -13,7 +13,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthApiImpl authApi=serviceLocator<AuthApiImpl>();
+    final AuthApiImpl authApi=serviceLocator<AuthApiImpl>();
 
 
   LoginBloc(): super(LoginInitial()) {

@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:medhome/blocs/forget/forget_verfy_bloc.dart';
 import 'package:medhome/blocs/login/login_bloc.dart';
 import 'package:medhome/blocs/register/register_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
@@ -16,6 +17,7 @@ Future<void> setupLocator() async {
   serviceLocator.registerLazySingleton(() => VerifyBloc());
   serviceLocator.registerLazySingleton(() => RegisterBloc());
   serviceLocator.registerLazySingleton(() => SendSmsCodeBloc());
+  serviceLocator.registerLazySingleton(() => ForgetVerfyBloc());
 
 
 }
