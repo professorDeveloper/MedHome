@@ -163,6 +163,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             child: FadeInUp(
               child: MaterialButton(
                   onPressed: () async {
+
+                     print(Prefs.getAccessToken());
                     if (currentIndex == contents.length - 1) {
                       await Prefs.setBool("isFirst", true);
                       openReplaceScreen(context, LoginScreen());

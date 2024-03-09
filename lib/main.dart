@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state) {},
+        listener: (context, state)  {},
         builder: (context, state) {
           return MaterialApp(
             title: 'Med Home',

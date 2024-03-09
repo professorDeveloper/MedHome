@@ -21,7 +21,7 @@ class RegisterPhoneVerfyScreen extends StatefulWidget {
 }
 
 class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
-  bool isSavable = Prefs.getPrivacyPolicy() ?? false;
+  bool isSavable =  Prefs.getPrivacyPolicy() ?? false;
   bool progress = false;
   var phoneNumberController = TextEditingController();
   late SendSmsCodeBloc bloc;
@@ -43,8 +43,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
           listener: (context, state) async {
             if (state is SendSmsCodeSuccess) {
               progress = false;
-              setState(() {
-                Prefs.setAgreePrivacyPolicy(isSavable);
+              setState(() async{
+                await Prefs.setAgreePrivacyPolicy(isSavable);
                 showSuccessFlushBar("Telefon raqam Tasdiqlandi").show(context);
                 verifyBottomSheet(
                     context, convertPhoneNumber(phoneNumberController.text));
