@@ -127,6 +127,8 @@ class _LoginScreenState extends State<LoginScreen>
               showSuccessFlushBar("Login muvaffaqiyatli amalga oshirildi")
                   .show(context);
             });
+            Prefs.init();
+
             await Prefs.setAccessToken(state.sucsess.access);
             await Prefs.setRefreshToken(state.sucsess.refresh);
             openScreen(context, HomeScreen());
