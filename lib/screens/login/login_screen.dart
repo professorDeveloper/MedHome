@@ -474,6 +474,8 @@ class _LoginScreenState extends State<LoginScreen>
                       width: double.infinity,
                       child: MaterialButton(
                         elevation: 0,
+                        highlightElevation: 0,
+
                         focusElevation: 0,
                         onPressed: () async {
                           if (phoneNumberController.text.isEmpty) {
@@ -504,6 +506,7 @@ class _LoginScreenState extends State<LoginScreen>
                         color: AppColor.red1,
                         textColor: Colors.white,
                         shape: RoundedRectangleBorder(
+
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: progress? CircularProgressIndicator(color: Colors.white,):const Text("Akkauntga kirish"),

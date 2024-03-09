@@ -82,7 +82,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
               setState(() {
                 Flushbar(
                   titleText:
-                      Text("Xato !", style: AppStyle.styleRed4Sp16W900Zen),
+                  Text("Xato !", style: AppStyle.styleRed4Sp16W900Zen),
                   messageText: Text(
                     state.error,
                     style: AppStyle.styleMainSp14W600Rub,
@@ -196,6 +196,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                     width: double.infinity,
                     child: MaterialButton(
                       elevation: 0,
+                      highlightElevation: 0,
                       focusElevation: 0,
                       onPressed: () async {
                         if (phoneNumberController.text.isEmpty) {
@@ -220,8 +221,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                       ),
                       child: progress
                           ? CircularProgressIndicator(
-                              color: Colors.white,
-                            )
+                        color: Colors.white,
+                      )
                           : Text("Ko’dni qabul qilish"),
                     ),
                   ),

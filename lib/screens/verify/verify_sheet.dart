@@ -96,7 +96,7 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
               children: [
                 SizedBox(height: 50),
                 Text(
-                  "Kodni tasdiqlashdi",
+                  "Kodni tasdiqlash",
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 25,
@@ -139,6 +139,8 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
                   width: double.infinity,
                   child: MaterialButton(
                     elevation: 0,
+                    highlightElevation: 0,
+
                     focusElevation: 0,
                     onPressed: () {
                       int otpValue = int.parse(

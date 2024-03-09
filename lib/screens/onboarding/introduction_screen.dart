@@ -169,10 +169,14 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                       curve: Curves.bounceIn,
                     );
                   },
+                  elevation: 0,
+                  highlightElevation: 0,
+
+                  focusElevation: 0,
                   color: AppColor.red1,
                   textColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(18),
                   ),
                   child: currentIndex == contents.length - 1
                       ? const Text("Boshlash")

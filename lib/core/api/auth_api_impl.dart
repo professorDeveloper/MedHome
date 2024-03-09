@@ -53,6 +53,7 @@ class AuthApiImpl implements AuthApi {
           body: request.toJson());
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonMap = json.decode(response.body);
+        print(jsonMap.toString());
         var verifyResponse = SendSmsCodeResponse.fromJson(jsonMap);
         return Success(verifyResponse);
       } else {

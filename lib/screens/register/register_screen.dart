@@ -287,6 +287,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             width: double.infinity,
             child: MaterialButton(
               elevation: 0,
+              highlightElevation: 0,
+
               focusElevation: 0,
               onPressed: () {
                 openScreen(context, HomeScreen());

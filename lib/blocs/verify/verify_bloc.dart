@@ -24,7 +24,7 @@ class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
         final response = await authApi.verify(
             request: VerifyRequest(code: event.code, phone: event.phone));
         if (response is Success) {
-          emit(VerifySuccess());
+          emit(VerifySuccess(sendSmsCodeResponse: response.data));
         } else if (response is Error) {
           emit(VerifyFailure(error: response.errorMessage.toString()));
         }
