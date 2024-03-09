@@ -14,6 +14,8 @@ abstract class AuthApi {
 
   Future<Result> sendSmsCodeForRegister(
       {required SendSmsCodeRequest sendSmsCodeRequest});
+  Future<Result> sendSmsCodeForForgetPassword(
+      {required SendSmsCodeRequest sendSmsCodeRequest});
 }
 
 class ConstantsAPI {

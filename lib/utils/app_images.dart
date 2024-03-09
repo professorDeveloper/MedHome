@@ -14,6 +14,7 @@ class AppImages {
   static const man = "assets/images/man.svg";
   static const woman = "assets/images/woman.svg";
   static const icEye = "assets/images/ic_eye.svg";
+  static const icSetting = "assets/images/setting.svg";
   static const icUser = "assets/images/ic_user.svg";
   static const icMale = "assets/images/man.svg";
   static const icFemale = "assets/images/woman.svg";

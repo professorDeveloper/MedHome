@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/widgets/container.dart';
 
 class BarMenu extends StatelessWidget {
@@ -25,13 +26,19 @@ class BarMenu extends StatelessWidget {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: SvgPicture.asset(
-                "assets/svg/setting.svg",
-                height: 30,
-                width: 30,
+              padding: const EdgeInsets.only(right: 10),
+              child: IconButton(
+                onPressed: (){
+
+                },
+                icon: SvgPicture.asset(
+                AppImages.icSetting,
+                  height: 30,
+                  width: 30,
+                ),
               ),
             ),
+
           ],
           title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -61,14 +68,14 @@ class BarMenu extends StatelessWidget {
                 "+998 (99) 998 88 88",
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ],
           ),
           Divider(
-            thickness: 2.5,
+            thickness: 2,
             color: Colors.black,
           ),
           SizedBox(
@@ -78,15 +85,15 @@ class BarMenu extends StatelessWidget {
             children: [
               CustomContainer(text: "To’lov turi"),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               CustomContainer(text: "Buyurtmalar tarixi"),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               CustomContainer(text: "Qo’llab quvvatlash"),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               CustomContainer(text: "Ilova haqida"),
             ],
@@ -101,7 +108,7 @@ class BarMenu extends StatelessWidget {
                 )),
           ),
           SizedBox(
-            height: 50,
+            height:30,
           )
         ],
       ),

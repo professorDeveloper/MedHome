@@ -5,6 +5,7 @@ import 'package:medhome/core/api/auth_api.dart';
 import 'package:medhome/core/models/request/auth/login_request.dart';
 import 'package:medhome/core/models/request/auth/register_request.dart';
 import 'package:medhome/core/models/request/auth/send_sms_code_request.dart';
+import 'package:medhome/core/models/response/auth/error_response.dart';
 import 'package:medhome/core/models/response/auth/login_response.dart';
 import 'package:medhome/core/models/response/auth/send_sms_code_response.dart';
 
@@ -30,7 +31,7 @@ class AuthApiImpl implements AuthApi {
         // If the response is not successful, handle the error
         var errorData = json.decode(response1.body);
 
-        return Error(errorData);
+        return Error(ErrorResponse.fromJson(errorData).detail!);
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors
@@ -57,8 +58,7 @@ class AuthApiImpl implements AuthApi {
         var verifyResponse = SendSmsCodeResponse.fromJson(jsonMap);
         return Success(verifyResponse);
       } else {
-        var errorResponse =
-            SendSmsCodeResponse.fromJson(json.decode(response.body));
+        var errorResponse =   ErrorResponse.fromJson(json.decode(response.body));
         print("Fail ::::"+response.body);
         return Error(errorResponse.detail.toString());
 
@@ -87,8 +87,33 @@ class AuthApiImpl implements AuthApi {
         return Success(sendSmsResponse);
       } else {
         // If the response is not successful, handle the error
-        var errorResponse =
-            SendSmsCodeResponse.fromJson(json.decode(response1.body));
+        var errorResponse =  ErrorResponse.fromJson(json.decode(response1.body));
+
+        return Error(errorResponse.detail.toString());
+      }
+    } catch (e) {
+      // Handle other types of exceptions, e.g., network errors
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<Result> sendSmsCodeForForgetPassword({required SendSmsCodeRequest sendSmsCodeRequest}) async {
+    try {
+      final response1 = await http.post(
+          Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-phone-forgot-pass/"),
+          body: sendSmsCodeRequest.toJson());
+      print(response1.body);
+
+      if (response1.statusCode == 200) {
+        Map<String, dynamic> jsonMap = json.decode(response1.body);
+        var sendSmsResponse = SendSmsCodeResponse.fromJson(jsonMap);
+
+        // Return a Success result with the login response data
+        return Success(sendSmsResponse);
+      } else {
+        // If the response is not successful, handle the error
+        var errorResponse =  ErrorResponse.fromJson(json.decode(response1.body));
 
         return Error(errorResponse.detail.toString());
       }
