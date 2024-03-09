@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
-import 'package:medhome/bottomNavigation/bottom_navigation.dart';
 import 'package:medhome/core/di/get_it.dart';
+import 'package:medhome/screens/login/login_screen.dart';
 import 'package:medhome/screens/onboarding/introduction_screen.dart';
 import 'package:medhome/utils/my_pref.dart';
 
 import 'blocs/login/login_bloc.dart';
-import 'core/api/auth_api_impl.dart';
+import 'blocs/register/register_bloc.dart';
 
 void main() {
   Prefs.init();
@@ -30,10 +29,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => serviceLocator<SendSmsCodeBloc>(),
         ),
+        BlocProvider(
+          create: (context) => serviceLocator<RegisterBloc>(),
+        ),
       ],
       child: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
             title: 'Med Home',
@@ -49,11 +50,12 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: const IntroductionScreen(),
+            home: Prefs.getBool("isFirst") == true
+                ? const LoginScreen()
+                : const IntroductionScreen(),
           );
         },
       ),
     );
-
   }
 }

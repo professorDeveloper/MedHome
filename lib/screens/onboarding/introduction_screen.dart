@@ -5,6 +5,7 @@ import 'package:medhome/resources/onboarding/model_contents.dart';
 import 'package:medhome/screens/login/login_screen.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_style.dart';
+import 'package:medhome/utils/my_pref.dart';
 
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   @override
   void initState() {
     _controller = PageController(initialPage: 0);
+
     super.initState();
   }
 
@@ -160,9 +162,10 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             width: double.infinity,
             child: FadeInUp(
               child: MaterialButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (currentIndex == contents.length - 1) {
-                      openScreen(context, LoginScreen());
+                      await Prefs.setBool("isFirst", true);
+                      openReplaceScreen(context, LoginScreen());
                     }
                     _controller.nextPage(
                       duration: const Duration(milliseconds: 100),
