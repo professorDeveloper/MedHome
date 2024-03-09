@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/resources/home/home_contents.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_images.dart';
+import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/widgets/bar_menu.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,6 +16,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    print(    "asdasdasd${Prefs.getAccessToken()}");
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

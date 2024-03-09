@@ -31,7 +31,7 @@ class AuthApiImpl implements AuthApi {
         // If the response is not successful, handle the error
         var errorData = json.decode(response1.body);
 
-        return Error(errorData);
+        return Error(ErrorResponse.fromJson(errorData).detail!);
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors
