@@ -7,6 +7,7 @@ import 'package:medhome/blocs/register/register_bloc.dart';
 import 'package:medhome/extensions/functions.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/screens/home/home_screen.dart';
+import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/widgets/flushbar.dart';
 
 import '../../utils/app_color.dart';
@@ -58,15 +59,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: BlocConsumer<RegisterBloc, RegisterState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is RegisterSuccess) {
             setState(() {
-              progress=false;
+              progress = false;
             });
+            Prefs.setAccessToken(state.response.accessToken.toString());
+            Prefs.setRefreshToken(state.response.refreshToken.toString());
+            openReplaceScreen(context, HomeScreen());
           }
           if (state is RegisterFailure) {
             setState(() {
-              progress=false;
+              progress = false;
+              showErrorFlushBar(state.error).show(context);
             });
           }
           if (state is RegisterLoading) {
@@ -192,8 +197,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: InputDecoration(
                           prefixIcon: Container(
                             margin: EdgeInsets.symmetric(horizontal: 15),
-                            child: Icon(
-                                CupertinoIcons.lock, color: AppColor.red3),
+                            child:
+                                Icon(CupertinoIcons.lock, color: AppColor.red3),
                           ),
                           suffixIcon: Container(
                             margin: EdgeInsets.symmetric(horizontal: 16),
@@ -274,8 +279,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       decoration: InputDecoration(
                         prefixIcon: Container(
                           margin: EdgeInsets.symmetric(horizontal: 15),
-                          child: Icon(
-                              CupertinoIcons.lock, color: AppColor.red3),
+                          child:
+                              Icon(CupertinoIcons.lock, color: AppColor.red3),
                         ),
                         suffixIcon: Container(
                           margin: EdgeInsets.symmetric(horizontal: 16),
@@ -333,8 +338,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   highlightElevation: 0,
                   focusElevation: 0,
                   onPressed: () {
-                    if
-                    (nameController.isValidName() &&
+                    if (nameController.isValidName() &&
                         password1.isValidPassword() &&
                         password1.text == password2.text) {
                       // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -345,11 +349,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           password: password1.text,
                           password2: password2.text));
                     } else if (!nameController.isValidName()) {
-                      showErrorFlushBar("Ism va Familyani kiriting").show(
-                          context);
+                      showErrorFlushBar("Ism va Familyani kiriting")
+                          .show(context);
                     } else if (!password1.isValidPassword()) {
                       showErrorFlushBar(
-                          "Parol katta kichik Harf va 6 tadan ko`p bo`lishi kerak")
+                              "Parol katta kichik Harf va 6 tadan ko`p bo`lishi kerak")
                           .show(context);
                     } else if (password1.text != password2.text) {
                       showErrorFlushBar("Parolni tasdiqlang").show(context);
@@ -360,11 +364,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18),
                   ),
-                  child: progress ? CircularProgressIndicator(
-                    color: Colors.white,
-                  ) : Text(
-                    "Ro’yxatdan o’tish",
-                  ),
+                  child: progress
+                      ? CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : Text(
+                          "Ro’yxatdan o’tish",
+                        ),
                 ),
               ),
               SizedBox(
