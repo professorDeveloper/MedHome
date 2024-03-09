@@ -9,6 +9,8 @@ Future<dynamic> verifyBottomSheet(BuildContext context, String phone) {
     isDismissible: false,
     context: context,
     isScrollControlled: true,
+    enableDrag: false,
+
     builder: (context) {
       return BlocProvider(
         create: (context) => VerifyBloc(),

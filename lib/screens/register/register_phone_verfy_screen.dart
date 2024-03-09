@@ -1,4 +1,3 @@
-import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +7,9 @@ import 'package:medhome/screens/verify/VerifyBottomSheet.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/app_style.dart';
+import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/utils/utils.dart';
+import 'package:medhome/widgets/flushbar.dart';
 import 'package:medhome/widgets/widget_text_field.dart';
 
 class RegisterPhoneVerfyScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class RegisterPhoneVerfyScreen extends StatefulWidget {
 }
 
 class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
-  bool isSavable = false;
+  bool isSavable = Prefs.getPrivacyPolicy() ?? false;
   bool progress = false;
   var phoneNumberController = TextEditingController();
   late SendSmsCodeBloc bloc;
@@ -43,30 +44,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
             if (state is SendSmsCodeSuccess) {
               progress = false;
               setState(() {
-                Flushbar(
-                  titleColor: Colors.green,
-                  titleText: Text("Muvaffaqiyatli",
-                      style: AppStyle.styleGreen4Sp16W900Zen),
-                  messageText: Text(
-                    "Telefon raqam Tasdiqlandi",
-                    style: AppStyle.styleMainSp14W600Rub,
-                  ),
-                  margin: EdgeInsets.all(8),
-                  flushbarStyle: FlushbarStyle.FLOATING,
-                  flushbarPosition: FlushbarPosition.TOP,
-                  reverseAnimationCurve: Curves.decelerate,
-                  forwardAnimationCurve: Curves.elasticOut,
-                  backgroundColor: AppColor.gray1,
-                  barBlur: 200,
-                  routeBlur: 200,
-                  borderRadius: BorderRadius.circular(8),
-                  icon: Icon(
-                    Icons.check,
-                    color: Colors.green,
-                    size: 24,
-                  ),
-                  duration: const Duration(seconds: 3),
-                ).show(context);
+                Prefs.setAgreePrivacyPolicy(isSavable);
+                showSuccessFlushBar("Telefon raqam Tasdiqlandi").show(context);
                 verifyBottomSheet(
                     context, convertPhoneNumber(phoneNumberController.text));
               });
@@ -80,29 +59,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
             if (state is SendSmsCodeFailure) {
               progress = false;
               setState(() {
-                Flushbar(
-                  titleText:
-                  Text("Xato !", style: AppStyle.styleRed4Sp16W900Zen),
-                  messageText: Text(
-                    state.error,
-                    style: AppStyle.styleMainSp14W600Rub,
-                  ),
-                  margin: EdgeInsets.all(8),
-                  flushbarStyle: FlushbarStyle.FLOATING,
-                  flushbarPosition: FlushbarPosition.TOP,
-                  reverseAnimationCurve: Curves.decelerate,
-                  forwardAnimationCurve: Curves.elasticOut,
-                  backgroundColor: AppColor.gray1,
-                  barBlur: 200,
-                  routeBlur: 200,
-                  borderRadius: BorderRadius.circular(8),
-                  icon: Icon(
-                    Icons.error,
-                    color: Colors.red,
-                    size: 24,
-                  ),
-                  duration: const Duration(seconds: 3),
-                ).show(context);
+                showErrorFlushBar(state.error).show(context);
               });
               print(state.error);
             }
@@ -144,7 +101,6 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                     topText: "Telefon raqam :",
                     controller: phoneNumberController,
                     isMaskphone: true,
-
                     isFocused: !progress,
                     hintText: "+998 (97) 977-97-97",
                     prefixIcon: CupertinoIcons.phone,
@@ -208,6 +164,12 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                           setState(() {
                             phoneEmpty = false;
                           });
+                        } else if (!isSavable) {
+                          setState(() {
+                            showErrorFlushBar(
+                                    "Foydalanish Shartlari Tasdiqlanmadi ")
+                                .show(context);
+                          });
                         } else {
                           bloc.add(SendSmsCodeButtonPressed(
                               phone: convertPhoneNumber(
@@ -221,8 +183,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                       ),
                       child: progress
                           ? CircularProgressIndicator(
-                        color: Colors.white,
-                      )
+                              color: Colors.white,
+                            )
                           : Text("Ko’dni qabul qilish"),
                     ),
                   ),

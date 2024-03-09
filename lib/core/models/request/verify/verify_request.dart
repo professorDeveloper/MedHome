@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
 class VerifyRequest {
+
   final String? phone;
   final int? code;
 
@@ -10,7 +11,7 @@ class VerifyRequest {
     this.code,
   });
 
-  factory VerifyRequest.fromJson(Map<String, int?> json) =>
+  factory VerifyRequest.fromJson(Map<String, dynamic?> json) =>
       _$VerifyRequestFromJson(json);
 
   Map<String?, dynamic> toJson() => _$VerifyRequestToJson(this);
@@ -25,6 +26,6 @@ VerifyRequest _$VerifyRequestFromJson(Map<String?, dynamic?> json) {
 
 Map<String?, dynamic> _$VerifyRequestToJson(VerifyRequest instance) =>
     <String?, dynamic>{
-      "phone": instance.phone as String,
-      "code": instance.code as int,
+      "phone": instance.phone,
+      "code": int.parse(instance.code.toString()),
     };

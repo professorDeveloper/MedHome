@@ -31,7 +31,7 @@ class AuthApiImpl implements AuthApi {
         // If the response is not successful, handle the error
         var errorData = json.decode(response1.body);
 
-        return Error(ErrorResponse.fromJson(errorData).detail!);
+        return Error(errorData);
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors
@@ -40,25 +40,46 @@ class AuthApiImpl implements AuthApi {
   }
 
   @override
-  Future<Result> register({required RegisterRequest registerRequest}) {
-    // TODO: implement register
-    throw UnimplementedError();
+  Future<Result> register({required RegisterRequest registerRequest}) async{
+    try {
+      final response = await http.post(
+          Uri.parse("${ConstantsAPI.baseUrl}/accounts/register/"),
+          body: registerRequest.toJson()
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonMap = json.decode(response.body);
+        var registerResponse = SendSmsCodeResponse.fromJson(jsonMap);
+        return Success(registerResponse);
+      } else {
+        var errorData = json.decode(response.body);
+        return Error(errorData);
+      }
+    }catch(e){
+      throw Exception(e);}
   }
 
   @override
   Future<Result> verify({required VerifyRequest request}) async {
     try {
       print(request.toJson());
+      String bodyData= jsonEncode({
+        "code":request.code,
+        "phone":request.phone
+      });
       final response = await http.post(
           Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-code/"),
-          body: request.toJson());
+          headers: {"Content-Type": "application/json"},
+          body: bodyData);
+      print(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonMap = json.decode(response.body);
         print(jsonMap.toString());
         var verifyResponse = SendSmsCodeResponse.fromJson(jsonMap);
         return Success(verifyResponse);
       } else {
-        var errorResponse =   ErrorResponse.fromJson(json.decode(response.body));
+        var errorResponse =
+            SendSmsCodeResponse.fromJson(json.decode(response.body));
         print("Fail ::::"+response.body);
         return Error(errorResponse.detail.toString());
 
