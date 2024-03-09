@@ -39,6 +39,7 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
       listener: (context, state) {
         if (state is VerifySuccess) {
           openScreen(context, RegisterScreen(phone: widget.phone));
+          Navigator.pop(context);
         }
 
         if (state is VerifyFailure) {
