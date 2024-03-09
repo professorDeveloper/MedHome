@@ -17,6 +17,7 @@ class RedTextField extends StatelessWidget {
   final TextInputType? inputType;
   final String? errorText;
   final bool? isFocused;
+  final TextInputAction? inputAction;
 
   const RedTextField({
     Key? key,
@@ -28,6 +29,7 @@ class RedTextField extends StatelessWidget {
     this.inputType,
     this.errorText,
     this.isFocused,
+    this.inputAction
   }) : super(key: key);
 
   @override
@@ -56,7 +58,9 @@ class RedTextField extends StatelessWidget {
           TextField(
             inputFormatters: isMaskphone! ? [maskFormatter] : [],
             controller: controller,
+            textInputAction: inputAction,
             keyboardType: inputType,
+
             cursorColor: Colors.black,
             style: TextStyle(fontSize: 15.5),
             decoration: InputDecoration(

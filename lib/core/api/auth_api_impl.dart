@@ -40,10 +40,26 @@ class AuthApiImpl implements AuthApi {
   }
 
   @override
-  Future<Result> register({required RegisterRequest registerRequest}) {
-    // TODO: implement register
-    throw UnimplementedError();
+  Future<Result> register({required RegisterRequest registerRequest}) async{
+    try {
+      final response = await http.post(
+          Uri.parse("${ConstantsAPI.baseUrl}/accounts/register/"),
+          body: registerRequest.toJson()
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonMap = json.decode(response.body);
+        var registerResponse = SendSmsCodeResponse.fromJson(jsonMap);
+        return Success(registerResponse);
+      } else {
+        var errorData = json.decode(response.body);
+        return Error(errorData);
+      }
+    }catch(e){
+      throw Exception(e);}
   }
+
+
 
   @override
   Future<Result> verify({required VerifyRequest request}) async {

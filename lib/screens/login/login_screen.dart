@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,9 +8,9 @@ import 'package:medhome/screens/home/home_screen.dart';
 import 'package:medhome/screens/register/register_phone_verfy_screen.dart';
 import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/utils/utils.dart';
+import 'package:medhome/widgets/flushbar.dart';
 import 'package:shake/shake.dart';
 
-import '../../core/models/response/auth/login_response.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_style.dart';
 import '../../widgets/widget_text_field.dart';
@@ -32,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
   late AnimationController _textField1Controller;
-  var progress=false;
+  var progress = false;
   late Animation<Offset> _textField1SlideAnimation;
   late AnimationController _textField2Controller;
   late Animation<Offset> _textField2SlideAnimation;
@@ -123,74 +120,27 @@ class _LoginScreenState extends State<LoginScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state)  async{
+        listener: (context, state) async {
           if (state is LoginSuccess) {
-            progress=false;
+            progress = false;
             setState(() {
-              Flushbar(
-                titleColor: Colors.green,
-                titleText: Text("Muvaffaqiyatli",
-                    style: AppStyle.styleGreen4Sp16W900Zen),
-                messageText: Text(
-                  "Login muvaffaqiyatli amalga oshirildi",
-                  style: AppStyle.styleMainSp14W600Rub,
-                ),
-                margin: EdgeInsets.all(8),
-                flushbarStyle: FlushbarStyle.FLOATING,
-                flushbarPosition: FlushbarPosition.TOP,
-                reverseAnimationCurve: Curves.decelerate,
-                forwardAnimationCurve: Curves.elasticOut,
-                backgroundColor: AppColor.gray1,
-                barBlur: 200,
-                routeBlur: 200,
-                borderRadius: BorderRadius.circular(8),
-                icon: Icon(
-                  Icons.check,
-                  color: Colors.green,
-                  size: 24,
-                ),
-                duration: const Duration(seconds: 3),
-              ).show(context);
-
+              showSuccessFlushBar("Login muvaffaqiyatli amalga oshirildi")
+                  .show(context);
             });
             await Prefs.setAccessToken(state.sucsess.access);
             await Prefs.setRefreshToken(state.sucsess.refresh);
             openScreen(context, HomeScreen());
-
           }
-          if(state is LoginLoading){
-            progress=true;
-            setState(() {
-
-            });
+          if (state is LoginLoading) {
+            progress = true;
+            setState(() {});
           }
-          if(state is LoginFailure){
-            progress=false;
+          if (state is LoginFailure) {
+            progress = false;
             setState(() {
-              Flushbar(
-                titleText:
-                Text("Xato !", style: AppStyle.styleRed4Sp16W900Zen),
-                messageText: Text(
-                  state.error,
-                  style: AppStyle.styleMainSp14W600Rub,
-                ),
-                margin: EdgeInsets.all(8),
-                flushbarStyle: FlushbarStyle.FLOATING,
-                flushbarPosition: FlushbarPosition.TOP,
-                reverseAnimationCurve: Curves.decelerate,
-                forwardAnimationCurve: Curves.elasticOut,
-                backgroundColor: AppColor.gray1,
-                barBlur: 200,
-                routeBlur: 200,
-                borderRadius: BorderRadius.circular(8),
-                icon: Icon(
-                  Icons.error,
-                  color: Colors.red,
-                  size: 24,
-                ),
-                duration: const Duration(seconds: 3),
+              showErrorFlushBar(
+                state.error,
               ).show(context);
-
             });
             print(state.error);
           }
@@ -250,9 +200,8 @@ class _LoginScreenState extends State<LoginScreen>
                               hintText: "+998 (97) 977-97-97",
                               prefixIcon: CupertinoIcons.phone,
                               inputType: TextInputType.phone,
-                              errorText: phoneEmpty == true
-                                  ? errorTextPhone
-                                  : null,
+                              errorText:
+                                  phoneEmpty == true ? errorTextPhone : null,
                             ),
                           ],
                         ),
@@ -293,9 +242,8 @@ class _LoginScreenState extends State<LoginScreen>
                                 enableInteractiveSelection: true,
                                 style: TextStyle(fontSize: 15.5),
                                 decoration: InputDecoration(
-                                  errorText: passwordEmpty
-                                      ? errorTextPassword
-                                      : null,
+                                  errorText:
+                                      passwordEmpty ? errorTextPassword : null,
                                   errorStyle: TextStyle(
                                     color: Colors.red,
                                     fontSize: 12.0,
@@ -335,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen>
                                       onPressed: () {
                                         setState(() {
                                           isPasswordVisible =
-                                          !isPasswordVisible;
+                                              !isPasswordVisible;
                                         });
                                       },
                                       icon: Icon(
@@ -475,7 +423,6 @@ class _LoginScreenState extends State<LoginScreen>
                       child: MaterialButton(
                         elevation: 0,
                         highlightElevation: 0,
-
                         focusElevation: 0,
                         onPressed: () async {
                           if (phoneNumberController.text.isEmpty) {
@@ -487,8 +434,7 @@ class _LoginScreenState extends State<LoginScreen>
                             setState(() {
                               phoneEmpty = false;
                             });
-                          }
-                          else if (passwordController.text.isEmpty) {
+                          } else if (passwordController.text.isEmpty) {
                             errorTextPassword = "Parolni kiriting";
 
                             setState(() {
@@ -498,18 +444,23 @@ class _LoginScreenState extends State<LoginScreen>
                             setState(() {
                               passwordEmpty = false;
                             });
-                          }
-                          else {
-                            bloc.add(LoginButtonPressed(phone: convertPhoneNumber(phoneNumberController.text), password: passwordController.text));
+                          } else {
+                            bloc.add(LoginButtonPressed(
+                                phone: convertPhoneNumber(
+                                    phoneNumberController.text),
+                                password: passwordController.text));
                           }
                         },
                         color: AppColor.red1,
                         textColor: Colors.white,
                         shape: RoundedRectangleBorder(
-
                           borderRadius: BorderRadius.circular(18),
                         ),
-                        child: progress? CircularProgressIndicator(color: Colors.white,):const Text("Akkauntga kirish"),
+                        child: progress
+                            ? CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : const Text("Akkauntga kirish"),
                       ),
                     ),
                   ),
