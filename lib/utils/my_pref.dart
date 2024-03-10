@@ -30,7 +30,7 @@ class Prefs {
   static int? getInt(String key) => _prefs?.getInt(key);
 
   static String? getAccessToken() => _prefs?.getString("accessToken");
-  static bool? getPrivacyPolicy() => _prefs?.getBool("privacyPolicy");
+  static Future<bool?> getPrivacyPolicy() async =>await _prefs?.getBool("privacyPolicy");
   static String? getRefreshToken() => _prefs?.getString("refreshToken");
 
   static List<String>? getStringList(String key) => _prefs?.getStringList(key);

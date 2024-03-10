@@ -12,13 +12,13 @@ import 'blocs/forget/recieve_password_bloc.dart';
 import 'blocs/login/login_bloc.dart';
 import 'blocs/register/register_bloc.dart';
 
-void main() {
+void main() async{
   Prefs.init();
   setupLocator();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget  {
   const MyApp({super.key});
 
   // This widget is the root of your application.

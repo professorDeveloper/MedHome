@@ -164,7 +164,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               child: MaterialButton(
                   onPressed: () async {
 
-                     print(Prefs.getAccessToken());
+                     await Prefs.getPrivacyPolicy().then((value) =>
+                        print(value));
                     if (currentIndex == contents.length - 1) {
                       await Prefs.setBool("isFirst", true);
                       openReplaceScreen(context, LoginScreen());

@@ -22,7 +22,7 @@ class RegisterPhoneVerfyScreen extends StatefulWidget {
 }
 
 class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
-  bool isSavable =  Prefs.getPrivacyPolicy() ?? false;
+  bool isSavable =  false;
   bool progress = false;
   var phoneNumberController = TextEditingController();
   late SendSmsCodeBloc bloc;
@@ -34,6 +34,18 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
     super.initState();
 
     bloc = BlocProvider.of<SendSmsCodeBloc>(context);
+    getSavable();
+    setSavable(!isSavable);
+  }
+
+
+  Future<bool> getSavable() async {
+     isSavable =await Prefs.getPrivacyPolicy() ?? false;
+    return isSavable;
+  }
+
+  Future<void> setSavable(bool isSavable) async {
+  await  Prefs.setAgreePrivacyPolicy(isSavable);
   }
 
   @override
@@ -44,8 +56,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
           listener: (context, state) async {
             if (state is SendSmsCodeSuccess) {
               progress = false;
-              setState(() async{
-                await Prefs.setAgreePrivacyPolicy(isSavable);
+              setState(() async {
+                Prefs.setAgreePrivacyPolicy(isSavable);
               });
               print("${state.response.detail}");
             }
@@ -122,7 +134,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                           value: isSavable,
                           onChanged: (it) {
                             setState(() {
-                              isSavable = !isSavable;
+                              setSavable(!isSavable);
                             });
                           },
                           activeColor: AppColor.red4,
@@ -165,7 +177,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                         } else if (!isSavable) {
                           setState(() {
                             showErrorFlushBar(
-                                    "Foydalanish Shartlari Tasdiqlanmadi ")
+                                "Foydalanish Shartlari Tasdiqlanmadi ")
                                 .show(context);
                           });
                         } else {
@@ -181,8 +193,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                       ),
                       child: progress
                           ? CircularProgressIndicator(
-                              color: Colors.white,
-                            )
+                        color: Colors.white,
+                      )
                           : Text("Ko’dni qabul qilish"),
                     ),
                   ),
