@@ -79,8 +79,7 @@ class AuthApiImpl implements AuthApi {
         var verifyResponse = SendSmsCodeResponse.fromJson(jsonMap);
         return Success(verifyResponse);
       } else {
-        var errorResponse =
-            SendSmsCodeResponse.fromJson(json.decode(response.body));
+        var errorResponse =  ErrorResponse.fromJson(json.decode(response.body));
         print("Fail ::::"+response.body);
         return Error(errorResponse.detail.toString());
 

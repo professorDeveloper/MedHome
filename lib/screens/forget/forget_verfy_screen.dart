@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/blocs/verify/verify_bloc.dart';
+import 'package:medhome/utils/utils.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 
 import '../../blocs/forget/forget_verfy_bloc.dart';
@@ -118,8 +119,9 @@ Future<dynamic> forgetVerfySheet(BuildContext context, String phone) {
 
                                 showErrorFlushBar("Kod To`liq Emas");
                               } else {
-                                BlocProvider.of<VerifyBloc>(context).add(VerifyButtonPressed(
-                                    code: otpValue, phone: phone));
+                                print(phone);
+                            BlocProvider.of<VerifyBloc>(context).add(VerifyButtonPressed(
+                                    code: otpValue, phone: convertPhoneNumber(phone)));
                               }
                             },
                             color: AppColor.red1,
