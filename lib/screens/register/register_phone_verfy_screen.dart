@@ -58,6 +58,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
               progress = false;
               setState(() async {
                 Prefs.setAgreePrivacyPolicy(isSavable);
+                verifyBottomSheet(context,convertPhoneNumber(phoneNumberController.text));
               });
               print("${state.response.detail}");
             }

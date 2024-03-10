@@ -1,4 +1,4 @@
-import 'dart:async';
+  import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:medhome/core/models/request/auth/recieve_password_request.dart';
@@ -12,7 +12,7 @@ import '../../utils/response.dart';
 part 'recieve_password_event.dart';
 part 'recieve_password_state.dart';
 
-class RecievePasswordBloc extends Bloc<RecievePasswordEvent, RecievePasswordState> {
+class RecievePasswordBloc extends Bloc<RecievePasswordInitEvent, RecievePasswordState> {
   final AuthApiImpl authApi=serviceLocator<AuthApiImpl>();
 
   RecievePasswordBloc() : super(RecievePasswordInitial()) {

@@ -2,7 +2,7 @@ part of 'recieve_password_bloc.dart';
 
 @immutable
 abstract class RecievePasswordInitEvent {}
-abstract class RecievePasswordEvent {
+ class RecievePasswordEvent extends RecievePasswordInitEvent {
   RecievePasswordRequest request;
 
   RecievePasswordEvent({required this.request});

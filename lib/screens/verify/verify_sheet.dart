@@ -38,7 +38,7 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
     return BlocConsumer<VerifyBloc, VerifyState>(
       listener: (context, state) {
         if (state is VerifySuccess) {
-          Navigator.pop(context);
+          Navigator.of(context).pop();
           openScreen(context, RegisterScreen(phone: widget.phone));
         }
 

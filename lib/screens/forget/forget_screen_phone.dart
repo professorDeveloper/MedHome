@@ -20,7 +20,7 @@ Future<dynamic> forgotBottomSheet(BuildContext context) {
   bool progress=false;
 
   return showModalBottomSheet(
-
+      isScrollControlled: true,
       context: context,
       builder: (context) {
         return StatefulBuilder(
@@ -32,11 +32,10 @@ Future<dynamic> forgotBottomSheet(BuildContext context) {
                 if(state is ForgetVerfySuccessState){
 
                   setState(() {
-
-                    showSuccessFlushBar(state.sendSmsCodeResponse.detail).show(context);
                     progress=false;
 
                   });
+                  Navigator.of(context).pop();
                   forgetVerfySheet(context,controller.text);
                 }
                 else if (state is ForgetFailure){
@@ -57,6 +56,7 @@ Future<dynamic> forgotBottomSheet(BuildContext context) {
 
               },
               builder: (context, state) {
+                final MediaQueryData mediaQuery = MediaQuery.of(context);
 
                 return Padding(
                   padding: mediaQuery.viewInsets,
@@ -70,7 +70,7 @@ Future<dynamic> forgotBottomSheet(BuildContext context) {
                         topRight: Radius.circular(10),
                       ),
                     ),
-                    height: mediaQuery.size.height * 0.5,
+                    height: mediaQuery.size.height * 0.44  ,
                     width: double.infinity,
                     child: Column(
                       children: [
