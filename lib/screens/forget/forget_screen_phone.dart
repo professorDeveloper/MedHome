@@ -37,7 +37,7 @@ Future<dynamic> forgotBottomSheet(BuildContext context) {
                     progress=false;
 
                   });
-                  forgetnewPassword(context);
+                  forgetVerfySheet(context,controller.text);
                 }
                 else if (state is ForgetFailure){
                   setState(() {

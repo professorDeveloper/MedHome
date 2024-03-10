@@ -1,4 +1,5 @@
 import 'package:medhome/core/models/request/auth/login_request.dart';
+import 'package:medhome/core/models/request/auth/recieve_password_request.dart';
 import 'package:medhome/core/models/request/auth/register_request.dart';
 import 'package:medhome/core/models/request/auth/send_sms_code_request.dart';
 
@@ -16,6 +17,9 @@ abstract class AuthApi {
       {required SendSmsCodeRequest sendSmsCodeRequest});
   Future<Result> sendSmsCodeForForgetPassword(
       {required SendSmsCodeRequest sendSmsCodeRequest});
+  Future<Result> recievePassword(
+      {required RecievePasswordRequest recievePasswordRequest});
+
 }
 
 class ConstantsAPI {

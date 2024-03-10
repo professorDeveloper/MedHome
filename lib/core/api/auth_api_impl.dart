@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:medhome/core/api/auth_api.dart';
 import 'package:medhome/core/models/request/auth/login_request.dart';
+import 'package:medhome/core/models/request/auth/recieve_password_request.dart';
 import 'package:medhome/core/models/request/auth/register_request.dart';
 import 'package:medhome/core/models/request/auth/send_sms_code_request.dart';
 import 'package:medhome/core/models/response/auth/error_response.dart';
@@ -142,5 +143,32 @@ class AuthApiImpl implements AuthApi {
       // Handle other types of exceptions, e.g., network errors
       throw Exception(e);
     }
+  }
+
+  @override
+  Future<Result> recievePassword({required RecievePasswordRequest recievePasswordRequest}) async {
+    try {
+      final response1 = await http.post(
+          Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-phone-forgot-pass/"),
+          body: recievePasswordRequest.toJson());
+      print(response1.body);
+
+      if (response1.statusCode == 200) {
+        Map<String, dynamic> jsonMap = json.decode(response1.body);
+        var sendSmsResponse = SendSmsCodeResponse.fromJson(jsonMap);
+
+        // Return a Success result with the login response data
+        return Success(sendSmsResponse);
+      } else {
+        // If the response is not successful, handle the error
+        var errorResponse =  ErrorResponse.fromJson(json.decode(response1.body));
+
+        return Error(errorResponse.detail.toString());
+      }
+    } catch (e) {
+      // Handle other types of exceptions, e.g., network errors
+      throw Exception(e);
+    }
+
   }
 }
