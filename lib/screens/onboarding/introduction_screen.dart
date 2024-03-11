@@ -33,6 +33,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Prefs.init();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -163,9 +164,6 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             child: FadeInUp(
               child: MaterialButton(
                   onPressed: () async {
-
-                     await Prefs.getPrivacyPolicy().then((value) =>
-                        print(value));
                     if (currentIndex == contents.length - 1) {
                       await Prefs.setBool("isFirst", true);
                       openReplaceScreen(context, LoginScreen());

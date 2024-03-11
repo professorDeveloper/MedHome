@@ -13,7 +13,8 @@ import 'blocs/login/login_bloc.dart';
 import 'blocs/register/register_bloc.dart';
 
 void main() async{
-  Prefs.init();
+  await Prefs.init();
+  WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   runApp(const MyApp());
 }
