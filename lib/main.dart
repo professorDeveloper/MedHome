@@ -18,6 +18,8 @@ void main() async{
   setupLocator();
   runApp(const MyApp());
   /// Nothing to do here
+  /// Just run the app
+  /// No output from reflectable, 'package:reflectable/reflectable.dart' not used.
 }
 
 class MyApp extends StatelessWidget  {
