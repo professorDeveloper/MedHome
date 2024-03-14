@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:medhome/screens/home/home_screen.dart';
 
+import '../screens/BuyurtmalarScreen/BuyurtmalarScreen_screen.dart';
+import '../screens/Mahsulotlar/Mahsulotlar_screen.dart';
+import '../screens/medkarta/medkarta_screen.dart';
+
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
 
@@ -12,9 +16,9 @@ class BottomNavbar extends StatefulWidget {
 class _BottomNavbarState extends State<BottomNavbar> {
   final List<Widget> _screens = [
     const HomeScreen(),
-    // const SecondPage(),
-    // const ThirdPage(),
-    // const FourthScreen()
+    const BuyurtmalarScreen(),
+    const MedkartaScreen(),
+    const MahsulotlarScreen()
   ];
 
   int _currentIndex = 0;
