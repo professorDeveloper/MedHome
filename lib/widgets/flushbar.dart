@@ -1,5 +1,4 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/app_color.dart';
@@ -22,7 +21,7 @@ Flushbar showErrorFlushBar(String text) {
     routeBlur: 200,
     borderRadius: BorderRadius.circular(8),
     icon: Icon(
-       Icons.error,
+      Icons.error,
       color: Colors.red,
       size: 24,
     ),
@@ -30,11 +29,10 @@ Flushbar showErrorFlushBar(String text) {
   );
 }
 
-Flushbar showSuccessFlushBar(String text){
- return  Flushbar(
+Flushbar showSuccessFlushBar(String text) {
+  return Flushbar(
     titleColor: Colors.green,
-    titleText: Text("Muvaffaqiyatli",
-        style: AppStyle.styleGreen4Sp16W900Zen),
+    titleText: Text("Muvaffaqiyatli", style: AppStyle.styleGreen4Sp16W900Zen),
     messageText: Text(
       text,
       style: AppStyle.styleMainSp14W600Rub,
@@ -55,5 +53,4 @@ Flushbar showSuccessFlushBar(String text){
     ),
     duration: const Duration(seconds: 3),
   );
-
 }

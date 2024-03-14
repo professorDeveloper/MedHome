@@ -25,6 +25,13 @@ class AppImages {
   static const Grid2 = "assets/images/2_grid.png";
   static const Grid3 = "assets/images/4_grid.png";
 
+  // medKarta
+  static const anketa = "assets/images/anketa.svg";
+  static const tube = "assets/images/tube.svg";
+
+  static const anketa1 = "assets/images/anketa.png";
+  static const tube1 = "assets/images/tube.png";
+
 // Comming soon ...
 // static const icHome = "assets/images/ic_home.svg";
 // static const icHomeResult = "assets/images/ic_home_result.svg";

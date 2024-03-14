@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medhome/blocs/forget/forget_verfy_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
-import 'package:medhome/blocs/verify/verify_bloc.dart';
+import 'package:medhome/bottomNavigation/bottom_navigation.dart';
 import 'package:medhome/core/di/get_it.dart';
-import 'package:medhome/screens/login/login_screen.dart';
-import 'package:medhome/screens/onboarding/introduction_screen.dart';
 import 'package:medhome/utils/my_pref.dart';
 
-import 'blocs/forget/recieve_password_bloc.dart';
 import 'blocs/login/login_bloc.dart';
-import 'blocs/register/register_bloc.dart';
 
-void main() async{
-  await Prefs.init();
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  Prefs.init();
   setupLocator();
   runApp(const MyApp());
-  /// Nothing to do here
-  /// Just run the app
-  /// No output from reflectable, 'package:reflectable/reflectable.dart' not used.
 }
 
-class MyApp extends StatelessWidget  {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -36,21 +27,9 @@ class MyApp extends StatelessWidget  {
         BlocProvider(
           create: (context) => serviceLocator<SendSmsCodeBloc>(),
         ),
-        BlocProvider(
-          create: (context) => serviceLocator<RegisterBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => serviceLocator<ForgetVerfyBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => serviceLocator<RecievePasswordBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => serviceLocator<VerifyBloc>(),
-        ),
       ],
       child: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state)  {},
+        listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
             title: 'Med Home',
@@ -66,9 +45,7 @@ class MyApp extends StatelessWidget  {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: Prefs.getBool("isFirst") == true
-                ? const LoginScreen()
-                : const IntroductionScreen(),
+            home: const BottomNavbar(),
           );
         },
       ),

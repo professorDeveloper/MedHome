@@ -1,4 +1,3 @@
-import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +21,7 @@ class RegisterPhoneVerfyScreen extends StatefulWidget {
 }
 
 class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
-  bool isSavable =  false;
+  bool isSavable = false;
   bool progress = false;
   var phoneNumberController = TextEditingController();
   late SendSmsCodeBloc bloc;
@@ -38,14 +37,13 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
     setSavable(!isSavable);
   }
 
-
   Future<bool> getSavable() async {
-     isSavable =await Prefs.getPrivacyPolicy() ?? false;
+    isSavable = await Prefs.getPrivacyPolicy() ?? false;
     return isSavable;
   }
 
   Future<void> setSavable(bool isSavable) async {
-  await  Prefs.setAgreePrivacyPolicy(isSavable);
+    await Prefs.setAgreePrivacyPolicy(isSavable);
   }
 
   @override
@@ -58,7 +56,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
               progress = false;
               setState(() async {
                 Prefs.setAgreePrivacyPolicy(isSavable);
-                verifyBottomSheet(context,convertPhoneNumber(phoneNumberController.text));
+                verifyBottomSheet(
+                    context, convertPhoneNumber(phoneNumberController.text));
               });
               print("${state.response.detail}");
             }
@@ -178,7 +177,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                         } else if (!isSavable) {
                           setState(() {
                             showErrorFlushBar(
-                                "Foydalanish Shartlari Tasdiqlanmadi ")
+                                    "Foydalanish Shartlari Tasdiqlanmadi ")
                                 .show(context);
                           });
                         } else {
@@ -194,8 +193,8 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                       ),
                       child: progress
                           ? CircularProgressIndicator(
-                        color: Colors.white,
-                      )
+                              color: Colors.white,
+                            )
                           : Text("Ko’dni qabul qilish"),
                     ),
                   ),
