@@ -169,36 +169,26 @@ class _MyProfileState extends State<MyProfile> {
                     SizedBox(
                       height: 40,
                     ),
-                    Container(
+                     Container(
                       height: 60,
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      child: MaterialButton(
+                        elevation: 0,
+                        highlightElevation: 0,
+                        focusElevation: 0,
+                        onPressed: () async {
+
+                        },
                         color: AppColor.red1,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.logout,
-                              size: 31,
-                              color: AppColor.white,
-                            ),
-                            const SizedBox(
-                              width: 50,
-                            ),
-                            Text(
-                              "Profildan chiqish",
-                              style: GoogleFonts.rubik(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 20,
-                                color: AppColor.white,
-                              ),
-                            ),
-                          ],
+                        textColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
                         ),
+                        child: const Text("Profildan Chiqish"),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),
