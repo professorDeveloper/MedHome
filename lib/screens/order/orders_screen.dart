@@ -24,7 +24,15 @@ class _OrdersScreenState extends State<OrdersScreen> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 25,top: 15),
+              child: Text("Buyurtmalar",style: GoogleFonts.rubik(fontWeight:FontWeight.w500,fontSize: 20,color: AppColor.textColor)),
+
+            ),
+            SizedBox(height: 12,),
+            customOrderItem(),
 
           ],
         ),
@@ -107,4 +115,34 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
         automaticallyImplyLeading: false,
       );
+
+  Card customOrderItem(){
+    return Card(
+      shape:RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(11))
+      ) ,
+      borderOnForeground: true,
+      elevation: 1,
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      color: Colors.white,
+      child: InkWell(
+        onTap: (){
+          print('asdasd');
+        },
+        borderRadius: BorderRadius.all(Radius.circular(11)),
+        child: Container(
+          width: double.infinity,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Bemor",style: GoogleFonts.rubik(fontSize: 15,fontWeight: FontWeight.w500,color: AppColor.textColor),),
+              )
+            ],
+          )
+        ),
+      ),
+    );
+
+  }
 }
