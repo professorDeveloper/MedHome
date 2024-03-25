@@ -38,6 +38,7 @@ dependencies:
   http_interceptor: ^1.0.2
   otp_pin_field: ^1.2.2
   toggle_switch: ^2.1.0
+  intl: ^0.17.0
   pinput: ^4.0.0
   get_it: ^7.6.7
   mask_text_input_formatter: ^2.9.0

@@ -20,34 +20,48 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.gray1,
+
       appBar: _appBar(contxt: context),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 15),
-              child: Text("Buyurtmalar",
-                  style: GoogleFonts.rubik(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                      color: AppColor.textColor)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            customOrderItem(),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 2,
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (index,count){
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15.0),
+                child: customOrderItem(),
+              );
+            }),
+          )
+        ],
       ),
     );
   }
 
   AppBar _appBar({required BuildContext contxt}) => AppBar(
         elevation: 0,
+        bottom: PreferredSize(
+
+          preferredSize: const Size(double.infinity,59),
+          child:   Center(
+            child: Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(bottom: 12),
+              child: Center(
+                child: Text("Buyurtmalar",
+                    style: GoogleFonts.rubik(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                        color: AppColor.textColor)),
+              ),
+            ),
+          ),
+        ),
         scrolledUnderElevation: 1,
-        toolbarHeight: 60,
         backgroundColor: Colors.grey.shade200,
         titleSpacing: 0,
         title: Container(
@@ -125,7 +139,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
       borderOnForeground: true,
       shadowColor: AppColor.gray2,
       elevation: 1.5,
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
       color: Colors.white,
       child: Container(
           width: double.infinity,
@@ -143,7 +157,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(9),
                 child: Container(
                   height: 70,
                   decoration: BoxDecoration(
