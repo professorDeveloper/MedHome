@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget  {
               primarySwatch: Colors.red,
             ),
             home:
-                const MainScreen(),
+                const DoctorIdentityScreen(),
           );
         },
       ),
