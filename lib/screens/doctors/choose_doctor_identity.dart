@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/screens/profile/profile_screen.dart';
 import 'package:medhome/utils/app_color.dart';
+import 'package:medhome/widgets/flushbar.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_images.dart';
@@ -16,7 +17,7 @@ class DoctorIdentityScreen extends StatefulWidget {
 }
 
 class _DoctorIdentityScreenState extends State<DoctorIdentityScreen> {
-  bool isChanged = false;
+  bool isChanged = true;
   var selectedGender = 0;
 
   @override
@@ -100,7 +101,7 @@ class _DoctorIdentityScreenState extends State<DoctorIdentityScreen> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            isChanged = !isChanged;
+                            showErrorFlushBar("Sizda Tibbiy Karta Mavjud Emas").show(context);
                           });
                         },
                         customBorder: RoundedRectangleBorder(
@@ -115,7 +116,7 @@ class _DoctorIdentityScreenState extends State<DoctorIdentityScreen> {
                                 value: isChanged,
                                 onChanged: (bool? value) {
                                   setState(() {
-                                    isChanged = value!;
+                                    showErrorFlushBar("Sizda Tibbiy Karta Mavjud Emas").show(context);
                                   });
                                 }),
                             Padding(
