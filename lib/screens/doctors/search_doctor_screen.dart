@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/screens/doctors/search_medical_screen.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
@@ -50,7 +51,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
     setState(() {
       if (selectedOption.isNotEmpty) {
         _isVisibleButton = isChanged;
-      }else {
+      } else {
         _isVisibleButton = false;
       }
     });
@@ -220,7 +221,9 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
           elevation: 0,
           highlightElevation: 0,
           focusElevation: 0,
-          onPressed: () async {},
+          onPressed: () async {
+            openScreen(context, SearchMedicalScreen());
+          },
           color: AppColor.red1,
           textColor: Colors.white,
           shape: RoundedRectangleBorder(
