@@ -4,7 +4,6 @@ import 'package:medhome/blocs/forget/forget_verfy_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/blocs/verify/verify_bloc.dart';
 import 'package:medhome/core/di/get_it.dart';
-import 'package:medhome/screens/doctors/choose_doctor_identity.dart';
 import 'package:medhome/screens/doctors/choose_doctor_screen.dart';
 import 'package:medhome/screens/login/login_screen.dart';
 import 'package:medhome/screens/main/main_screen.dart';
