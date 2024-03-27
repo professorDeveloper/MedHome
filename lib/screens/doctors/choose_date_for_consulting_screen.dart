@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/core/models/request/auth/recieve_password_request.dart';
 import 'package:medhome/extensions/functions.dart';
+import 'package:medhome/screens/doctors/search_doctor_screen.dart';
 import 'package:medhome/screens/med_card/create_medcard_screen.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/widgets/flushbar.dart';
@@ -110,7 +111,7 @@ Future<dynamic> chooseDateForConsulting(BuildContext context) {
                           });
                         }
                         else {
-                          openScreen(context, CreateMedCardScreen());
+                          openScreen(context, SearchDoctorScreen());
                         }
                       },
                       color: AppColor.red1,
