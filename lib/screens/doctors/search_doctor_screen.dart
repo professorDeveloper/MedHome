@@ -96,7 +96,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
               height: 18,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 30),
+              margin: EdgeInsets.symmetric(horizontal: 20),
               alignment: Alignment.centerLeft,
               child: Text(
                 "Tibbiy Kartani Tanlang",
@@ -432,7 +432,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                               'Erkak',
                               style: GoogleFonts.rubik(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w500,
                                 color: selectedGender == 1
                                     ? Colors.white
                                     : Colors.black,
