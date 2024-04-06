@@ -18,6 +18,7 @@ class Assets {
   static const String imagesBottom4 = 'assets/images/bottom_4.svg';
   static const String imagesBottomHome = 'assets/images/bottom_home.svg';
   static const String imagesDoctorImage = 'assets/images/doctor_image.png';
+  static const String imagesDoctorImg = 'assets/images/doctor_img.png';
   static const String imagesFamily = 'assets/images/family.png';
   static const String imagesIcCall = 'assets/images/ic_call.svg';
   static const String imagesIcContact = 'assets/images/ic_contact.svg';
@@ -29,7 +30,7 @@ class Assets {
   static const String imagesIcProfile = 'assets/images/ic_profile.svg';
   static const String imagesIcUser = 'assets/images/ic_user.svg';
   static const String imagesImg = 'assets/images/img.png';
-  static const String imagesImg1 = 'assets/images/doctor_img.png';
+  static const String imagesLike = 'assets/images/like.svg';
   static const String imagesMale = 'assets/images/male.png';
   static const String imagesMan = 'assets/images/man.svg';
   static const String imagesNotificationIcon = 'assets/images/notification_icon.png';
