@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medhome/screens/doctors/searching_result_screen.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
@@ -29,14 +28,14 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
     return Scaffold(
       backgroundColor: AppColor.gray1,
 
-      bottomNavigationBar:Container(
+      bottomNavigationBar: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(18),topRight: Radius.circular(18))
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(18), topRight: Radius.circular(18))),
         height: 115,
-        child:Column(
+        child: Column(
           children: [
             SizedBox(
               height: 12,
@@ -44,13 +43,25 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Narxi:",style: GoogleFonts.rubik(fontSize: 16,color: AppColor.textColor,fontWeight: FontWeight.w400),),
-                Text("500 000 so’m",style: GoogleFonts.rubik(fontSize: 16,color: AppColor.textColor,fontWeight: FontWeight.w500),)
+                Text(
+                  "Narxi:",
+                  style: GoogleFonts.rubik(
+                      fontSize: 16,
+                      color: AppColor.textColor,
+                      fontWeight: FontWeight.w400),
+                ),
+                Text(
+                  "500 000 so’m",
+                  style: GoogleFonts.rubik(
+                      fontSize: 16,
+                      color: AppColor.textColor,
+                      fontWeight: FontWeight.w500),
+                )
               ],
             ),
             Container(
               height: 55,
-              margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               width: double.infinity,
               child: MaterialButton(
                 elevation: 0,
@@ -66,10 +77,9 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: Text("Keyingisi"),
               ),
             ),
-
           ],
         ),
-      ) ,
+      ),
       appBar: _appBar(contxt: context),
       body: SingleChildScrollView(
           physics: BouncingScrollPhysics(
@@ -209,24 +219,31 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                         },
                         borderRadius: BorderRadius.all(Radius.circular(11)),
                         child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          width: double.infinity,
-                          child: Row(
-                            children: [
-                              SizedBox(width:
-                                12,),
-                              Text("Toshkent shahar\nChilonzor tumani, Muqumiy",
-                              style:GoogleFonts.rubik(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: AppColor.textColor
-                              ),),
-                              Spacer(),
-                              Icon(CupertinoIcons.location_solid,color: Colors.red,size: 30,),
-                              SizedBox(width: 20,)
-                            ],
-                          )
-                        ),
+                            padding: EdgeInsets.symmetric(vertical: 12),
+                            width: double.infinity,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 12,
+                                ),
+                                Text(
+                                  "Toshkent shahar\nChilonzor tumani, Muqumiy",
+                                  style: GoogleFonts.rubik(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 16,
+                                      color: AppColor.textColor),
+                                ),
+                                Spacer(),
+                                Icon(
+                                  CupertinoIcons.location_solid,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                )
+                              ],
+                            )),
                       ),
                     ),
                     SizedBox(
@@ -292,7 +309,6 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Checkbox(
-
                   checkColor: Colors.white,
                   activeColor: AppColor.red4,
                   value: disableLanguage,
@@ -366,7 +382,8 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 ),
                 Spacer(),
                 Container(
-                  margin: EdgeInsets.only(top: 3),
+
+                  margin: EdgeInsets.only(top: 3,right: 10,left: 25),
                   child: IconButton(
                       onPressed: (() => {}),
                       icon: Icon(
@@ -375,16 +392,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                         color: AppColor.red4,
                       )),
                 ),
-                IconButton(
-                    onPressed: (() => {openScreen(context, MyProfile())}),
-                    icon: Icon(
-                      CupertinoIcons.person_alt_circle,
-                      size: 27,
-                      color: AppColor.red4,
-                    )),
-                SizedBox(
-                  width: 5,
-                ),
+
               ]),
         ),
         automaticallyImplyLeading: false,

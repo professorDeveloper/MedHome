@@ -250,7 +250,7 @@ class _MyProfileState extends State<MyProfile> {
                       onPressed: (() => {}),
                       icon: Icon(
                         CupertinoIcons.bell_fill,
-                        size: 30,
+                        size: 25,
                         color: AppColor.red4,
                       )),
                 ),

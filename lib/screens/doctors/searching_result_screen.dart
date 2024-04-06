@@ -72,7 +72,8 @@ class _SearchingResultScreenState extends State<SearchingResultScreen> {
             ),
             Spacer(),
             Container(
-              margin: EdgeInsets.only(top: 3),
+
+              margin: EdgeInsets.only(top: 3,right: 10,left: 25),
               child: IconButton(
                   onPressed: (() => {}),
                   icon: Icon(
@@ -81,16 +82,7 @@ class _SearchingResultScreenState extends State<SearchingResultScreen> {
                     color: AppColor.red4,
                   )),
             ),
-            IconButton(
-                onPressed: (() => {openScreen(context, MyProfile())}),
-                icon: Icon(
-                  CupertinoIcons.person_alt_circle,
-                  size: 27,
-                  color: AppColor.red4,
-                )),
-            SizedBox(
-              width: 5,
-            ),
+
           ]),
     ),
     automaticallyImplyLeading: false,

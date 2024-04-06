@@ -133,14 +133,60 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                       ),
                       gridHomeContainer(),
-                      SizedBox(
-                        height: 10,
+                      Card(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        elevation: 2.5,
+                        child: InkWell(
+                          onTap: () {
+                            openScreen(context, ChooseDoctorScreen());
+                          },
+                          child: Container(
+                            height: 140,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              image: const DecorationImage(
+                                  image: AssetImage(AppImages.Grid2),
+                                  fit: BoxFit.cover),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  height: 20,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    // blur background
+                                    color: Colors.white.withOpacity(0.6),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      "Fizio terapiya",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
+                      SizedBox(height: 10,),
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 25),
+                        margin: const EdgeInsets.symmetric(horizontal: 15),
                         height: 100,
                         width: double.infinity,
                         decoration: BoxDecoration(
+
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -175,9 +221,7 @@ class _HomeScreenState extends State<HomeScreen>
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
+                      SizedBox(height: 10,),
                     ],
                   ),
                 ],
@@ -244,20 +288,12 @@ class _HomeScreenState extends State<HomeScreen>
                       onPressed: (() => {}),
                       icon: Icon(
                         CupertinoIcons.bell_fill,
-                        size: 23,
+                        size: 25,
                         color: AppColor.red4,
                       )),
                 ),
-                IconButton(
-                    onPressed: (() => {openScreen(context, MyProfile())}),
-                    icon: Icon(
-                      CupertinoIcons.person_alt_circle,
-                      size: 27,
-                      color: AppColor.red4,
-                    )),
-                SizedBox(
-                  width: 5,
-                ),
+                SizedBox(width: 20,),
+
               ]),
         ),
         automaticallyImplyLeading: false,
@@ -274,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen>
               crossAxisSpacing: 15,
               mainAxisSpacing: 15,
             ),
-            itemCount: 4,
+            itemCount: homeContents.length,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {

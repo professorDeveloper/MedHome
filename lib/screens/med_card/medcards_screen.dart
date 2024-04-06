@@ -168,20 +168,13 @@ class _MedCardsScreenState extends State<MedCardsScreen> {
                       onPressed: (() => {}),
                       icon: Icon(
                         CupertinoIcons.bell_fill,
-                        size: 23,
+                        size: 25,
                         color: AppColor.red4,
                       )),
                 ),
-                IconButton(
-                    onPressed: (() => {openScreen(contxt, MyProfile())}),
-                    icon: Icon(
-                      CupertinoIcons.person_alt_circle,
-                      size: 27,
-                      color: AppColor.red4,
-                    )),
-                SizedBox(
-                  width: 5,
-                ),
+                SizedBox(width: 20,),
+
+
               ]),
         ),
         automaticallyImplyLeading: false,

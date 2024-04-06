@@ -129,12 +129,10 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
           SizedBox(width: 5),
           IconButton(
             onPressed: () {
-              Scaffold.of(context).openDrawer();
-              Scaffold.of(context).openDrawer();
-              print('"asdasdasdasdasdasd');
+
             },
             icon: Icon(
-              Icons.menu,
+              Icons.arrow_back,
               size: 30,
               color: AppColor.textColor,
             ),
@@ -163,25 +161,16 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
           ),
           Spacer(),
           Container(
-            margin: EdgeInsets.only(top: 3),
+
+            margin: EdgeInsets.only(top: 3,right: 10,left: 25),
             child: IconButton(
-              onPressed: (() => {}),
-              icon: Icon(
-                CupertinoIcons.bell_fill,
-                size: 23,
-                color: AppColor.red4,
-              ),
-            ),
+                onPressed: (() => {}),
+                icon: Icon(
+                  CupertinoIcons.bell_fill,
+                  size: 23,
+                  color: AppColor.red4,
+                )),
           ),
-          IconButton(
-            onPressed: (() => openScreen(context, MyProfile())),
-            icon: Icon(
-              CupertinoIcons.person_alt_circle,
-              size: 27,
-              color: AppColor.red4,
-            ),
-          ),
-          SizedBox(width: 5),
         ],
       ),
       automaticallyImplyLeading: false,

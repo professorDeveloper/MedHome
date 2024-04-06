@@ -69,7 +69,6 @@ class ProfileInformation extends StatelessWidget {
       shape:RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(11))
       ) ,
-      borderOnForeground: true,
       elevation: 1,
       color: Colors.white,
 

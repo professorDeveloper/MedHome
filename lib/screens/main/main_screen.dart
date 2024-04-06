@@ -6,6 +6,7 @@ import 'package:medhome/screens/home/home_screen.dart';
 import 'package:medhome/screens/med_card/medcards_screen.dart';
 import 'package:medhome/screens/order/orders_screen.dart';
 import 'package:medhome/screens/products/products_screen.dart';
+import 'package:medhome/screens/profile/profile_screen.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_images.dart';
 class MainScreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     OrdersScreen(),
     MedCardsScreen(),
-    ProductsScreen(),
+    MyProfile(),
   ];
 
   @override
@@ -99,9 +100,9 @@ class _MainScreenState extends State<MainScreen> {
                   icon: Container(
                     margin: EdgeInsets.all(0),
                     padding: EdgeInsets.all(0),
-                    child: Icon(Icons.medical_services),
+                    child: Icon(CupertinoIcons.person_alt_circle),
                   ),
-                  label: "Mahsulotlar",
+                  label: "Profil",
                 ),
               ],
             ),

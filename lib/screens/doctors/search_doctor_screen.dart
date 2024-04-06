@@ -7,7 +7,6 @@ import 'package:medhome/screens/doctors/search_medical_screen.dart';
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
-import '../profile/profile_screen.dart';
 
 class SearchDoctorScreen extends StatefulWidget {
   const SearchDoctorScreen({super.key});
@@ -521,12 +520,10 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                 ),
                 IconButton(
                     onPressed: () {
-                      Scaffold.of(contxt).openDrawer();
-                      Scaffold.of(context).openDrawer();
-                      print('"asdasdasdasdasdasd');
+                      closeScreen(contxt);
                     },
                     icon: Icon(
-                      Icons.menu,
+                      Icons.arrow_back_ios,
                       size: 30,
                       color: AppColor.textColor,
                     )),
@@ -554,7 +551,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                 ),
                 Spacer(),
                 Container(
-                  margin: EdgeInsets.only(top: 3),
+                  margin: EdgeInsets.only(top: 3, right: 10, left: 25),
                   child: IconButton(
                       onPressed: (() => {}),
                       icon: Icon(
@@ -562,16 +559,6 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                         size: 23,
                         color: AppColor.red4,
                       )),
-                ),
-                IconButton(
-                    onPressed: (() => {openScreen(context, MyProfile())}),
-                    icon: Icon(
-                      CupertinoIcons.person_alt_circle,
-                      size: 27,
-                      color: AppColor.red4,
-                    )),
-                SizedBox(
-                  width: 5,
                 ),
               ]),
         ),

@@ -80,7 +80,9 @@ Future<dynamic> chooseDateForConsulting(BuildContext context) {
                     width: double.infinity,
                     height: 200, // Adjust the height as needed
                     child: CupertinoTimerPicker(
+                      minuteInterval: 30,
                       mode: CupertinoTimerPickerMode.hm,
+
                       onTimerDurationChanged: (Duration newTime) {
                         setState(() {
                           _selectedTime=newTime;
@@ -94,7 +96,7 @@ Future<dynamic> chooseDateForConsulting(BuildContext context) {
                   "${_selectedTime.toString().substring(0,4)} Vaqt",style: GoogleFonts.rubik(
                     fontSize: 16,color: AppColor.textColor
                   ),),
-                  SizedBox(height: 10),
+                  SizedBox(height: 5),
                   Container(
                     height: 50,
                     margin: const EdgeInsets.all(15),
