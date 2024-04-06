@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/screens/doctors/searching_result_screen.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
 import '../profile/profile_screen.dart';
+import 'doctor_information_screen.dart';
 
 class SearchMedicalScreen extends StatefulWidget {
   const SearchMedicalScreen({Key? key}) : super(key: key);
@@ -26,6 +28,48 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.gray1,
+
+      bottomNavigationBar:Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(18),topRight: Radius.circular(18))
+        ),
+        height: 115,
+        child:Column(
+          children: [
+            SizedBox(
+              height: 12,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Narxi:",style: GoogleFonts.rubik(fontSize: 16,color: AppColor.textColor,fontWeight: FontWeight.w400),),
+                Text("500 000 so’m",style: GoogleFonts.rubik(fontSize: 16,color: AppColor.textColor,fontWeight: FontWeight.w500),)
+              ],
+            ),
+            Container(
+              height: 55,
+              margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+              width: double.infinity,
+              child: MaterialButton(
+                elevation: 0,
+                focusElevation: 0,
+                onPressed: () {
+                  openReplaceScreen(context, DoctorInformationScreen());
+                },
+                color: AppColor.red1,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Text("Keyingisi"),
+              ),
+            ),
+
+          ],
+        ),
+      ) ,
       appBar: _appBar(contxt: context),
       body: SingleChildScrollView(
           physics: BouncingScrollPhysics(
@@ -38,26 +82,26 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 SizedBox(
                   height: 4,
                 ),
-                Row(
-                  children: [
-                    Spacer(),
-                    Text(
-                      "Qidiruv",
-                      style: GoogleFonts.rubik(
-                          fontSize: 18,
-                          color: AppColor.textColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    Spacer(),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     Spacer(),
+                //     Text(
+                //       "Qidiruv",
+                //       style: GoogleFonts.rubik(
+                //           fontSize: 18,
+                //           color: AppColor.textColor,
+                //           fontWeight: FontWeight.w500),
+                //     ),
+                //     Spacer(),
+                //   ],
+                // ),
                 Row(
                   children: [
                     Spacer(),
                     Text(
                       "Tibbiy hodim",
                       style: GoogleFonts.rubik(
-                          fontSize: 18,
+                          fontSize: 16,
                           color: AppColor.textColor,
                           fontWeight: FontWeight.w500),
                     ),
@@ -65,15 +109,15 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 16,
+                  height: 15,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 4),
+                  padding: EdgeInsets.only(left: 10),
                   child: Text(
                     "Tibbiy hodimini jinsini tanlang",
                     style: GoogleFonts.rubik(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: AppColor.idkTextGrayColor,
                         fontWeight: FontWeight.w400),
                   ),
@@ -82,17 +126,14 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 5,
+                      height: 3,
                     ),
                     _buildChoseGender(context: context),
-                    SizedBox(
-                      height: 8,
-                    ),
                     _checkBoxContForGender(),
                   ],
                 ),
                 SizedBox(
-                  height: 14,
+                  height: 15,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,21 +144,21 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                       child: Text(
                         "Tibbiy hodimini tilini tanlang",
                         style: GoogleFonts.rubik(
-                          fontSize: 16,
+                          fontSize: 14,
                           color: AppColor.idkTextGrayColor,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
-                    _buildChooseLanguage(context: context),
                     SizedBox(
-                      height: 8,
+                      height: 3,
                     ),
+                    _buildChooseLanguage(context: context),
                     _checkBoxContForLanguage(),
                   ],
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 15,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,21 +169,74 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                       child: Text(
                         "To’lov turini tanlang",
                         style: GoogleFonts.rubik(
-                          fontSize: 16,
+                          fontSize: 14,
                           color: AppColor.idkTextGrayColor,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 8,
+                      height: 3,
                     ),
                     _buildChoosePaymentType(context: context),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Manzilni ko’rsating",
+                        style: GoogleFonts.rubik(
+                          fontSize: 14,
+                          color: AppColor.idkTextGrayColor,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(11))),
+                      borderOnForeground: true,
+                      elevation: 1,
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          print('asdasd');
+                        },
+                        borderRadius: BorderRadius.all(Radius.circular(11)),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              SizedBox(width:
+                                12,),
+                              Text("Toshkent shahar\nChilonzor tumani, Muqumiy",
+                              style:GoogleFonts.rubik(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: AppColor.textColor
+                              ),),
+                              Spacer(),
+                              Icon(CupertinoIcons.location_solid,color: Colors.red,size: 30,),
+                              SizedBox(width: 20,)
+                            ],
+                          )
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
-                )
+                ),
               ],
             ),
-          )),//muhim
+          )), //muhim
     );
   }
 
@@ -183,6 +277,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
           ),
         ),
       );
+
   Container _checkBoxContForLanguage() => Container(
         child: InkWell(
           onTap: () {
@@ -197,6 +292,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Checkbox(
+
                   checkColor: Colors.white,
                   activeColor: AppColor.red4,
                   value: disableLanguage,
@@ -210,7 +306,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: Text(
                   "Muhim Emas",
                   style: GoogleFonts.rubik(
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                     color: AppColor.textGrayColor,
                   ),
@@ -238,18 +334,17 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 ),
                 IconButton(
                     onPressed: () {
-                      Scaffold.of(contxt).openDrawer();
-                      Scaffold.of(context).openDrawer();
+                      closeScreen(contxt);
                       print('"asdasdasdasdasdasd');
                     },
                     icon: Icon(
-                      Icons.menu,
+                      CupertinoIcons.back,
                       size: 30,
                       color: AppColor.textColor,
                     )),
                 Spacer(),
                 SizedBox(
-                  width: 20,
+                  width: 16,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -261,7 +356,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                           AppImages.app,
                         )),
                     Text(
-                      "Med Home".toString(),
+                      "Qidiruv".toString(),
                       style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -298,10 +393,10 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
   Widget _buildChoseGender({required BuildContext context}) {
     return Container(
       width: double.infinity,
-      height: 80,
+      height: 75,
       child: Card(
         color: Colors.white,
-        elevation: 2,
+        elevation: 0.7,
         shadowColor: AppColor.gray2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
@@ -315,7 +410,8 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: InkWell(
                   customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
-                  ),    onTap: () {
+                  ),
+                  onTap: () {
                     // Birinchi container bosilsa
                     setState(() {
                       selectedGender = 1;
@@ -368,7 +464,8 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: InkWell(
                   customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
-                  ),     onTap: () {
+                  ),
+                  onTap: () {
                     // Ikkinchi container bosilsa
                     setState(() {
                       selectedGender = 2;
@@ -425,10 +522,10 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
   Widget _buildChooseLanguage({required BuildContext context}) {
     return Container(
       width: double.infinity,
-      height: 78,
+      height: 75,
       child: Card(
         color: Colors.white,
-        elevation: 1.5,
+        elevation: 0.7,
         shadowColor: AppColor.gray2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
@@ -442,7 +539,8 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: InkWell(
                   customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
-                  ),        onTap: () {
+                  ),
+                  onTap: () {
                     // Birinchi container bosilsa
                     setState(() {
                       selectedLanguage = "uz";
@@ -467,7 +565,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                           Text(
                             'UZ',
                             style: GoogleFonts.rubik(
-                              fontSize: 26,
+                              fontSize: 20,
                               fontWeight: FontWeight.w600,
                               color: selectedLanguage == "uz"
                                   ? Colors.white
@@ -488,7 +586,8 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: InkWell(
                   customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
-                  ),       onTap: () {
+                  ),
+                  onTap: () {
                     // Ikkinchi container bosilsa
                     setState(() {
                       selectedLanguage = "ru";
@@ -513,7 +612,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                           Text(
                             'RU',
                             style: GoogleFonts.rubik(
-                              fontSize: 26,
+                              fontSize: 20,
                               fontWeight: FontWeight.w600,
                               color: selectedLanguage == "ru"
                                   ? Colors.white
@@ -533,13 +632,14 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
       ),
     );
   }
+
   Widget _buildChoosePaymentType({required BuildContext context}) {
     return Container(
       width: double.infinity,
-      height: 78,
+      height: 75,
       child: Card(
         color: Colors.white,
-        elevation: 1.5,
+        elevation: 0.7,
         shadowColor: AppColor.gray2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
@@ -553,7 +653,8 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: InkWell(
                   customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
-                  ),     onTap: () {
+                  ),
+                  onTap: () {
                     // Birinchi container bosilsa
                     setState(() {
                       selectedPaymentType = true;
@@ -578,7 +679,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                           Text(
                             'Naqd',
                             style: GoogleFonts.rubik(
-                              fontSize: 26,
+                              fontSize: 20,
                               fontWeight: FontWeight.w600,
                               color: selectedPaymentType == true
                                   ? Colors.white
@@ -599,7 +700,8 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 child: InkWell(
                   customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
-                  ),      onTap: () {
+                  ),
+                  onTap: () {
                     // Ikkinchi container bosilsa
                     setState(() {
                       selectedPaymentType = false;
@@ -609,7 +711,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                     width: 150,
                     height: 65,
                     decoration: BoxDecoration(
-                      color: selectedPaymentType==false
+                      color: selectedPaymentType == false
                           ? AppColor.red4
                           : AppColor.containerGrayColor,
                       borderRadius: BorderRadius.only(
@@ -624,7 +726,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                           Text(
                             'Karta',
                             style: GoogleFonts.rubik(
-                              fontSize: 26,
+                              fontSize: 20,
                               fontWeight: FontWeight.w600,
                               color: selectedPaymentType == false
                                   ? Colors.white

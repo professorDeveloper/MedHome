@@ -17,6 +17,7 @@ class AppImages {
   static const icContact = "assets/images/ic_contact.svg";
   static const icSetting = "assets/images/setting.svg";
   static const icUser = "assets/images/ic_user.svg";
+  static const doctorImg = "assets/images/doctor_img.png";
   static const icMale = "assets/images/man.svg";
   static const icFemale = "assets/images/woman.svg";
   static const icNavigation = "assets/images/ic_navigation.svg";

@@ -65,54 +65,53 @@ class ProfileInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 1,
-            offset: const Offset(0, 1),
-          ),
-        ],
+    return Card(
+      shape:RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(11))
+      ) ,
+      borderOnForeground: true,
+      elevation: 1,
+      color: Colors.white,
+
+      child: Container(
+        height: 100,
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22),
-        child: Row(
-          children: [
-            Container(
-              height: 60,
-              width: 60,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: image,
-                  fit: BoxFit.cover,
+        margin: EdgeInsets.all(8),
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22),
+          child: Row(
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: image,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    mainText,
-                    style: GoogleFonts.zenMaruGothic(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 20,
-                      color: AppColor.black,
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      mainText,
+                      style: GoogleFonts.zenMaruGothic(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 20,
+                        color: AppColor.black,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
