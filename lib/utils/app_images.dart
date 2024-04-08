@@ -22,6 +22,7 @@ class AppImages {
   static const icMale = "assets/images/man.svg";
   static const icFemale = "assets/images/woman.svg";
   static const icNavigation = "assets/images/ic_navigation.svg";
+  static const icLocation = "assets/images/ic_location.svg";
 
   // home Grid
   static const Grid1 = "assets/images/1_grid.png";
@@ -34,6 +35,10 @@ class AppImages {
 
   static const anketa1 = "assets/images/anketa.png";
   static const tube1 = "assets/images/tube.png";
+
+  //KBOT09
+  static const male = "assets/images/male.png";
+  static const female = "assets/images/female.png";
 
 // Comming soon ...
 // static const icHome = "assets/images/ic_home.svg";

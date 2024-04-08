@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
-import '../profile/profile_screen.dart';
 import 'doctor_information_screen.dart';
 
 class SearchMedicalScreen extends StatefulWidget {
@@ -382,8 +381,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 ),
                 Spacer(),
                 Container(
-
-                  margin: EdgeInsets.only(top: 3,right: 10,left: 25),
+                  margin: EdgeInsets.only(top: 3, right: 10, left: 25),
                   child: IconButton(
                       onPressed: (() => {}),
                       icon: Icon(
@@ -392,7 +390,6 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                         color: AppColor.red4,
                       )),
                 ),
-
               ]),
         ),
         automaticallyImplyLeading: false,

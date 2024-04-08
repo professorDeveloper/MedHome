@@ -2,11 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
 import '../../widgets/search_field.dart';
-import '../profile/profile_screen.dart';
 import 'choose_date_for_consulting_screen.dart';
 
 class ChooseDoctorScreen extends StatefulWidget {
@@ -16,7 +14,8 @@ class ChooseDoctorScreen extends StatefulWidget {
   State<ChooseDoctorScreen> createState() => _ChooseDoctorScreenState();
 }
 
-class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTickerProviderStateMixin {
+class _ChooseDoctorScreenState extends State<ChooseDoctorScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -66,7 +65,9 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
               );
             },
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: 11,
@@ -74,15 +75,16 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 7.0),
                   child: Card(
-                    shape:RoundedRectangleBorder(
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(11)),
                     ),
                     borderOnForeground: true,
                     elevation: 1,
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                     color: Colors.white,
                     child: InkWell(
-                      onTap: (){
+                      onTap: () {
                         chooseDateForConsulting(context);
                       },
                       borderRadius: BorderRadius.all(Radius.circular(11)),
@@ -92,7 +94,9 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(width: 20,),
+                            SizedBox(
+                              width: 20,
+                            ),
                             Text(
                               "Oilaviy Shifokor (Terapevt)",
                               style: GoogleFonts.rubik(
@@ -101,7 +105,9 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            SizedBox(width: 20,),
+                            SizedBox(
+                              width: 20,
+                            ),
                           ],
                         ),
                       ),
@@ -128,9 +134,7 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
         children: [
           SizedBox(width: 5),
           IconButton(
-            onPressed: () {
-
-            },
+            onPressed: () {},
             icon: Icon(
               Icons.arrow_back,
               size: 30,
@@ -161,8 +165,7 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
           ),
           Spacer(),
           Container(
-
-            margin: EdgeInsets.only(top: 3,right: 10,left: 25),
+            margin: EdgeInsets.only(top: 3, right: 10, left: 25),
             child: IconButton(
                 onPressed: (() => {}),
                 icon: Icon(

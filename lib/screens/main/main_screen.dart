@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/screens/home/home_screen.dart';
 import 'package:medhome/screens/med_card/medcards_screen.dart';
 import 'package:medhome/screens/order/orders_screen.dart';
-import 'package:medhome/screens/products/products_screen.dart';
 import 'package:medhome/screens/profile/profile_screen.dart';
 import 'package:medhome/utils/app_color.dart';
-import 'package:medhome/utils/app_images.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -32,7 +30,6 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: AppColor.gray1,
       body: _screens[_currentIndex],
-
       bottomNavigationBar: Expanded(
         child: SizedBox(
           height: 65,
@@ -41,11 +38,9 @@ class _MainScreenState extends State<MainScreen> {
               backgroundColor: Colors.white,
               selectedIconTheme: IconThemeData(
                 color: AppColor.red4,
-        
               ),
-              unselectedIconTheme: IconThemeData(
-                color: AppColor.unselctedColor
-              ),
+              unselectedIconTheme:
+                  IconThemeData(color: AppColor.unselctedColor),
               showUnselectedLabels: true, // Hide unselected labels
               unselectedLabelStyle: GoogleFonts.rubik(
                 color: AppColor.stextc,
@@ -67,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
                 setState(() {
                   _currentIndex = index;
                 });
-        
+
                 // Use Navigator to navigate to the selected screen
               },
               type: BottomNavigationBarType.fixed, // Distribute space equally

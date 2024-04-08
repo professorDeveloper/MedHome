@@ -41,12 +41,11 @@ class AuthApiImpl implements AuthApi {
   }
 
   @override
-  Future<Result> register({required RegisterRequest registerRequest}) async{
+  Future<Result> register({required RegisterRequest registerRequest}) async {
     try {
       final response = await http.post(
           Uri.parse("${ConstantsAPI.baseUrl}/accounts/register/"),
-          body: registerRequest.toJson()
-      );
+          body: registerRequest.toJson());
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonMap = json.decode(response.body);
@@ -56,18 +55,17 @@ class AuthApiImpl implements AuthApi {
         var errorData = json.decode(response.body);
         return Error(errorData);
       }
-    }catch(e){
-      throw Exception(e);}
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   @override
   Future<Result> verify({required VerifyRequest request}) async {
     try {
       print(request.toJson());
-      String bodyData= jsonEncode({
-        "code":request.code,
-        "phone":request.phone
-      });
+      String bodyData =
+          jsonEncode({"code": request.code, "phone": request.phone});
       final response = await http.post(
           Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-code/"),
           headers: {"Content-Type": "application/json"},
@@ -79,10 +77,9 @@ class AuthApiImpl implements AuthApi {
         var verifyResponse = SendSmsCodeResponse.fromJson(jsonMap);
         return Success(verifyResponse);
       } else {
-        var errorResponse =  ErrorResponse.fromJson(json.decode(response.body));
-        print("Fail ::::"+response.body);
+        var errorResponse = ErrorResponse.fromJson(json.decode(response.body));
+        print("Fail ::::" + response.body);
         return Error(errorResponse.detail.toString());
-
       }
     } catch (e) {
       throw Exception(e);
@@ -108,7 +105,7 @@ class AuthApiImpl implements AuthApi {
         return Success(sendSmsResponse);
       } else {
         // If the response is not successful, handle the error
-        var errorResponse =  ErrorResponse.fromJson(json.decode(response1.body));
+        var errorResponse = ErrorResponse.fromJson(json.decode(response1.body));
 
         return Error(errorResponse.detail.toString());
       }
@@ -119,10 +116,12 @@ class AuthApiImpl implements AuthApi {
   }
 
   @override
-  Future<Result> sendSmsCodeForForgetPassword({required SendSmsCodeRequest sendSmsCodeRequest}) async {
+  Future<Result> sendSmsCodeForForgetPassword(
+      {required SendSmsCodeRequest sendSmsCodeRequest}) async {
     try {
       final response1 = await http.post(
-          Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-phone-forgot-pass/"),
+          Uri.parse(
+              "${ConstantsAPI.baseUrl}/accounts/verify-phone-forgot-pass/"),
           body: sendSmsCodeRequest.toJson());
       print(response1.body);
 
@@ -134,7 +133,7 @@ class AuthApiImpl implements AuthApi {
         return Success(sendSmsResponse);
       } else {
         // If the response is not successful, handle the error
-        var errorResponse =  ErrorResponse.fromJson(json.decode(response1.body));
+        var errorResponse = ErrorResponse.fromJson(json.decode(response1.body));
 
         return Error(errorResponse.detail.toString());
       }
@@ -145,10 +144,12 @@ class AuthApiImpl implements AuthApi {
   }
 
   @override
-  Future<Result> recievePassword({required RecievePasswordRequest recievePasswordRequest}) async {
+  Future<Result> recievePassword(
+      {required RecievePasswordRequest recievePasswordRequest}) async {
     try {
       final response1 = await http.post(
-          Uri.parse("${ConstantsAPI.baseUrl}/accounts/verify-phone-forgot-pass/"),
+          Uri.parse(
+              "${ConstantsAPI.baseUrl}/accounts/verify-phone-forgot-pass/"),
           body: recievePasswordRequest.toJson());
       print(response1.body);
 
@@ -160,7 +161,7 @@ class AuthApiImpl implements AuthApi {
         return Success(sendSmsResponse);
       } else {
         // If the response is not successful, handle the error
-        var errorResponse =  ErrorResponse.fromJson(json.decode(response1.body));
+        var errorResponse = ErrorResponse.fromJson(json.decode(response1.body));
 
         return Error(errorResponse.detail.toString());
       }
@@ -168,6 +169,5 @@ class AuthApiImpl implements AuthApi {
       // Handle other types of exceptions, e.g., network errors
       throw Exception(e);
     }
-
   }
 }

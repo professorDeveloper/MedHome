@@ -4,9 +4,7 @@ import 'package:medhome/blocs/login/login_bloc.dart';
 import 'package:medhome/blocs/register/register_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/blocs/verify/verify_bloc.dart';
-import 'package:medhome/core/api/auth_api.dart';
 import 'package:medhome/core/api/auth_api_impl.dart';
-import 'package:medhome/utils/my_pref.dart';
 
 import '../../blocs/forget/recieve_password_bloc.dart';
 
@@ -21,6 +19,4 @@ Future<void> setupLocator() async {
   serviceLocator.registerLazySingleton(() => SendSmsCodeBloc());
   serviceLocator.registerLazySingleton(() => ForgetVerfyBloc());
   serviceLocator.registerLazySingleton(() => RecievePasswordBloc());
-
-
 }

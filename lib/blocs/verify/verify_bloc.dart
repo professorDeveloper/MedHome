@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medhome/core/models/request/verify/verify_request.dart';
@@ -10,7 +8,6 @@ import '../../core/models/response/auth/send_sms_code_response.dart';
 import '../../utils/response.dart';
 
 part 'verify_event.dart';
-
 part 'verify_state.dart';
 
 class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {

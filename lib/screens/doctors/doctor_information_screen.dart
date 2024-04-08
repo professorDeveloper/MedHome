@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/animations/custom_animation.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
-import '../profile/profile_screen.dart';
 
 class DoctorInformationScreen extends StatefulWidget {
   const DoctorInformationScreen({super.key});
@@ -35,12 +34,16 @@ class _DoctorInformationScreenState extends State<DoctorInformationScreen> {
                   SizedBox(
                     width: 30,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Image.asset(
-                      AppImages.doctorImg,
-                      height: 130,
-                      width: 130,
+                  CustomAnimationsSlide(
+                    direction: FadeSlideDirection.ltr,
+                    duration: 0.5,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Image.asset(
+                        AppImages.doctorImg,
+                        height: 130,
+                        width: 130,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -52,34 +55,43 @@ class _DoctorInformationScreenState extends State<DoctorInformationScreen> {
                       SizedBox(
                         height: 4,
                       ),
-                      Text(
-                        "Muslima A.",
-                        style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w700,
-                          color: AppColor.textColor,
-                          fontSize: 16,
+                      CustomAnimationsSlide(
+                        duration: 0.5,
+                        child: Text(
+                          "Muslima A.",
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w700,
+                            color: AppColor.textColor,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: 2,
                       ),
-                      Text(
-                        "Kardiolist",
-                        style: GoogleFonts.inter(
-                          fontSize: 14,
-                          color: AppColor.idkTextGrayColor,
-                          fontWeight: FontWeight.w700,
+                      CustomAnimationsSlide(
+                        duration: 0.6,
+                        child: Text(
+                          "Kardiolist",
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            color: AppColor.idkTextGrayColor,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: 2,
                       ),
-                      Text(
-                        "Tel: +998 (99) 998 88 88",
-                        style: GoogleFonts.inter(
-                          fontSize: 14,
-                          color: AppColor.idkTextGrayColor,
-                          fontWeight: FontWeight.w700,
+                      CustomAnimationsSlide(
+                        duration: 0.7,
+                        child: Text(
+                          "Tel: +998 (99) 998 88 88",
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            color: AppColor.idkTextGrayColor,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -113,80 +125,83 @@ class _DoctorInformationScreenState extends State<DoctorInformationScreen> {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 140,
-                    child: Card(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6.0),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Mijozlar :",
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: AppColor.idkTextGrayColor),
-                              ),
-                              Text(
-                                "4320+",
-                                style: GoogleFonts.inter(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColor.textColor),
-                              ),
-                            ],
+              CustomAnimationsSlide(
+                duration: 0.8,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 140,
+                      child: Card(
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6.0),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Mijozlar :",
+                                  style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: AppColor.idkTextGrayColor),
+                                ),
+                                Text(
+                                  "4320+",
+                                  style: GoogleFonts.inter(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColor.textColor),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)),
                       ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6)),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    width: 140,
-                    child: Card(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6.0),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Tajriba :",
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: AppColor.idkTextGrayColor),
-                              ),
-                              Text(
-                                "5 yil+",
-                                style: GoogleFonts.inter(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColor.textColor),
-                              ),
-                            ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 140,
+                      child: Card(
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6.0),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Tajriba :",
+                                  style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: AppColor.idkTextGrayColor),
+                                ),
+                                Text(
+                                  "5 yil+",
+                                  style: GoogleFonts.inter(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColor.textColor),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)),
                       ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6)),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(
                 height: 25,
@@ -197,32 +212,39 @@ class _DoctorInformationScreenState extends State<DoctorInformationScreen> {
                   SizedBox(
                     width: 20,
                   ),
-                  Text(
-                    "Malumotnoma :",
-                    style: GoogleFonts.inter(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
+                  CustomAnimationsSlide(
+                    duration: 0.9,
+                    child: Text(
+                      "Malumotnoma :",
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
-
                   SizedBox(
                     width: 20,
-                  ),              ],
+                  ),
+                ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Expanded(
-                    child: Text(
-                      "Lorem ipsum dolor sit amet consectetur. Leo amet non lectus ut. Ac enim volutpat risus aenean sit a. Aenean dolor turpis mauris vel pellentesque. Cursus viverra volutpat facilisis enim enim nibhLorem ipsum dolor sit amet consectetur. Leo amet non lectus ut. Ac enim volutpat risus aenean sit a. Aenean dolor turpis.",
-                      style: GoogleFonts.inter(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.idkTextGrayColor,
-                      ),
-                    )),
+                    child: CustomAnimationsSlide(
+                  duration: 1,
+                  child: Text(
+                    "Lorem ipsum dolor sit amet consectetur. Leo amet non lectus ut. Ac enim volutpat risus aenean sit a. Aenean dolor turpis mauris vel pellentesque. Cursus viverra volutpat facilisis enim enim nibhLorem ipsum dolor sit amet consectetur. Leo amet non lectus ut. Ac enim volutpat risus aenean sit a. Aenean dolor turpis.",
+                    style: GoogleFonts.inter(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: AppColor.idkTextGrayColor,
+                    ),
+                  ),
+                )),
               ),
-
             ],
           ),
         ));
