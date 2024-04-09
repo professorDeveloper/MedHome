@@ -103,134 +103,139 @@ class _OrdersScreenState extends State<OrdersScreen> {
                         color: AppColor.red4,
                       )),
                 ),
-                SizedBox(width: 20,),
-
-
+                SizedBox(
+                  width: 20,
+                ),
               ]),
         ),
         automaticallyImplyLeading: false,
       );
 
-  Card customOrderItem() {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(11))),
-      borderOnForeground: true,
-      shadowColor: AppColor.gray2,
-      elevation: 1.5,
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-      color: Colors.white,
-      child: Container(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10, top: 8),
-                child: Text(
-                  "Bemor",
-                  style: GoogleFonts.rubik(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: AppColor.textColor),
-                ),
+  Container customOrderItem() {
+    return Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(0.0, 1.0), //(x,y)
+              blurRadius: 1,
+            ),
+          ],
+
+          borderRadius: BorderRadius.circular(11),
+          color: Colors.white,
+        ),
+        margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10, top: 8),
+              child: Text(
+                "Bemor",
+                style: GoogleFonts.rubik(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: AppColor.textColor),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 70,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: AppColor.gray2),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 8,
-                      ),
-                      SvgPicture.asset(
-                        AppImages.icContact,
-                        height: 34,
-                        width: 32,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Ism Familiya Otchestvo",
-                        style: GoogleFonts.rubik(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: AppColor.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                height: 70,
+                decoration: BoxDecoration(
                     border: Border.all(color: AppColor.gray2),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      columnText("Hizmat Turi", "Kardiolog"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      columnText("Manzil", "Toshkent shahar Chilonzor tumani"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      columnText("Narx", "200 000 so’m"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      columnText("Shifokor", "Ism Familiya Otchestvo"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10, right: 10),
-                child: Container(
-                  height: 60,
-                  width: double.infinity,
-                  child: MaterialButton(
-                    elevation: 0,
-                    highlightElevation: 0,
-                    focusElevation: 0,
-                    onPressed: () async {},
-                    color: AppColor.red1,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 8,
                     ),
-                    child: const Text("Bekor Qilish"),
-                  ),
+                    SvgPicture.asset(
+                      AppImages.icContact,
+                      height: 34,
+                      width: 32,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Ism Familiya Otchestvo",
+                      style: GoogleFonts.rubik(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: AppColor.black),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: 15,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 8.0, right: 8.0),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColor.gray2),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    columnText("Hizmat Turi", "Kardiolog"),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    columnText("Manzil", "Toshkent shahar Chilonzor tumani"),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    columnText("Narx", "200 000 so’m"),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    columnText("Shifokor", "Ism Familiya Otchestvo"),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
               ),
-            ],
-          )),
-    );
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Container(
+                height: 60,
+                width: double.infinity,
+                child: MaterialButton(
+                  elevation: 0,
+                  highlightElevation: 0,
+                  focusElevation: 0,
+                  onPressed: () async {},
+                  color: AppColor.red1,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                  child: const Text("Bekor Qilish"),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+          ],
+        ));
   }
 
   Widget columnText(String topText, String mainText) {

@@ -92,12 +92,17 @@ class _MainScreenState extends State<MainScreen> {
                   label: "Med Karta",
                 ),
                 BottomNavigationBarItem(
+                  activeIcon: Container(
+                      margin: EdgeInsets.all(0),
+                      padding: EdgeInsets.all(0),
+                      child: Icon(Icons.person)),
                   icon: Container(
                     margin: EdgeInsets.all(0),
+
                     padding: EdgeInsets.all(0),
-                    child: Icon(CupertinoIcons.person_alt_circle),
+                    child: Icon(Icons.person),
                   ),
-                  label: "Profil",
+                  label: "Akkaunt",
                 ),
               ],
             ),

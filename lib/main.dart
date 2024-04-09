@@ -4,6 +4,7 @@ import 'package:medhome/blocs/forget/forget_verfy_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/blocs/verify/verify_bloc.dart';
 import 'package:medhome/core/di/get_it.dart';
+import 'package:medhome/screens/main/main_screen.dart';
 import 'package:medhome/screens/profile/profile_screen.dart';
 
 import 'blocs/forget/recieve_password_bloc.dart';
@@ -58,9 +59,10 @@ class MyApp extends StatelessWidget {
             //   GlobalWidgetsLocalizations.delegate
             // ],
             theme: ThemeData(
+              cardColor: Colors.white,
               primarySwatch: Colors.red,
             ),
-            home: const MyProfile(),
+            home: MainScreen(),
           );
         },
       ),

@@ -88,6 +88,7 @@ Future<dynamic> chooseDateForConsulting(BuildContext context) {
                           height: 200, // Adjust the height as needed
                           child: CupertinoTimerPicker(
                             minuteInterval: 30,
+                            initialTimerDuration: Duration(minutes: 0,hours: 1),
                             mode: CupertinoTimerPickerMode.hm,
                             onTimerDurationChanged: (Duration newTime) {
                               setState(() {
