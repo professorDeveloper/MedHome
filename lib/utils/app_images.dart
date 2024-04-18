@@ -34,6 +34,7 @@ class AppImages {
   static const tube = "assets/images/tube.svg";
 
   static const anketa1 = "assets/images/anketa.png";
+  static const doctor = "assets/images/doctor.png";
   static const tube1 = "assets/images/tube.png";
 
   //KBOT09
