@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/animations/custom_animation.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/screens/verify/VerifyBottomSheet.dart';
 import 'package:medhome/utils/app_color.dart';
@@ -78,33 +79,36 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: Stack(
+                  CustomAnimationsSlide(
+                    duration: 0.8,
+                    child: Container(
                       alignment: Alignment.center,
-                      children: [
-                        Container(
-                          child: Center(
-                            child: Image.asset(
-                              AppImages.appLogo,
-                              fit: BoxFit.fill,
-                              height: 270,
-                              width: 270,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Container(
+                            child: Center(
+                              child: Image.asset(
+                                AppImages.appLogo,
+                                fit: BoxFit.fill,
+                                height: 270,
+                                width: 270,
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: 35,
-                          // Adjust this value to control the distance from the bottom
-                          left: 0,
-                          right: 0,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text("Ro’yxatdan o’tish",
-                                style: AppStyle.styleMainSp29W600Rub),
+                          Positioned(
+                            bottom: 35,
+                            // Adjust this value to control the distance from the bottom
+                            left: 0,
+                            right: 0,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text("Ro’yxatdan o’tish",
+                                  style: AppStyle.styleMainSp29W600Rub),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   RedTextField(
@@ -156,46 +160,51 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    height: 60,
-                    margin: const EdgeInsets.all(15),
-                    width: double.infinity,
-                    child: MaterialButton(
-                      elevation: 0,
-                      highlightElevation: 0,
-                      focusElevation: 0,
-                      onPressed: () async {
-                        if (phoneNumberController.text.isEmpty) {
-                          errorText = "Telfon raqamni kiriting";
-                          setState(() {
-                            phoneEmpty = true;
-                          });
-                          await Future.delayed(Duration(seconds: 2));
-                          setState(() {
-                            phoneEmpty = false;
-                          });
-                        } else if (!isSavable) {
-                          setState(() {
-                            showErrorFlushBar(
-                                    "Foydalanish Shartlari Tasdiqlanmadi ")
-                                .show(context);
-                          });
-                        } else {
-                          bloc.add(SendSmsCodeButtonPressed(
-                              phone: convertPhoneNumber(
-                                  phoneNumberController.text)));
-                        }
-                      },
-                      color: AppColor.red1,
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                  CustomAnimationsSlide(
+                    direction: FadeSlideDirection.btt,
+                    duration: 0.8,
+
+                    child: Container(
+                      height: 60,
+                      margin: const EdgeInsets.all(15),
+                      width: double.infinity,
+                      child: MaterialButton(
+                        elevation: 0,
+                        highlightElevation: 0,
+                        focusElevation: 0,
+                        onPressed: () async {
+                          if (phoneNumberController.text.isEmpty) {
+                            errorText = "Telfon raqamni kiriting";
+                            setState(() {
+                              phoneEmpty = true;
+                            });
+                            await Future.delayed(Duration(seconds: 2));
+                            setState(() {
+                              phoneEmpty = false;
+                            });
+                          } else if (!isSavable) {
+                            setState(() {
+                              showErrorFlushBar(
+                                      "Foydalanish Shartlari Tasdiqlanmadi ")
+                                  .show(context);
+                            });
+                          } else {
+                            bloc.add(SendSmsCodeButtonPressed(
+                                phone: convertPhoneNumber(
+                                    phoneNumberController.text)));
+                          }
+                        },
+                        color: AppColor.red1,
+                        textColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: progress
+                            ? CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : Text("Ko’dni qabul qilish"),
                       ),
-                      child: progress
-                          ? CircularProgressIndicator(
-                              color: Colors.white,
-                            )
-                          : Text("Ko’dni qabul qilish"),
                     ),
                   ),
                 ],

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/animations/custom_animation.dart';
+import 'package:medhome/screens/doctors/find_doctor_info.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
@@ -26,57 +28,60 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.gray1,
-
-      bottomNavigationBar: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(18), topRight: Radius.circular(18))),
-        height: 115,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 12,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Narxi:",
-                  style: GoogleFonts.rubik(
-                      fontSize: 16,
-                      color: AppColor.textColor,
-                      fontWeight: FontWeight.w400),
-                ),
-                Text(
-                  "500 000 so’m",
-                  style: GoogleFonts.rubik(
-                      fontSize: 16,
-                      color: AppColor.textColor,
-                      fontWeight: FontWeight.w500),
-                )
-              ],
-            ),
-            Container(
-              height: 55,
-              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              width: double.infinity,
-              child: MaterialButton(
-                elevation: 0,
-                focusElevation: 0,
-                onPressed: () {
-                  openReplaceScreen(context, DoctorInformationScreen());
-                },
-                color: AppColor.red1,
-                textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Text("Keyingisi"),
+      bottomNavigationBar: CustomAnimationsSlide(
+        direction: FadeSlideDirection.btt,
+        duration: 0.7,
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(18), topRight: Radius.circular(18))),
+          height: 115,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 12,
               ),
-            ),
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Narxi:",
+                    style: GoogleFonts.rubik(
+                        fontSize: 16,
+                        color: AppColor.textColor,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  Text(
+                    "500 000 so’m",
+                    style: GoogleFonts.rubik(
+                        fontSize: 16,
+                        color: AppColor.textColor,
+                        fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
+              Container(
+                height: 55,
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                width: double.infinity,
+                child: MaterialButton(
+                  elevation: 0,
+                  focusElevation: 0,
+                  onPressed: () {
+                    openScreen(context, DoctorInformationScreen());
+                  },
+                  color: AppColor.red1,
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Text("Keyingisi"),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       appBar: _appBar(contxt: context),
@@ -91,164 +96,173 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                 SizedBox(
                   height: 4,
                 ),
-                // Row(
-                //   children: [
-                //     Spacer(),
-                //     Text(
-                //       "Qidiruv",
-                //       style: GoogleFonts.rubik(
-                //           fontSize: 18,
-                //           color: AppColor.textColor,
-                //           fontWeight: FontWeight.w500),
-                //     ),
-                //     Spacer(),
-                //   ],
-                // ),
-                Row(
-                  children: [
-                    Spacer(),
-                    Text(
-                      "Tibbiy hodim",
-                      style: GoogleFonts.rubik(
-                          fontSize: 16,
-                          color: AppColor.textColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    Spacer(),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    "Tibbiy hodimini jinsini tanlang",
-                    style: GoogleFonts.rubik(
-                        fontSize: 14,
-                        color: AppColor.idkTextGrayColor,
-                        fontWeight: FontWeight.w400),
+                CustomAnimationsSlide(
+                  direction: FadeSlideDirection.ltr,
+                  duration: 0.8,
+                  child: Row(
+                    children: [
+                      Spacer(),
+                      Text(
+                        "Tibbiy hodim",
+                        style: GoogleFonts.rubik(
+                            fontSize: 16,
+                            color: AppColor.textColor,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Spacer(),
+                    ],
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 3,
+                SizedBox(
+                  height: 15,
+                ),
+                CustomAnimationsSlide(
+                  direction: FadeSlideDirection.ltr,
+                  duration: 0.8,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "Tibbiy hodimini jinsini tanlang",
+                      style: GoogleFonts.rubik(
+                          fontSize: 14,
+                          color: AppColor.idkTextGrayColor,
+                          fontWeight: FontWeight.w400),
                     ),
-                    _buildChoseGender(context: context),
-                    _checkBoxContForGender(),
-                  ],
+                  ),
+                ),
+                CustomAnimationsSlide(
+                  duration: 0.8,
+                  direction: FadeSlideDirection.ltr,
+
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 3,
+                      ),
+                      _buildChoseGender(context: context),
+                      _checkBoxContForGender(),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        "Tibbiy hodimini tilini tanlang",
-                        style: GoogleFonts.rubik(
-                          fontSize: 14,
-                          color: AppColor.idkTextGrayColor,
-                          fontWeight: FontWeight.w400,
+                CustomAnimationsSlide(
+                  duration: 0.7,
+                  direction: FadeSlideDirection.ltr,
+
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          "Tibbiy hodimini tilini tanlang",
+                          style: GoogleFonts.rubik(
+                            fontSize: 14,
+                            color: AppColor.idkTextGrayColor,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    _buildChooseLanguage(context: context),
-                    _checkBoxContForLanguage(),
-                  ],
+                      SizedBox(
+                        height: 3,
+                      ),
+                      _buildChooseLanguage(context: context),
+                      _checkBoxContForLanguage(),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        "To’lov turini tanlang",
-                        style: GoogleFonts.rubik(
-                          fontSize: 14,
-                          color: AppColor.idkTextGrayColor,
-                          fontWeight: FontWeight.w400,
+                CustomAnimationsSlide(
+                  duration: 0.7,
+                  direction: FadeSlideDirection.ltr,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          "To’lov turini tanlang",
+                          style: GoogleFonts.rubik(
+                            fontSize: 14,
+                            color: AppColor.idkTextGrayColor,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    _buildChoosePaymentType(context: context),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        "Manzilni ko’rsating",
-                        style: GoogleFonts.rubik(
-                          fontSize: 14,
-                          color: AppColor.idkTextGrayColor,
-                          fontWeight: FontWeight.w400,
+                      SizedBox(
+                        height: 3,
+                      ),
+                      _buildChoosePaymentType(context: context),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          "Manzilni ko’rsating",
+                          style: GoogleFonts.rubik(
+                            fontSize: 14,
+                            color: AppColor.idkTextGrayColor,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(11))),
-                      borderOnForeground: true,
-                      elevation: 1,
-                      color: Colors.white,
-                      child: InkWell(
-                        onTap: () {
-                          print('asdasd');
-                        },
-                        borderRadius: BorderRadius.all(Radius.circular(11)),
-                        child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 12),
-                            width: double.infinity,
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: 12,
-                                ),
-                                Text(
-                                  "Toshkent shahar\nChilonzor tumani, Muqumiy",
-                                  style: GoogleFonts.rubik(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: AppColor.textColor),
-                                ),
-                                Spacer(),
-                                Icon(
-                                  CupertinoIcons.location_solid,
-                                  color: Colors.red,
-                                  size: 30,
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                )
-                              ],
-                            )),
+                      SizedBox(
+                        height: 3,
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    )
-                  ],
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(11))),
+                        borderOnForeground: true,
+                        elevation: 1,
+                        color: Colors.white,
+                        child: InkWell(
+                          onTap: () {
+                            print('asdasd');
+                          },
+                          borderRadius: BorderRadius.all(Radius.circular(11)),
+                          child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              width: double.infinity,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Text(
+                                    "Toshkent shahar\nChilonzor tumani, Muqumiy",
+                                    style: GoogleFonts.rubik(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: AppColor.textColor),
+                                  ),
+                                  Spacer(),
+                                  Icon(
+                                    CupertinoIcons.location_solid,
+                                    color: Colors.red,
+                                    size: 30,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  )
+                                ],
+                              )),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -358,9 +372,7 @@ class _SearchMedicalScreenState extends State<SearchMedicalScreen> {
                       color: AppColor.textColor,
                     )),
                 Spacer(),
-                SizedBox(
-                  width: 16,
-                ),
+
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

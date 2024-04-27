@@ -48,9 +48,7 @@ class _SearchingResultScreenState extends State<SearchingResultScreen> {
                       color: AppColor.textColor,
                     )),
                 Spacer(),
-                SizedBox(
-                  width: 16,
-                ),
+
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

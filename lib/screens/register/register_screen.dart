@@ -7,12 +7,14 @@ import 'package:medhome/blocs/register/register_bloc.dart';
 import 'package:medhome/extensions/functions.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/screens/home/home_screen.dart';
+import 'package:medhome/screens/register/bottom_sheet_region.dart';
 import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/widgets/flushbar.dart';
 
 import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_style.dart';
+import '../../widgets/drop_down.dart';
 import '../../widgets/widget_text_field.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -130,7 +132,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Container(
                   width: double.infinity,
                   margin: EdgeInsets.symmetric(horizontal: 20),
-                  height: 80, // Adjust the height as needed
                   child: Column(
                     children: [
                       Row(
@@ -161,6 +162,67 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ],
+                  )),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+
+                  child:RedTextField(
+                    onTap: () {
+                      showModalBottomSheet(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(25),
+                              topLeft: Radius.circular(25)),
+                        ),
+                        context: context,
+                        builder: (BuildContext context) {
+                          return WidgetBottomSheetRegion(
+                            callback: (brandModel) {
+
+                              Navigator.pop(context);
+                            },
+                          );
+                        },
+                      );
+                    },
+                    isEditable: true,
+                    topText: "Viloyatingiz",
+                    hintText: 'Tanlash',
+                    prefixIcon: Icons.location_on,
+                  )),
+
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+
+                  child:RedTextField(
+                    onTap: () {
+                      showModalBottomSheet(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(25),
+                              topLeft: Radius.circular(25)),
+                        ),
+                        context: context,
+                        builder: (BuildContext context) {
+                          return WidgetBottomSheetRegion(
+                            callback: (brandModel) {
+
+                              Navigator.pop(context);
+                            },
+                          );
+                        },
+                      );
+                    },
+                    isEditable: true,
+                    topText: "Tumaningiz",
+                    hintText: 'Tanlash',
+                    prefixIcon: Icons.location_on,
                   )),
               SizedBox(
                 height: 15,

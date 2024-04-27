@@ -528,9 +528,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                       color: AppColor.textColor,
                     )),
                 Spacer(),
-                SizedBox(
-                  width: 20,
-                ),
+
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

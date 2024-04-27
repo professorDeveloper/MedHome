@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/animations/custom_animation.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
@@ -44,7 +45,7 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.gray1,
-      appBar: _appBar(context),
+      appBar: _appBar(contxt: context),
       body: Column(
         children: [
           SizedBox(
@@ -73,36 +74,40 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 7.0),
-                  child: Card(
-                    shape:RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(11)),
-                    ),
-                    borderOnForeground: true,
-                    elevation: 1,
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                    color: Colors.white,
-                    child: InkWell(
-                      onTap: (){
-                        chooseDateForConsulting(context);
-                      },
-                      borderRadius: BorderRadius.all(Radius.circular(11)),
-                      child: Container(
-                        height: 60,
-                        width: double.infinity,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(width: 20,),
-                            Text(
-                              "Oilaviy Shifokor (Terapevt)",
-                              style: GoogleFonts.rubik(
-                                color: Colors.black,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w500,
+                  child: CustomAnimationsSlide(
+                    duration: 0.8,
+                    direction: FadeSlideDirection.btt,
+                    child: Card(
+                      shape:RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(11)),
+                      ),
+                      borderOnForeground: true,
+                      elevation: 1,
+                      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: (){
+                          chooseDateForConsulting(context);
+                        },
+                        borderRadius: BorderRadius.all(Radius.circular(11)),
+                        child: Container(
+                          height: 60,
+                          width: double.infinity,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(width: 20,),
+                              Text(
+                                "Oilaviy Shifokor (Terapevt)",
+                                style: GoogleFonts.rubik(
+                                  color: Colors.black,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 20,),
-                          ],
+                              SizedBox(width: 20,),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -116,75 +121,64 @@ class _ChooseDoctorScreenState extends State<ChooseDoctorScreen> with SingleTick
     );
   }
 
-  AppBar _appBar(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      scrolledUnderElevation: 1,
-      backgroundColor: Colors.grey.shade200,
-      titleSpacing: 0,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(width: 5),
-          IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-              Scaffold.of(context).openDrawer();
-              print('"asdasdasdasdasdasd');
-            },
-            icon: Icon(
-              Icons.menu,
-              size: 30,
-              color: AppColor.textColor,
+  AppBar _appBar({required BuildContext contxt}) => AppBar(
+    elevation: 0,
+    scrolledUnderElevation: 1,
+    toolbarHeight: 60,
+    backgroundColor: Colors.grey.shade200,
+    titleSpacing: 0,
+    title: Container(
+      width: double.infinity,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 5,
             ),
-          ),
-          Spacer(),
-          SizedBox(width: 20),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: 49,
-                height: 49,
-                child: Image.asset(
-                  AppImages.app,
+            IconButton(
+                onPressed: () {
+                  closeScreen(contxt);
+                  print('"asdasdasdasdasdasd');
+                },
+                icon: Icon(
+                  CupertinoIcons.back,
+                  size: 30,
+                  color: AppColor.textColor,
+                )),
+            Spacer(),
+
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    width: 49,
+                    height: 49,
+                    child: Image.asset(
+                      AppImages.app,
+                    )),
+                Text(
+                  "Qidiruv".toString(),
+                  style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
-              ),
-              Text(
-                "Med Home".toString(),
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ],
-          ),
-          Spacer(),
-          Container(
-            margin: EdgeInsets.only(top: 3),
-            child: IconButton(
-              onPressed: (() => {}),
-              icon: Icon(
-                CupertinoIcons.bell_fill,
-                size: 23,
-                color: AppColor.red4,
-              ),
+              ],
             ),
-          ),
-          IconButton(
-            onPressed: (() => openScreen(context, MyProfile())),
-            icon: Icon(
-              CupertinoIcons.person_alt_circle,
-              size: 27,
-              color: AppColor.red4,
+            Spacer(),
+            Container(
+              margin: EdgeInsets.only(top: 3, right: 10, left: 25),
+              child: IconButton(
+                  onPressed: (() => {}),
+                  icon: Icon(
+                    CupertinoIcons.bell_fill,
+                    size: 23,
+                    color: AppColor.red4,
+                  )),
             ),
-          ),
-          SizedBox(width: 5),
-        ],
-      ),
-      automaticallyImplyLeading: false,
-    );
-  }
+          ]),
+    ),
+    automaticallyImplyLeading: false,
+  );
 }

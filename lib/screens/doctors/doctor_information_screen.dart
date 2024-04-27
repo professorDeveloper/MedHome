@@ -276,9 +276,6 @@ class _DoctorInformationScreenState extends State<DoctorInformationScreen> {
                       color: AppColor.textColor,
                     )),
                 Spacer(),
-                SizedBox(
-                  width: 16,
-                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

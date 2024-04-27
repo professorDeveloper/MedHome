@@ -18,6 +18,19 @@ class _CreateMedCardScreenState extends State<CreateMedCardScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: _appBar(contxt: context),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Text("Oilam Uchun",style: GoogleFonts.rubik(
+                fontWeight: FontWeight.w500,
+                fontSize: 17,
+                color: Color(0xff5B5B5B)
+              ),),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -43,8 +56,8 @@ class _CreateMedCardScreenState extends State<CreateMedCardScreen> {
                       print('"asdasdasdasdasdasd');
                     },
                     icon: Icon(
-                      Icons.menu,
-                      size: 30,
+                      CupertinoIcons.back,
+                      size: 28,
                       color: AppColor.textColor,
                     )),
                 Spacer(),
@@ -54,14 +67,8 @@ class _CreateMedCardScreenState extends State<CreateMedCardScreen> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                        width: 49,
-                        height: 49,
-                        child: Image.asset(
-                          AppImages.app,
-                        )),
                     Text(
-                      "Med Home".toString(),
+                      "Tibbiy kartani yaratish".toString(),
                       style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

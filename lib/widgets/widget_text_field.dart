@@ -12,12 +12,14 @@ class RedTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
   final bool? isMaskphone;
+  final bool? isEditable;
   final String? topText;
   final IconData? prefixIcon;
   final TextInputType? inputType;
   final String? errorText;
   final bool? isFocused;
   final TextInputAction? inputAction;
+  final Function()? onTap;
 
   const RedTextField({
     Key? key,
@@ -25,11 +27,13 @@ class RedTextField extends StatelessWidget {
     this.hintText,
     this.topText,
     this.isMaskphone = false,
+    this.isEditable = false,
     this.prefixIcon,
     this.inputType,
     this.errorText,
     this.isFocused,
-    this.inputAction
+    this.inputAction,
+    this.onTap
   }) : super(key: key);
 
   @override
@@ -56,10 +60,12 @@ class RedTextField extends StatelessWidget {
           ),
           SizedBox(height: 5.5),
           TextField(
+            readOnly: isEditable!,
             inputFormatters: isMaskphone! ? [maskFormatter] : [],
             controller: controller,
             textInputAction: inputAction,
             keyboardType: inputType,
+            onTap: onTap,
 
             cursorColor: Colors.black,
             style: TextStyle(fontSize: 15.5),

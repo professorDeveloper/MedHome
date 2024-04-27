@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medhome/screens/profile/profile_info_screen.dart';
+import 'package:medhome/widgets/navigator/navigator.dart';
 
 import '../../animations/custom_animation.dart';
 import '../../utils/app_color.dart';
@@ -110,9 +112,14 @@ class _MyProfileState extends State<MyProfile> {
                 children: [
                   CustomAnimationsSlide(
                     duration: 0.8,
-                    child: ProfileInformation(
-                      mainText: "Shaxsiy ma’lumotlar",
-                      image: AssetImage("assets/images/avatar.png"),
+                    child: InkWell(
+                      onTap: (){
+                        openScreen(context, ProfileInformationScreen());
+                      },
+                      child: ProfileInformation(
+                        mainText: "Shaxsiy ma’lumotlar",
+                        image: AssetImage("assets/images/avatar.png"),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -252,9 +259,7 @@ class _MyProfileState extends State<MyProfile> {
                   color: AppColor.textColor,
                 )),
             Spacer(),
-            SizedBox(
-              width: 20,
-            ),
+
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -284,7 +289,7 @@ class _MyProfileState extends State<MyProfile> {
                     color: AppColor.red4,
                   )),
             ),
-            SizedBox(width: 20,),
+            SizedBox(width: 15,),
 
           ]),
     ),

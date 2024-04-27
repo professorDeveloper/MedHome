@@ -4,8 +4,10 @@ import 'package:medhome/blocs/forget/forget_verfy_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/blocs/verify/verify_bloc.dart';
 import 'package:medhome/core/di/get_it.dart';
+import 'package:medhome/screens/login/login_screen.dart';
 import 'package:medhome/screens/main/main_screen.dart';
 import 'package:medhome/screens/profile/profile_screen.dart';
+import 'package:medhome/screens/register/register_screen.dart';
 
 import 'blocs/forget/recieve_password_bloc.dart';
 import 'blocs/login/login_bloc.dart';
@@ -58,8 +60,17 @@ class MyApp extends StatelessWidget {
             //   GlobalCupertinoLocalizations.delegate,
             //   GlobalWidgetsLocalizations.delegate
             // ],
+            darkTheme: ThemeData(
+
+            ),
             theme: ThemeData(
+              cardTheme: CardTheme(
+                color: Colors.white,
+                surfaceTintColor: Colors.white,
+              ),
+
               cardColor: Colors.white,
+              useMaterial3: true,
               primarySwatch: Colors.red,
             ),
             home: MainScreen(),
