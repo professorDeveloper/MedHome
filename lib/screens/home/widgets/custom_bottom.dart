@@ -34,7 +34,8 @@ class CustomBottom extends StatelessWidget {
           ),
           CustomButton(
             text: 'Keyingisi',
-            onPressed: () {}, radius: null,
+            onPressed: () {},
+            radius: null,
           )
         ],
       ),

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/animations/custom_animation.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/resources/home/home_contents.dart';
+import 'package:medhome/screens/home/widgets/user_search_screen.dart';
 import 'package:medhome/utils/app_color.dart';
 import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/my_pref.dart';
@@ -67,16 +68,14 @@ class _HomeScreenState extends State<HomeScreen>
               child: Column(
                 children: [
                   CustomAnimationsSlide(
-                    duration: 0.8,
-                      child: advertisementContainer()),
+                      duration: 0.8, child: advertisementContainer()),
                   const SizedBox(
                     height: 5,
                   ),
-                   CustomAnimationsSlide(
-                     duration: 0.8,
-                     direction: FadeSlideDirection.btt,
-
-                     child: Row(
+                  CustomAnimationsSlide(
+                    duration: 0.8,
+                    direction: FadeSlideDirection.btt,
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -87,14 +86,13 @@ class _HomeScreenState extends State<HomeScreen>
                           ),
                         )
                       ],
-                                       ),
-                   ),
+                    ),
+                  ),
                   Column(
                     children: [
                       CustomAnimationsSlide(
                         duration: 0.8,
                         direction: FadeSlideDirection.btt,
-
                         child: Card(
                           margin: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
@@ -148,7 +146,6 @@ class _HomeScreenState extends State<HomeScreen>
                       CustomAnimationsSlide(
                         duration: 0.8,
                         direction: FadeSlideDirection.btt,
-
                         child: Card(
                           margin: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
@@ -197,18 +194,17 @@ class _HomeScreenState extends State<HomeScreen>
                           ),
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       CustomAnimationsSlide(
                         duration: 0.8,
                         direction: FadeSlideDirection.btt,
-
-
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 15),
                           height: 100,
                           width: double.infinity,
                           decoration: BoxDecoration(
-
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -244,7 +240,9 @@ class _HomeScreenState extends State<HomeScreen>
                           ),
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                     ],
                   ),
                 ],
@@ -257,70 +255,71 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   AppBar _appBar({required BuildContext contxt}) => AppBar(
-    elevation: 0,
-    scrolledUnderElevation: 1,
-    toolbarHeight: 60,
-    backgroundColor: Colors.grey.shade200,
-    titleSpacing: 0,
-    title: Container(
-      width: double.infinity,
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 5,
-            ),
-            IconButton(
-                onPressed: () {
-                  Scaffold.of(contxt).openDrawer();
-                  Scaffold.of(context).openDrawer();
-                  print('"asdasdasdasdasdasd');
-                },
-                icon: Icon(
-                  Icons.menu,
-                  size: 30,
-                  color: AppColor.textColor,
-                )),
-            Spacer(),
-            SizedBox(
-              width: 20,
-            ),
-            Row(
+        elevation: 0,
+        scrolledUnderElevation: 1,
+        toolbarHeight: 60,
+        backgroundColor: Colors.grey.shade200,
+        titleSpacing: 0,
+        title: Container(
+          width: double.infinity,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                    width: 49,
-                    height: 49,
-                    child: Image.asset(
-                      AppImages.app,
-                    )),
-                Text(
-                  "Med Home".toString(),
-                  style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                SizedBox(
+                  width: 5,
                 ),
-              ],
-            ),
-            Spacer(),
-            Container(
-              margin: EdgeInsets.only(top: 3),
-              child: IconButton(
-                  onPressed: (() => {}),
-                  icon: Icon(
-                    CupertinoIcons.bell_fill,
-                    size: 25,
-                    color: AppColor.red4,
-                  )),
-            ),
-            SizedBox(width: 20,),
-
-          ]),
-    ),
-    automaticallyImplyLeading: false,
-  );
+                IconButton(
+                    onPressed: () {
+                      Scaffold.of(contxt).openDrawer();
+                      Scaffold.of(context).openDrawer();
+                      print('"asdasdasdasdasdasd');
+                    },
+                    icon: Icon(
+                      Icons.menu,
+                      size: 30,
+                      color: AppColor.textColor,
+                    )),
+                Spacer(),
+                SizedBox(
+                  width: 20,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                        width: 49,
+                        height: 49,
+                        child: Image.asset(
+                          AppImages.app,
+                        )),
+                    Text(
+                      "Med Home".toString(),
+                      style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ],
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.only(top: 3),
+                  child: IconButton(
+                      onPressed: (() => {}),
+                      icon: Icon(
+                        CupertinoIcons.bell_fill,
+                        size: 25,
+                        color: AppColor.red4,
+                      )),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+              ]),
+        ),
+        automaticallyImplyLeading: false,
+      );
 
   Padding gridHomeContainer() {
     return Padding(
@@ -340,8 +339,6 @@ class _HomeScreenState extends State<HomeScreen>
               return CustomAnimationsSlide(
                 duration: 0.8,
                 direction: FadeSlideDirection.btt,
-
-
                 child: Card(
                   elevation: 2.5,
                   child: Container(
@@ -437,19 +434,27 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 ),
                 Expanded(
-                    child: Container(
-                      margin:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      height: 152,
-                      width: 130,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Center(
-                        child: Text("Image"),
-                      ),
-                    )),
+                    child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserSearchScreen()));
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    height: 152,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: const Center(
+                      child: Text("Image"),
+                    ),
+                  ),
+                )),
               ],
             )),
       ),
