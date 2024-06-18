@@ -26,14 +26,16 @@ class Assets {
   static const String imagesIcEye = 'assets/images/ic_eye.svg';
   static const String imagesIcLock = 'assets/images/ic_lock.svg';
   static const String imagesIcNavigation = 'assets/images/ic_navigation.svg';
-  static const String imagesIcNotification = 'assets/images/ic_notification.svg';
+  static const String imagesIcNotification =
+      'assets/images/ic_notification.svg';
   static const String imagesIcProfile = 'assets/images/ic_profile.svg';
   static const String imagesIcUser = 'assets/images/ic_user.svg';
   static const String imagesImg = 'assets/images/img.png';
   static const String imagesLike = 'assets/images/like.svg';
   static const String imagesMale = 'assets/images/male.png';
   static const String imagesMan = 'assets/images/man.svg';
-  static const String imagesNotificationIcon = 'assets/images/notification_icon.png';
+  static const String imagesNotificationIcon =
+      'assets/images/notification_icon.png';
   static const String imagesOnboardFour = 'assets/images/onboard_four.png';
   static const String imagesOnboardOne = 'assets/images/onboard_one.png';
   static const String imagesOnboardThird = 'assets/images/onboard_third.png';
@@ -43,7 +45,8 @@ class Assets {
   static const String imagesSetting = 'assets/images/setting.svg';
   static const String imagesStar = 'assets/images/star.png';
   static const String imagesTube = 'assets/images/tube.png';
-  static const String imagesTwemojiHospital = 'assets/images/twemoji_hospital.svg';
+  static const String imagesTwemojiHospital =
+      'assets/images/twemoji_hospital.svg';
   static const String imagesWoman = 'assets/images/woman.svg';
-
+  static const String imagesCalendar = 'assets/images/calendar.svg';
 }
