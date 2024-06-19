@@ -23,6 +23,7 @@ class AppImages {
   static const icFemale = "assets/images/woman.svg";
   static const icNavigation = "assets/images/ic_navigation.svg";
   static const icLocation = "assets/images/ic_location.svg";
+  static const circle = 'assets/images/circle_outlined.svg';
 
   // home Grid
   static const Grid1 = "assets/images/1_grid.png";

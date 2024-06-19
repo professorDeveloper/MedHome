@@ -28,13 +28,17 @@ class OrderHistory extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 24.0),
           child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.black,
-                size: 36,
-              )),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.black,
+              size: 36,
+            ),
+          ),
         ),
+        leadingWidth: 80,
       ),
       body: Padding(
         padding: const EdgeInsets.only(
