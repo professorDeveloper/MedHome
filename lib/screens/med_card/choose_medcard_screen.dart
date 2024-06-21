@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/animations/custom_animation.dart';
 import 'package:medhome/screens/med_card/widgets/family_medcards_list_screen.dart';
-import 'package:medhome/screens/med_card/widgets/familyListForChoose.dart';
+import 'package:medhome/screens/med_card/widgets/family_listfor_choose.dart';
 
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';

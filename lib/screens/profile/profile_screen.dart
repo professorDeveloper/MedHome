@@ -259,7 +259,6 @@ class _MyProfileState extends State<MyProfile> {
                   color: AppColor.textColor,
                 )),
             Spacer(),
-
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -289,8 +288,9 @@ class _MyProfileState extends State<MyProfile> {
                     color: AppColor.red4,
                   )),
             ),
-            SizedBox(width: 15,),
-
+            SizedBox(
+              width: 10,
+            ),
           ]),
     ),
     automaticallyImplyLeading: false,
