@@ -16,6 +16,7 @@ class AppImages {
   static const woman = "assets/images/woman.svg";
   static const icEye = "assets/images/ic_eye.svg";
   static const icContact = "assets/images/ic_contact.svg";
+  static const icCallander = "assets/images/ic_callendar.svg";
   static const icSetting = "assets/images/setting.svg";
   static const icUser = "assets/images/ic_user.svg";
   static const doctorImg = "assets/images/doctor_img.png";
@@ -24,7 +25,6 @@ class AppImages {
   static const icNavigation = "assets/images/ic_navigation.svg";
   static const icLocation = "assets/images/ic_location.svg";
   static const circle = 'assets/images/circle_outlined.svg';
-
   // home Grid
   static const Grid1 = "assets/images/1_grid.png";
   static const Grid2 = "assets/images/2_grid.png";

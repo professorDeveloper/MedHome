@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:medhome/generated/assets.dart';
+import 'package:medhome/utils/app_images.dart';
 
 class DateSelector extends StatefulWidget {
   const DateSelector({
@@ -63,7 +64,7 @@ class _DateSelectorState extends State<DateSelector> {
                   color: Colors.black),
             ),
             SvgPicture.asset(
-              Assets.imagesCalendar,
+              AppImages.icCallander,
               width: 28,
               fit: BoxFit.contain,
             ),

@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/utils/app_color.dart';
 
-import 'widgets/date_selector.dart';
+import '../analysis/date_selector.dart';
 
 class OrderHistory extends StatelessWidget {
   const OrderHistory({super.key});
@@ -28,17 +28,13 @@ class OrderHistory extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 24.0),
           child: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.black,
-              size: 36,
-            ),
-          ),
+              onPressed: () {},
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.black,
+                size: 36,
+              )),
         ),
-        leadingWidth: 80,
       ),
       body: Padding(
         padding: const EdgeInsets.only(
