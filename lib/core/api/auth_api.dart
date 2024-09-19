@@ -23,5 +23,5 @@ abstract class AuthApi {
 }
 
 class ConstantsAPI {
-  static const baseUrl = "https://test.jadidlar.uz/api";
+  static const baseUrl = " /api";
 }
