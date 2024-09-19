@@ -69,6 +69,10 @@ dependencies:
   another_flushbar: ^1.12.30
   json_reflectable: ^1.0.1
   chips_choice: ^3.0.1
+dependency_overrides:
+  archive: ^3.6.1
+  win32: ^5.5.3
+  package_info_plus: ^4.0.1
 
 dev_dependencies:
   flutter_test:
