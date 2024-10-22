@@ -8,6 +8,7 @@ import 'package:medhome/core/models/request/auth/register_request.dart';
 import 'package:medhome/core/models/request/auth/send_sms_code_request.dart';
 import 'package:medhome/core/models/response/auth/error_response.dart';
 import 'package:medhome/core/models/response/auth/login_response.dart';
+import 'package:medhome/core/models/response/auth/register_response.dart';
 import 'package:medhome/core/models/response/auth/send_sms_code_response.dart';
 
 import '../../utils/response.dart';
@@ -46,13 +47,24 @@ class AuthApiImpl implements AuthApi {
       final response = await http.post(
           Uri.parse("${ConstantsAPI.baseUrl}/accounts/register/"),
           body: registerRequest.toJson());
-
+      print(response.body.toString()+"response ;;;");
       if (response.statusCode == 200) {
-        Map<String, dynamic> jsonMap = json.decode(response.body);
-        var registerResponse = SendSmsCodeResponse.fromJson(jsonMap);
-        return Success(registerResponse);
+        if(response.body.contains("access_token")){
+          Map<String, dynamic> jsonMap = json.decode(response.body);
+          var registerResponse = RegisterResponse.fromJson(jsonMap);
+          print(registerResponse.accessToken);
+          return Success(registerResponse);
+        }
+        else{
+          Map<String, dynamic> jsonMap = json.decode(response.body);
+
+          return Error(ErrorResponse.fromJson(jsonMap) as String);
+
+        }
+
       } else {
         var errorData = json.decode(response.body);
+        print("ErrorData"+errorData);
         return Error(errorData);
       }
     } catch (e) {

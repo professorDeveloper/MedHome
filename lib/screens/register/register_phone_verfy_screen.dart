@@ -70,7 +70,7 @@ class _RegisterPhoneVerfyScreenState extends State<RegisterPhoneVerfyScreen> {
             if (state is SendSmsCodeFailure) {
               progress = false;
               setState(() {
-                showErrorFlushBar(state.error).show(context);
+                showErrorFlushBar("Kod Xato").show(context);
               });
               print(state.error);
             }

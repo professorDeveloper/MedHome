@@ -7,7 +7,7 @@ class RegisterResponse {
   @JsonKey(name: 'refresh_token')
   final String? refreshToken;
   @JsonKey(name: 'token_type')
-  final String? tokenType;
+  final String? tokenType ;
   final User? user;
 
   const RegisterResponse({
@@ -45,7 +45,7 @@ RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
   return RegisterResponse(
     accessToken: json['access_token'] as String?,
     refreshToken: json['refresh_token'] as String?,
-    tokenType: json['token_type'] as String?,
+    tokenType: json['token_type'] as String ?? "Bearer",
     user: json['user'] != null ? User.fromJson(json['user']) : null,
   );
 }

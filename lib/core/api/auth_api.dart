@@ -23,5 +23,5 @@ abstract class AuthApi {
 }
 
 class ConstantsAPI {
-  static const baseUrl = " /api";
+  static const baseUrl = "http://77.232.129.230:8000/api";
 }

@@ -31,11 +31,10 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: AppColor.gray1,
       body: _screens[_currentIndex],
       bottomNavigationBar: Expanded(
-        child: SizedBox(
-          height: 65,
+        child: Container(
+          color: Colors.white,
           child: BottomNavigationBarTheme(
             data: BottomNavigationBarThemeData(
-              backgroundColor: Colors.white,
               selectedIconTheme: IconThemeData(
                 color: AppColor.red4,
               ),

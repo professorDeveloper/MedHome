@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -67,6 +68,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: _buildButton(context: context),
       appBar: _appBar(contxt: context),
       backgroundColor: AppColor.gray1,
       body: SingleChildScrollView(
@@ -201,7 +203,6 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                 margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 0),
                 child: _buildChooseAge(context: context)),
             SizedBox(height: 6),
-            _buildButton(context: context),
           ],
         ),
       ),
@@ -209,26 +210,28 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
   }
 
   Widget _buildButton({required BuildContext context}) {
-    return AnimatedOpacity(
-      opacity: _isVisibleButton ? 1.0 : 0.0,
-      duration: Duration(seconds: 1),
-      child: Container(
-        height: 60,
-        margin: const EdgeInsets.all(15),
-        width: double.infinity,
-        child: MaterialButton(
-          elevation: 0,
-          highlightElevation: 0,
-          focusElevation: 0,
-          onPressed: () async {
-            openScreen(context, SearchMedicalScreen());
-          },
-          color: AppColor.red1,
-          textColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+    return SlideInUp(
+      child: AnimatedOpacity(
+        opacity: _isVisibleButton ? 1.0 : 0.0,
+        duration: Duration(seconds: 1),
+        child: Container(
+          height: 60,
+          margin: const EdgeInsets.all(15),
+          width: double.infinity,
+          child: MaterialButton(
+            elevation: 0,
+            highlightElevation: 0,
+            focusElevation: 0,
+            onPressed: () async {
+              openScreen(context, SearchMedicalScreen());
+            },
+            color: AppColor.red1,
+            textColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text("Keyingisi"),
           ),
-          child: Text("Keyingisi"),
         ),
       ),
     );
@@ -528,7 +531,6 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                       color: AppColor.textColor,
                     )),
                 Spacer(),
-
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,6 +60,50 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar:   Container(
+        height: 60,
+        margin: const EdgeInsets.all(15),
+        width: double.infinity,
+        child: MaterialButton(
+          elevation: 0,
+          highlightElevation: 0,
+          focusElevation: 0,
+          onPressed: () {
+            if (nameController.isValidName() &&
+                password1.isValidPassword() &&
+                password1.text == password2.text) {
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+              bloc.add(RegisterButtonPressed(
+                  fullName: nameController.text,
+                  gender: gender,
+                  phone: widget.phone.toString(),
+                  password: password1.text,
+                  password2: password2.text));
+            } else if (!nameController.isValidName()) {
+              showErrorFlushBar("Ism va Familyani kiriting")
+                  .show(context);
+            } else if (!password1.isValidPassword()) {
+              showErrorFlushBar(
+                  "Parol katta kichik Harf va 6 tadan ko`p bo`lishi kerak")
+                  .show(context);
+            } else if (password1.text != password2.text) {
+              showErrorFlushBar("Parolni tasdiqlang").show(context);
+            }
+          },
+          color: AppColor.red1,
+          textColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+          child: progress
+              ? CircularProgressIndicator(
+            color: Colors.white,
+          )
+              : Text(
+            "Ro’yxatdan o’tish",
+          ),
+        ),
+      ),
       resizeToAvoidBottomInset: false,
       body: BlocConsumer<RegisterBloc, RegisterState>(
         listener: (context, state) async {
@@ -115,13 +160,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
               ),
-              RedTextField(
-                topText: "To`liq ism :",
-                controller: nameController,
-                inputAction: TextInputAction.next,
-                hintText: "Ism Va Familya",
-                prefixIcon: CupertinoIcons.person,
-                inputType: TextInputType.name,
+              SlideInUp(
+                child: RedTextField(
+                  topText: "To`liq ism :",
+                  controller: nameController,
+                  inputAction: TextInputAction.next,
+                  hintText: "Ism Va Familya",
+                  prefixIcon: CupertinoIcons.person,
+                  inputType: TextInputType.name,
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -129,132 +176,189 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.symmetric(horizontal: 20),
+              SlideInUp(
+                child: Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Text(
+                              "Jins :",
+                              style: GoogleFonts.rubik(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.textColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              buildCard(0, "Erkak", AppImages.icMale),
+                              // Add more cards as needed
+                              buildCard(1, "Ayol", AppImages.icFemale),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )),
+              ),
+
+              // SizedBox(
+              //   height: 15,
+              // ),
+              // Container(
+              //
+              //     child:RedTextField(
+              //       onTap: () {
+              //         showModalBottomSheet(
+              //           backgroundColor: Colors.white,
+              //           shape: RoundedRectangleBorder(
+              //             borderRadius: BorderRadius.only(
+              //                 topRight: Radius.circular(25),
+              //                 topLeft: Radius.circular(25)),
+              //           ),
+              //           context: context,
+              //           builder: (BuildContext context) {
+              //             return WidgetBottomSheetRegion(
+              //               callback: (brandModel) {
+              //
+              //                 Navigator.pop(context);
+              //               },
+              //             );
+              //           },
+              //         );
+              //       },
+              //       isEditable: true,
+              //       topText: "Tumaningiz",
+              //       hintText: 'Tanlash',
+              //       prefixIcon: Icons.location_on,
+              //     )),
+              SizedBox(
+                height: 15,
+              ),
+              SlideInUp(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Text(
-                            "Jins :",
-                            style: GoogleFonts.rubik(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.textColor,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5.0, right: 3),
+                            child: Text(
+                              "Parolingiz :",
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.textColor,
+                              ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
-                      Container(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            buildCard(0, "Erkak", AppImages.icMale),
-                            // Add more cards as needed
-                            buildCard(1, "Ayol", AppImages.icFemale),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-
-                  child:RedTextField(
-                    onTap: () {
-                      showModalBottomSheet(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(25),
-                              topLeft: Radius.circular(25)),
-                        ),
-                        context: context,
-                        builder: (BuildContext context) {
-                          return WidgetBottomSheetRegion(
-                            callback: (brandModel) {
-
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      );
-                    },
-                    isEditable: true,
-                    topText: "Viloyatingiz",
-                    hintText: 'Tanlash',
-                    prefixIcon: Icons.location_on,
-                  )),
-
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-
-                  child:RedTextField(
-                    onTap: () {
-                      showModalBottomSheet(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(25),
-                              topLeft: Radius.circular(25)),
-                        ),
-                        context: context,
-                        builder: (BuildContext context) {
-                          return WidgetBottomSheetRegion(
-                            callback: (brandModel) {
-
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      );
-                    },
-                    isEditable: true,
-                    topText: "Tumaningiz",
-                    hintText: 'Tanlash',
-                    prefixIcon: Icons.location_on,
-                  )),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5.0, right: 3),
-                          child: Text(
-                            "Parolingiz :",
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
+                      SizedBox(height: 5.5),
+                      Builder(builder: (context) {
+                        return TextField(
+                          obscureText: isPasswordVisible,
+                          keyboardType: TextInputType.visiblePassword,
+                          cursorColor: Colors.black,
+                          enableInteractiveSelection: true,
+                          controller: password1,
+                          style: TextStyle(fontSize: 15.5),
+                          decoration: InputDecoration(
+                            prefixIcon: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 15),
+                              child:
+                                  Icon(CupertinoIcons.lock, color: AppColor.red3),
+                            ),
+                            suffixIcon: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 16),
+                              child: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isPasswordVisible = !isPasswordVisible;
+                                  });
+                                },
+                                icon: Icon(
+                                  isPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                              ),
+                            ),
+                            hintText: "****************",
+                            fillColor: AppColor.red5,
+                            filled: true,
+                            hintStyle: GoogleFonts.poppins(
+                              fontSize: 13.5,
                               color: AppColor.textColor,
+                              fontWeight: FontWeight.w300,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide: BorderSide(
+                                color: AppColor.red5,
+                                width: 2.0,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide: BorderSide(
+                                color: Color(0x62e7344a),
+                                width: 2.0,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 18.5),
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SlideInUp(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5.0, right: 3),
+                            child: Text(
+                              "Parolingizni tasdiqlang :",
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.textColor,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5.5),
-                    Builder(builder: (context) {
-                      return TextField(
-                        obscureText: isPasswordVisible,
+                        ],
+                      ),
+                      SizedBox(height: 5.5),
+                      TextField(
+                        obscureText: isPasswordVisible2,
                         keyboardType: TextInputType.visiblePassword,
                         cursorColor: Colors.black,
+                        controller: password2,
                         enableInteractiveSelection: true,
-                        controller: password1,
                         style: TextStyle(fontSize: 15.5),
                         decoration: InputDecoration(
                           prefixIcon: Container(
@@ -267,11 +371,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  isPasswordVisible = !isPasswordVisible;
+                                  isPasswordVisible2 = !isPasswordVisible2;
                                 });
                               },
                               icon: Icon(
-                                isPasswordVisible
+                                isPasswordVisible2
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               ),
@@ -302,142 +406,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           contentPadding: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 18.5),
                         ),
-                      );
-                    }),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5.0, right: 3),
-                          child: Text(
-                            "Parolingizni tasdiqlang :",
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.textColor,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5.5),
-                    TextField(
-                      obscureText: isPasswordVisible2,
-                      keyboardType: TextInputType.visiblePassword,
-                      cursorColor: Colors.black,
-                      controller: password2,
-                      enableInteractiveSelection: true,
-                      style: TextStyle(fontSize: 15.5),
-                      decoration: InputDecoration(
-                        prefixIcon: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          child:
-                              Icon(CupertinoIcons.lock, color: AppColor.red3),
-                        ),
-                        suffixIcon: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 16),
-                          child: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isPasswordVisible2 = !isPasswordVisible2;
-                              });
-                            },
-                            icon: Icon(
-                              isPasswordVisible2
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                          ),
-                        ),
-                        hintText: "****************",
-                        fillColor: AppColor.red5,
-                        filled: true,
-                        hintStyle: GoogleFonts.poppins(
-                          fontSize: 13.5,
-                          color: AppColor.textColor,
-                          fontWeight: FontWeight.w300,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: BorderSide(
-                            color: AppColor.red5,
-                            width: 2.0,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: BorderSide(
-                            color: Color(0x62e7344a),
-                            width: 2.0,
-                          ),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 18.5),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.all(15),
-                width: double.infinity,
-                child: MaterialButton(
-                  elevation: 0,
-                  highlightElevation: 0,
-                  focusElevation: 0,
-                  onPressed: () {
-                    if (nameController.isValidName() &&
-                        password1.isValidPassword() &&
-                        password1.text == password2.text) {
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-                      bloc.add(RegisterButtonPressed(
-                          fullName: nameController.text,
-                          gender: gender,
-                          phone: widget.phone,
-                          password: password1.text,
-                          password2: password2.text));
-                    } else if (!nameController.isValidName()) {
-                      showErrorFlushBar("Ism va Familyani kiriting")
-                          .show(context);
-                    } else if (!password1.isValidPassword()) {
-                      showErrorFlushBar(
-                              "Parol katta kichik Harf va 6 tadan ko`p bo`lishi kerak")
-                          .show(context);
-                    } else if (password1.text != password2.text) {
-                      showErrorFlushBar("Parolni tasdiqlang").show(context);
-                    }
-                  },
-                  color: AppColor.red1,
-                  textColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
+                    ],
                   ),
-                  child: progress
-                      ? CircularProgressIndicator(
-                          color: Colors.white,
-                        )
-                      : Text(
-                          "Ro’yxatdan o’tish",
-                        ),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
+
             ]),
           );
         },

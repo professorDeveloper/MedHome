@@ -26,7 +26,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
                 password: event.password,
                 password2: event.password2));
         if (response is Success) {
-          emit(RegisterSuccess(response: response.data));
+          emit(RegisterSuccess(response: response.data as RegisterResponse));
         } else if (response is Error) {
           emit(RegisterFailure(error: response.errorMessage.toString()));
         }

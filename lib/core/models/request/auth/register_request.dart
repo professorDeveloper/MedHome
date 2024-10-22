@@ -9,7 +9,7 @@ class RegisterRequest {
   final String? password;
   final String? password2;
 
-  const RegisterRequest({
+  const   RegisterRequest({
     this.fullName,
     this.gender,
     this.phone,
