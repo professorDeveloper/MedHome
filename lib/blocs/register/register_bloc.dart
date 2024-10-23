@@ -26,7 +26,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
                 password: event.password,
                 password2: event.password2));
         if (response is Success) {
-          emit(RegisterSuccess(response: response.data as RegisterResponse));
+          final registerRes=RegisterResponse.fromJson(response.data);
+          emit(RegisterSuccess(response: registerRes));
+          print(registerRes.user!.fullName.toString()+"asdasd");
         } else if (response is Error) {
           emit(RegisterFailure(error: response.errorMessage.toString()));
         }

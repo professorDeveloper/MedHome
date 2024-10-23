@@ -19,6 +19,8 @@ class Prefs {
   static Future<bool?> setAccessToken( String value) async => await _prefs?.setString("accessToken", value);
   static Future<bool?> setAgreePrivacyPolicy( bool value) async => await _prefs?.setBool("privacyPolicy", value);
   static Future<bool?> setRefreshToken( String value) async => await _prefs?.setString("refreshToken", value);
+  static Future<bool?> setUserPhone( String value) async => await _prefs?.setString("userPhone", value);
+  static Future<bool?> setUserPassword( String value) async => await _prefs?.setString("userPassword", value);
 
   static Future<bool?> setStringList(String key, List<String> value) async => await _prefs?.setStringList(key, value);
 
@@ -32,6 +34,8 @@ class Prefs {
   static String? getAccessToken() => _prefs?.getString("accessToken");
   static Future<bool?> getPrivacyPolicy() async =>await _prefs?.getBool("privacyPolicy");
   static String? getRefreshToken() => _prefs?.getString("refreshToken");
+  static String? getUserPhone() => _prefs?.getString("userPhone");
+  static String? getUserPassword() => _prefs?.getString("userPassword");
 
   static List<String>? getStringList(String key) => _prefs?.getStringList(key);
 

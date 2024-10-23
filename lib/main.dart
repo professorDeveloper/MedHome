@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medhome/blocs/forget/forget_verfy_bloc.dart';
+import 'package:medhome/blocs/home/profile/profile_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/blocs/verify/verify_bloc.dart';
 import 'package:medhome/core/di/get_it.dart';
+import 'package:medhome/regiser_screen.dart';
 import 'package:medhome/screens/login/login_screen.dart';
 import 'package:medhome/screens/main/main_screen.dart';
 import 'package:medhome/screens/onboarding/introduction_screen.dart';
@@ -32,9 +34,12 @@ class MyApp extends StatelessWidget {
       future:init(),
       builder: (context,snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          String? token = snapshot.data as String?;
+          String? token = snapshot.data as String? ;
           return MultiBlocProvider(
             providers: [
+              BlocProvider(
+                create: (context) => serviceLocator<ProfileBloc>(),
+              ),
               BlocProvider(
                 create: (context) => serviceLocator<LoginBloc>(),
               ),
@@ -81,7 +86,7 @@ class MyApp extends StatelessWidget {
                     useMaterial3: true,
                     primarySwatch: Colors.red,
                   ),
-                  home: token != null
+                  home: token != null && token.isNotEmpty
                       ? const MainScreen()
                       : const IntroductionScreen(),
                 );
@@ -97,5 +102,6 @@ class MyApp extends StatelessWidget {
 }
 Future<String?> init() async {
   await Prefs.init();
+
   return Prefs.getAccessToken();
 }

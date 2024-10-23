@@ -11,6 +11,7 @@ import 'package:medhome/core/models/response/auth/login_response.dart';
 import 'package:medhome/core/models/response/auth/register_response.dart';
 import 'package:medhome/core/models/response/auth/send_sms_code_response.dart';
 
+import '../../utils/my_pref.dart';
 import '../../utils/response.dart';
 import '../models/request/verify/verify_request.dart';
 
@@ -26,6 +27,9 @@ class AuthApiImpl implements AuthApi {
       if (response1.statusCode == 200) {
         Map<String, dynamic> jsonMap = json.decode(response1.body);
         var loginResponse = LoginResponse.fromJson(jsonMap);
+        init();
+        Prefs.setUserPassword(loginRequest.password!);
+        Prefs.setUserPhone(loginRequest.phone!);
 
         // Return a Success result with the login response data
         return Success(loginResponse);
@@ -40,6 +44,10 @@ class AuthApiImpl implements AuthApi {
       throw Exception(e);
     }
   }
+  Future init() async {
+    await Prefs.init();
+
+  }
 
   @override
   Future<Result> register({required RegisterRequest registerRequest}) async {
@@ -50,13 +58,20 @@ class AuthApiImpl implements AuthApi {
       print(response.body.toString()+"response ;;;");
       if (response.statusCode == 200) {
         if(response.body.contains("access_token")){
+          print("aaaassasda");
+          print(response.body);
           Map<String, dynamic> jsonMap = json.decode(response.body);
           var registerResponse = RegisterResponse.fromJson(jsonMap);
+          init();
+          Prefs.setUserPassword(registerRequest.password!!);
+          Prefs.setUserPhone(registerRequest.phone!);
           print(registerResponse.accessToken);
           return Success(registerResponse);
         }
         else{
           Map<String, dynamic> jsonMap = json.decode(response.body);
+          print("asdasdad"
+              ""+jsonMap.toString());
 
           return Error(ErrorResponse.fromJson(jsonMap) as String);
 

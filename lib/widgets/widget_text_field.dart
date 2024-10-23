@@ -70,6 +70,7 @@ class RedTextField extends StatelessWidget {
             cursorColor: Colors.black,
             style: TextStyle(fontSize: 15.5),
             decoration: InputDecoration(
+
               prefixIcon: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 child: Icon(prefixIcon!, color: AppColor.red3),
