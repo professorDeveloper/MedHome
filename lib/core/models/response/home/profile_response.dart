@@ -14,6 +14,11 @@ class ProfileResponse {
   @JsonKey(name: 'last_login')
   final String lastLogin;
 
+  @override
+  String toString() {
+    return 'ProfileResponse{id: $id, phone: $phone, fullName: $fullName, email: $email, jshshr: $jshshr, age: $age, gender: $gender, dateJoined: $dateJoined, lastLogin: $lastLogin}';
+  }
+
   const ProfileResponse({
     required this.id,
     required   this.phone,
@@ -29,12 +34,12 @@ class ProfileResponse {
       ProfileResponse(
         id: json['id']  ?? 0,
         phone: json['phone']  ?? "",
-        fullName: json['fullName']  ?? "",
+        fullName: json['full_name']  ?? "",
         email: json['email']  ?? "",
         jshshr: json['jshshr']  ?? "",
         gender: json['gender']  ?? "",
-        dateJoined: json['dateJoined']  ?? "",
-        lastLogin: json['lastLogin']  ?? "",
+        dateJoined: json['date_joined']  ?? "",
+        lastLogin: json['last_login']  ?? "",
         age: json['age']  ?? "",
       );
 

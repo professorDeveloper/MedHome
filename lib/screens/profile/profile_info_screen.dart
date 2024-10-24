@@ -1,11 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/animations/custom_animation.dart';
+import 'package:medhome/blocs/home/profile/profile_bloc.dart';
+import 'package:medhome/core/models/response/home/profile_response.dart';
 
+import '../../blocs/login/login_bloc.dart';
 import '../../navigator/navigator.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_images.dart';
+import '../../utils/my_pref.dart';
+import '../../widgets/flushbar.dart';
 
 class ProfileInformationScreen extends StatefulWidget {
   const ProfileInformationScreen({super.key});
@@ -15,57 +21,111 @@ class ProfileInformationScreen extends StatefulWidget {
 }
 
 class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
+  late ProfileBloc bloc;
+  var progress = false;
+  late ProfileResponse profileResponse;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    bloc = BlocProvider.of<ProfileBloc>(context);
+
+    bloc.add(GetProfileEvent());
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade200,
-      appBar: _appBar(contxt: context),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomAnimationsSlide(
-                  duration: 0.7,
-                  child: Card(
-                    shape: CircleBorder(),
-                    color: Colors.white,
-                    child:Container(
-                      height: 110,
-                      width: 110,
-                      child: Center(
-                        child: Icon(Icons.add,size: 40,),
+    return BlocConsumer<ProfileBloc, ProfileState>(
+  listener: (context, state) async{
+    if (state is ProfileSuccess) {
+      profileResponse=state.sucsess;
+    }
+    if (state is ProfileLoading) {
+      setState(() {});
+    }
+    if (state is ProfileFailure) {
+      setState(() {
+        showErrorFlushBar(
+          state.error,
+        ).show(context);
+      });
+      print(state.error);
+    }
+
+  },
+  builder: (context, state) {
+    if(state is ProfileLoading){
+      return Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+    if (state is ProfileSuccess){
+      profileResponse=state.sucsess;
+      print(profileResponse.fullName);
+      print(profileResponse.toString());
+      print(profileResponse.jshshr);
+          return Scaffold(
+        backgroundColor: Colors.grey.shade200,
+        appBar: _appBar(contxt: context),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CustomAnimationsSlide(
+                    duration: 0.7,
+                    child: Card(
+                      shape: CircleBorder(),
+                      color: Colors.white,
+                      child:Container(
+                        height: 110,
+                        width: 110,
+                        child: Center(
+                          child: Icon(Icons.add,size: 40,),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 15,),
-            itemProfileInfo("F. I. SH.","Ism Familiya"),
-            SizedBox(height: 8,),
-            itemProfileInfo("Elektron pochta","example@gmail.com"),
-            SizedBox(height: 8,),
+                ],
+              ),
+              SizedBox(height: 8,),
+              itemProfileInfo("F. I. SH.",profileResponse.fullName),
+              SizedBox(height: 8,),
+              itemProfileInfo("Elektron pochta",profileResponse.email.isNotEmpty ? profileResponse.email : "Email kiritilmagan"),
+              SizedBox(height: 8,),
 
-            itemProfileInfo("Telefon raqam","+998 (99) 998 88 88"),
-            SizedBox(height: 8,),
+              itemProfileInfo("Telefon raqam",profileResponse.phone),
+              SizedBox(height: 8,),
 
-            itemProfileInfo("Tug’ilgan sana","20.02.2002"),
-            SizedBox(height: 8,),
+              itemProfileInfo("Tug’ilgan sana", profileResponse.age.isEmpty ? 'Tugulgan sana kiritilmagan' : profileResponse.age),
+              SizedBox(height: 8,),
 
-            itemProfileInfo("JSHSHIR","12345678"),
-            SizedBox(height: 8,),
-            itemProfileInfo("Yashash Manzili","Toshkent shahar, Chiloonsor tumani"),
-            SizedBox(height: 8,),
+              itemProfileInfo("JSHSHIR",profileResponse.jshshr.isEmpty? 'JSHSHIR kiritilmagan': profileResponse.jshshr),
+              SizedBox(height: 8,),
+              itemProfileInfo("Yashash Manzili","Kiritilmagan"),
+              SizedBox(height: 8,),
+              itemProfileInfo("Jinsi",profileResponse.gender),
+              SizedBox(height: 8,),
 
-          ],
+            ],
+          ),
         ),
+      );
+
+    }
+    return Scaffold(
+      body: Center(
+        child:Text("Failed please try again to get"),
       ),
     );
+  },
+);
   }
   Widget itemProfileInfo(String name,value){
     return CustomAnimationsSlide(

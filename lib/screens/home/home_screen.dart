@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     Prefs.init();
-
+    print(Prefs.getAccessToken());
     _animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 500),

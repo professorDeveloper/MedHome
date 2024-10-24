@@ -6,6 +6,7 @@ import 'package:medhome/animations/custom_animation.dart';
 import 'package:medhome/blocs/login/login_bloc.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/screens/home/home_screen.dart';
+import 'package:medhome/screens/main/main_screen.dart';
 import 'package:medhome/screens/register/register_phone_verfy_screen.dart';
 import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/utils/utils.dart';
@@ -61,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
             await Prefs.setAccessToken(state.sucsess.access);
             await Prefs.setRefreshToken(state.sucsess.refresh);
-            openScreen(context, HomeScreen());
+            openScreen(context, MainScreen());
           }
           if (state is LoginLoading) {
             progress = true;

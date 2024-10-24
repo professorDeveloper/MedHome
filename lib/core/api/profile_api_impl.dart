@@ -16,7 +16,7 @@ class ProfileApiImp implements ProfileApi{
     Prefs.init();
     try {
       final response1 = await http.get(
-          Uri.parse("${ConstantsAPI.baseUrl}/accounts/token/"),
+          Uri.parse("${ConstantsAPI.baseUrl}/accounts/profile/"),
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
