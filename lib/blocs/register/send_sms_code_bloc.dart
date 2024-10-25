@@ -16,7 +16,7 @@ class SendSmsCodeBloc extends Bloc<SendSmsCodeEvent, SendSmsCodeState> {
   SendSmsCodeBloc() : super(SendSmsCodeInitial()) {
     on<SendSmsCodeButtonPressed>((event, emit) async {
       emit(SendSmsCodeLoading());
-
+      print("object");
       try {
         // Use your AuthApiImpl for login logic
         final response = await authApi.sendSmsCodeForRegister(
