@@ -71,7 +71,7 @@ Future<dynamic> forgetVerfySheet(BuildContext context, String phone) {
                                 print(otpValue);
                                 BlocProvider.of<VerifyBloc>(context).add(
                                     VerifyButtonPressed(
-                                        code: otpValue, phone: phone));
+                                        code: otpValue, phone: convertPhoneNumber(phone)));
                               },
                               onChange: (text) {},
                               key: _otpPinFiledController,
@@ -114,7 +114,7 @@ Future<dynamic> forgetVerfySheet(BuildContext context, String phone) {
                                   if (otpValue.toString().length != 6) {
                                     showErrorFlushBar("Kod To`liq Emas");
                                   } else {
-                                    print(phone);
+                                    print("asdasdasdsa :"+phone);
                                     BlocProvider.of<VerifyBloc>(context).add(
                                         VerifyButtonPressed(
                                             code: otpValue,

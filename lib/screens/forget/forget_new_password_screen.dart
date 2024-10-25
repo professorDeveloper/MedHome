@@ -18,6 +18,7 @@ Future<dynamic> forgetnewPassword(BuildContext context, String phone) {
   bool progress = false;
   return showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (context) {
         return StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {

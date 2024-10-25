@@ -67,10 +67,47 @@ class ProfileApiImp implements ProfileApi{
         }
       }
       else {
-        // If the response is not successful, handle the error
-        var errorData = json.decode(response1.body);
+     if(response1.statusCode==401){
+    TokenUpdaterImpl().getNewTokens();
+    try{
+    final response1 = await http.get(
+    Uri.parse("${ConstantsAPI.baseUrl}/accounts/token/"),
+    headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ${Prefs.getAccessToken()}',
+    } );
+    print(response1.body);
 
-        return Error(ErrorResponse.fromJson(errorData).detail!);
+    if (response1.statusCode == 200) {
+    Map<String, dynamic> jsonMap = json.decode(response1.body);
+    var profileResponse = ProfileResponse.fromJson(jsonMap);
+
+
+    // Return a Success result with the login response data
+    return Success(profileResponse);
+    }
+    else {
+    // If the response is not successful, handle the error
+    var errorData = json.decode(response1.body);
+
+    return Error(ErrorResponse.fromJson(errorData).detail!);
+    }
+
+
+    }
+    catch (e) {
+    // Handle other types of exceptions, e.g., network errors
+    throw Exception(e);
+    }
+    }
+    // If the response is not successful, handle the error
+        else{
+       var errorData = json.decode(response1.body);
+
+       return Error(ErrorResponse.fromJson(errorData).detail!);
+
+     }
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors

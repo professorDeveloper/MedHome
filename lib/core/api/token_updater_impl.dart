@@ -33,10 +33,12 @@ class TokenUpdaterImpl implements TokenUpdater{
       if (response1.statusCode == 200) {
         Map<String, dynamic> jsonMap = json.decode(response1.body);
         var loginResponse = LoginResponse.fromJson(jsonMap);
-
+        Prefs.setAccessToken(loginResponse.access);
+        Prefs.setRefreshToken(loginResponse.refresh);
         // Return a Success result with the login response data
         return Success(loginResponse);
       }
+
 
       else {
         // If the response is not successful, handle the error
@@ -48,6 +50,12 @@ class TokenUpdaterImpl implements TokenUpdater{
       // Handle other types of exceptions, e.g., network errors
       throw Exception(e);
     }
+  }
+
+  @override
+  Future<Result> getNewRefreshToken() {
+    // TODO: implement getNewRefreshToken
+    throw UnimplementedError();
   }
 
 }
