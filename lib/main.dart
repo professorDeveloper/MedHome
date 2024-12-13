@@ -5,13 +5,8 @@ import 'package:medhome/blocs/home/profile/profile_bloc.dart';
 import 'package:medhome/blocs/register/send_sms_code_bloc.dart';
 import 'package:medhome/blocs/verify/verify_bloc.dart';
 import 'package:medhome/core/di/get_it.dart';
-import 'package:medhome/regiser_screen.dart';
-import 'package:medhome/screens/login/login_screen.dart';
 import 'package:medhome/screens/main/main_screen.dart';
 import 'package:medhome/screens/onboarding/introduction_screen.dart';
-import 'package:medhome/screens/order/order_history_screen.dart';
-import 'package:medhome/screens/profile/profile_screen.dart';
-import 'package:medhome/screens/register/register_screen.dart';
 import 'package:medhome/utils/my_pref.dart';
 
 import 'blocs/forget/recieve_password_bloc.dart';

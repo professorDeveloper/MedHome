@@ -1,10 +1,54 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medhome/utils/app_color.dart';
 
-import '../analysis/date_selector.dart';
+class AppColor {
+  static const gray1 = Color(0xFFF5F5F5);
+  static const containerGrayColor = Color(0xFFE0E0E0);
+}
+
+class DateSelector extends StatelessWidget {
+  final bool isStartDate;
+  const DateSelector({Key? key, required this.isStartDate}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          // Add Date Picker functionality here
+        },
+        child: Container(
+          height: 48,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.grey.shade300),
+          ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  isStartDate ? '01.11.2023' : '31.01.2024',
+                  style: GoogleFonts.rubik(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(width: 8),
+                Icon(
+                  Icons.calendar_today,
+                  color: Colors.grey.shade600,
+                  size: 20,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class OrderHistory extends StatelessWidget {
   const OrderHistory({super.key});
@@ -16,6 +60,7 @@ class OrderHistory extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColor.gray1,
         surfaceTintColor: Colors.transparent,
+        elevation: 0,
         title: const Text(
           'Buyurtmalar tarixi',
           style: TextStyle(
@@ -45,6 +90,7 @@ class OrderHistory extends StatelessWidget {
         ),
         child: Column(
           children: [
+            // Date range selector
             Container(
               decoration: BoxDecoration(
                 color: AppColor.containerGrayColor,
@@ -60,23 +106,21 @@ class OrderHistory extends StatelessWidget {
               padding: const EdgeInsets.all(5),
               child: Row(
                 children: [
-                  DateSelector(
-                    isStartDate: true,
-                  ),
+                  DateSelector(isStartDate: true),
                   SizedBox(width: 12),
-                  DateSelector(
-                    isStartDate: false,
-                  ),
+                  DateSelector(isStartDate: false),
                 ],
               ),
             ),
             SizedBox(height: 17),
+            // List of orders
             Flexible(
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Date text
                       Text(
                         '27.01.2024',
                         style: GoogleFonts.rubik(
@@ -84,6 +128,7 @@ class OrderHistory extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
+                      // Order item container
                       Container(
                         margin: const EdgeInsets.only(bottom: 20, top: 10),
                         decoration: BoxDecoration(
@@ -121,7 +166,7 @@ class OrderHistory extends StatelessWidget {
                     ],
                   );
                 },
-                itemCount: 10,
+                itemCount: 10, // Modify this for the number of items
               ),
             )
           ],

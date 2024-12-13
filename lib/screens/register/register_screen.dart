@@ -199,14 +199,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         SizedBox(height: 10),
                         Container(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              buildCard(0, "Erkak", AppImages.icMale),
-                              // Add more cards as needed
-                              buildCard(1, "Ayol", AppImages.icFemale),
-                            ],
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                buildCard(0, "Erkak", AppImages.icMale),
+                                // Add more cards as needed
+                                buildCard(1, "Ayol", AppImages.icFemale),
+                              ],
+                            ),
                           ),
                         ),
                       ],

@@ -142,7 +142,7 @@ class _VerifyBottomSheetScreenState extends State<VerifyBottomSheetScreen> {
                     focusElevation: 0,
                     onPressed: () {
                       int otpValue = int.parse(
-                          _otpPinFiledController.currentState!.text.toString());
+                          _otpPinFiledController.currentState!.code.toString());
 
                       print(otpValue.toString());
                       if (otpValue.toString().length != 6) {

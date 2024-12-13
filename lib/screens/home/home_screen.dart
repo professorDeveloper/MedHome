@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medhome/animations/custom_animation.dart';
+import 'package:medhome/core/api/locator/locator.dart';
 import 'package:medhome/navigator/navigator.dart';
 import 'package:medhome/resources/home/home_contents.dart';
 import 'package:medhome/screens/home/widgets/user_search_screen.dart';
@@ -11,6 +13,7 @@ import 'package:medhome/utils/app_images.dart';
 import 'package:medhome/utils/my_pref.dart';
 import 'package:medhome/widgets/bar_menu.dart';
 
+import '../../core/api/locator/loc_service.dart';
 import '../doctors/choose_doctor_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -98,7 +101,17 @@ class _HomeScreenState extends State<HomeScreen>
                               horizontal: 20, vertical: 10),
                           elevation: 2.5,
                           child: InkWell(
-                            onTap: () {
+                            onTap: ()async {
+                              LocationService locationService = LocationService();
+                              Position? position = await locationService.getCurrentLocation();
+                              if (position != null) {
+                                // Use the position (latitude, longitude)
+                                var locationName = await getLocationName();
+                                print(locationName);
+                              } else {
+                                print('Location permission denied');
+                              }
+
                               openScreen(context, ChooseDoctorScreen());
                             },
                             child: Container(

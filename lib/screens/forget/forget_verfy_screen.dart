@@ -107,7 +107,7 @@ Future<dynamic> forgetVerfySheet(BuildContext context, String phone) {
                                 focusElevation: 0,
                                 onPressed: () {
                                   int otpValue = int.parse(_otpPinFiledController
-                                      .currentState!.text
+                                      .currentState!.code
                                       .toString());
 
                                   print(otpValue.toString());
